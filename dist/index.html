@@ -1,0 +1,1813 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183f36">
+  <meta name="description" content="Hướng dẫn NCKH Smart Outfit Recommender cho nhóm 3 sinh viên năm 2: gap có bằng chứng, pain point, phân công, phiên bản và thực nghiệm.">
+  <title>Smart Outfit — Hướng dẫn nghiên cứu Nhóm 2</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#noi-dung">Đến nội dung chính</a>
+  <header class="site-header">
+    <a class="brand" href="#dau-trang" aria-label="Smart Outfit, đầu trang"><span class="brand-mark" aria-hidden="true">S<span>O</span></span><span>Smart Outfit<small>Sổ tay nghiên cứu · Nhóm 2</small></span></a>
+    <nav class="header-actions" aria-label="Tài liệu và mã nguồn">
+      <a href="huong-dan.md" download>Tải tài liệu <span aria-hidden="true">↓</span></a>
+      <a class="github-link" href="https://github.com/hieutachi/smart-outfit-student-guide" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <div class="page-shell" id="dau-trang">
+    <aside class="sidebar" aria-label="Mục lục tài liệu">
+      <details id="toc" open>
+        <summary>Mục lục <span aria-hidden="true">+</span></summary>
+        <div class="toc-inner">
+          <p class="nav-label">LỘ TRÌNH CỦA NHÓM</p>
+          <nav class="toc-links" aria-label="Các chương"><a href="#muc-0"><span class="nav-number">00</span><span>Đọc trước: Gap, pain point và việc nhóm thực sự làm</span></a>
+<a href="#muc-1"><span class="nav-number">01</span><span>Hiểu đúng: Nhóm đang giải quyết vấn đề gì?</span></a>
+<a href="#muc-2"><span class="nav-number">02</span><span>Những khái niệm cần hiểu bằng lời đơn giản</span></a>
+<a href="#muc-3"><span class="nav-number">03</span><span>Ba phiên bản vừa sức, không nhảy thẳng vào AI phức tạp</span></a>
+<a href="#muc-4"><span class="nav-number">04</span><span>Hệ thống gồm những phần nào?</span></a>
+<a href="#muc-5"><span class="nav-number">05</span><span>Tổ chức thư mục và thống nhất dữ liệu</span></a>
+<a href="#muc-6"><span class="nav-number">06</span><span>Hai tuần đầu: Học gì và làm bài tập gì?</span></a>
+<a href="#muc-7"><span class="nav-number">07</span><span>Cách xây thuật toán từ dễ đến khó</span></a>
+<a href="#muc-8"><span class="nav-number">08</span><span>Phân công chính thức: Nhóm 3 thành viên</span></a>
+<a href="#muc-9"><span class="nav-number">09</span><span>Dữ liệu: Nhỏ, sạch, có quyền sử dụng</span></a>
+<a href="#muc-10"><span class="nav-number">10</span><span>Đo thời gian: Định nghĩa trước rồi mới lập trình</span></a>
+<a href="#muc-11"><span class="nav-number">11</span><span>Thiết kế thực nghiệm vừa sức nhưng không sai phương pháp</span></a>
+<a href="#muc-12"><span class="nav-number">12</span><span>Lộ trình gợi ý 12 tuần và các mốc nghiệm thu</span></a>
+<a href="#muc-13"><span class="nav-number">13</span><span>Dùng AI agent như người hướng dẫn, không như người làm hộ</span></a>
+<a href="#muc-14"><span class="nav-number">14</span><span>Git và phối hợp để không phá bài của nhau</span></a>
+<a href="#muc-15"><span class="nav-number">15</span><span>Đọc tài liệu và viết báo cáo ở mức phù hợp</span></a>
+<a href="#muc-16"><span class="nav-number">16</span><span>Checklist nghiệm thu cuối cùng</span></a>
+<a href="#muc-17"><span class="nav-number">17</span><span>Việc cần làm ngay trong buổi đầu tiên</span></a></nav>
+          <div class="sidebar-note"><strong>3 người · 3 phiên bản</strong><br>Quy tắc trước. Đo thật.<br>AI nâng cao sau.</div>
+        </div>
+      </details>
+    </aside>
+    <main id="noi-dung">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="eyebrow"><span class="edition">HƯỚNG DẪN THỰC HÀNH NCKH</span><span>Năm 2 · Học kỳ 1</span></div>
+        <h1 id="page-title">Gợi ý trang phục cá nhân.<br><em>Đo hiệu quả, không đoán.</em></h1>
+        <p class="intro-description">Từ một tủ đồ nhỏ đến nghiên cứu có đối chứng. Hiểu đúng vấn đề, biết phần việc của mình và kiểm tra xem người dùng có thực sự chọn đồ nhanh hơn.</p>
+        <div class="facts"><span><strong>03</strong> thành viên</span><span><strong>12</strong> tuần dự kiến</span><span><strong>v1 → v3</strong> tiến từng bước</span></div>
+        <nav class="quick-links" aria-label="Đọc nhanh theo nhu cầu">
+          <a href="#muc-0"><span>01</span><strong>Gap & pain point</strong><small>Bắt đầu từ đúng vấn đề</small></a>
+          <a href="#muc-8"><span>02</span><strong>Phần việc của tôi</strong><small>Ai làm gì qua từng phiên bản</small></a>
+          <a href="#muc-6"><span>03</span><strong>Bắt đầu lập trình</strong><small>6 bài tập trước khi chia nhánh</small></a>
+          <a href="#muc-11"><span>04</span><strong>Đo & kiểm chứng</strong><small>So sánh công bằng, kết luận thật</small></a>
+        </nav>
+        <p class="reading-note"><strong>Đọc trước:</strong> mục 0 và mục 8. Đây là kế hoạch nghiên cứu cho sinh viên, chưa phải sản phẩm đã triển khai hay kết quả đã được chứng minh.</p>
+      </section>
+      <article class="document" aria-label="Hướng dẫn chi tiết"><p><strong>Đề tài:</strong> Nghiên cứu hệ thống gợi ý trang phục cá nhân nhằm tối ưu hóa thời gian lựa chọn của người dùng.</p>
+<p><strong>Đối tượng:</strong> Nhóm <strong>3 sinh viên</strong> học kỳ 1 năm thứ 2, đã học một số kiến thức lập trình cơ bản, chưa học học máy và mới tiếp xúc với AI agent.</p>
+<p><strong>Cách sử dụng tài liệu:</strong> Đọc mục 0 để nắm gap, pain point và phạm vi; xem mục 8 để biết ai làm gì và ghép thành phiên bản nào; làm bài tập ở mục 6 trước khi chia nhánh. Mục 10–11 dành cho việc đo và kiểm chứng, không cần học hết thuật ngữ ngay ngày đầu tiên.</p>
+<p><strong>Trạng thái:</strong> Tài liệu định hướng, chưa có kết quả khảo sát hoặc thực nghiệm của nhóm. Các con số ví dụ không phải kết quả nghiên cứu. Cập nhật phân công 3 người ngày 29/10/2026.</p>
+<blockquote>
+<p><strong>Thông điệp của giảng viên hướng dẫn:</strong> Các em không phải bắt đầu bằng việc huấn luyện AI. Trước hết, hãy viết được một chương trình nhỏ mà mình giải thích được, đo được và sửa được. Sau đó mới bổ sung từng cải tiến để kiểm tra xem chúng có thực sự giúp người dùng chọn đồ nhanh hơn không.</p>
+</blockquote>
+<hr>
+<h2 id="muc-0"><a class="heading-link" href="#muc-0">0. Đọc trước: Gap, pain point và việc nhóm thực sự làm</a></h2>
+<h3 id="muc-0-1"><a class="heading-link" href="#muc-0-1">0.1. Gap thực sự là gì, và không phải là gì?</a></h3>
+<p><strong>Gap</strong> là khoảng trống kiến thức hoặc bằng chứng cần được giải quyết, không phải danh sách tính năng ứng dụng chưa được nhóm viết.</p>
+<p><strong>Không chọn các phát biểu sau làm gap:</strong></p>
+<ul>
+<li>“Chưa có ứng dụng gợi ý quần áo.”</li>
+<li>“Chưa ai kết hợp ngữ cảnh và sở thích cá nhân.”</li>
+<li>“Chưa ai đo thời gian chọn trang phục.”</li>
+<li>“Thêm CLIP hoặc reinforcement learning là có đóng góp mới.”</li>
+</ul>
+<p>Các công trình dưới đây cho thấy những tuyên bố đó không đứng vững:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Nguồn đã đối chiếu</th>
+<th>Điều đã có</th>
+<th>Điều nguồn này chưa trả lời cho đề tài</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Shen, Lieberman &amp; Lam, 2007 [1]</td>
+<td>Gợi ý theo tình huống, tủ đồ và cá nhân hóa; có đo thời gian tìm/chọn trong pilot</td>
+<td>Thời gian hai giai đoạn gần như nhau; chưa chứng minh hiệu quả cho phép so sánh v1/v2/v3 trên tủ thật của nhóm người dùng hiện tại</td>
+</tr>
+<tr>
+<td>Han và cộng sự, 2017 [2]</td>
+<td>Học tương thích outfit trên Polyvore; đánh giá điền món còn thiếu và phân biệt outfit phù hợp/không phù hợp</td>
+<td>FITB accuracy và ROC-AUC không phải thời gian người dùng chốt bộ đồ</td>
+</tr>
+<tr>
+<td>Woiceshyn và cộng sự, 2017 [3]</td>
+<td>Gợi ý từ tủ cá nhân theo thời tiết, hoạt động, dress code, comfort và phản hồi</td>
+<td>Có đánh giá người dùng, nhưng không báo phép so sánh thời gian quyết định khách quan như giao thức đề xuất ở đây</td>
+</tr>
+<tr>
+<td>Wibowo và cộng sự, 2018 [4]</td>
+<td>Đo thời gian chọn bộ áo–quần; kiểu giải thích có ảnh hưởng tới tốc độ chọn</td>
+<td>Tác vụ chọn cho người dùng giả định, không phải nghiên cứu đúng gói xếp hạng trên tủ áo–quần–giày thật của sinh viên</td>
+</tr>
+</tbody></table>
+</div><p><strong>Kết luận từ bằng chứng:</strong> Gợi ý theo ngữ cảnh/cá nhân hóa và đo thời gian đều không mới. Chất lượng xếp hạng offline, sự hài lòng và tốc độ quyết định là ba thứ khác nhau; không thể suy từ một thứ ra hai thứ còn lại.</p>
+<p><strong>Gap khả thi cho nhóm:</strong></p>
+<blockquote>
+<p>Trong phạm vi các nguồn đã đối chiếu, chưa có bằng chứng trực tiếp trả lời: với tủ đồ thật của sinh viên, cùng giao diện và dữ liệu đã xác nhận, việc thêm điểm ngữ cảnh rồi thêm sở thích–phạt lặp vào baseline quy tắc ảnh hưởng thế nào tới thời gian chốt bộ, số lần đổi và mức chấp nhận?</p>
+</blockquote>
+<p>Đây là <strong>khoảng trống bằng chứng thực nghiệm trong một điều kiện sử dụng cụ thể</strong>, không phải khẳng định nhóm phát minh bài toán hoặc thuật toán chưa từng có. Rà soát trên là rà soát có mục tiêu, không phải tổng quan hệ thống bao phủ toàn bộ công trình đến 29/10/2026. Nhóm phải tiếp tục đọc tài liệu và thu hẹp phát biểu nếu tìm thấy nghiên cứu gần hơn.</p>
+<p><strong>Đóng góp dự kiến, chưa phải đóng góp đã đạt:</strong> Một pipeline nhỏ, có thể giải thích; một phép so sánh có kiểm soát; dữ liệu đã ẩn danh và script tái lập; phân tích điều kiện cải tiến hữu ích hoặc không hữu ích. Dùng heuristic thay vì học máy không làm mất giá trị kiểm chứng, nhưng cũng không được gọi là mô hình AI mới.</p>
+<h3 id="muc-0-2"><a class="heading-link" href="#muc-0-2">0.2. Pain point: Người dùng đang vướng ở bước nào?</a></h3>
+<p><strong>Pain point</strong> là khó khăn thực tế của người dùng. Khác với gap: pain point thuộc trải nghiệm; gap thuộc điều chúng ta chưa biết/chưa có bằng chứng đủ tốt.</p>
+<p><strong>Pain point trung tâm dự kiến:</strong></p>
+<blockquote>
+<p>Khi đã có quần áo nhưng phải ra khỏi nhà, người dùng phải cân nhắc nhiều khả năng, loại những món không sẵn sàng hoặc không hợp hoàn cảnh, rồi đổi qua lại trước khi chốt một bộ chấp nhận được.</p>
+</blockquote>
+<p>Không mặc định mọi sinh viên đều gặp vấn đề này. Người có đồng phục, tủ rất nhỏ hoặc thói quen chọn sẵn từ tối hôm trước có thể không cần hệ thống.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Khó khăn giả định</th>
+<th>Dấu hiệu cần quan sát/hỏi</th>
+<th>Không được kết luận chỉ từ cảm tính</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Phải cân nhắc nhiều lựa chọn</td>
+<td>Lần chọn gần nhất: đổi mấy lần, vướng ở bước nào?</td>
+<td>“Nhiều quần áo luôn làm chọn chậm”</td>
+</tr>
+<tr>
+<td>Chọn xong mới thấy không mặc được</td>
+<td>Món đang giặt, chưa khô hoặc không sẵn sàng</td>
+<td>“Thuật toán phối đồ kém” khi dữ liệu trạng thái sai</td>
+</tr>
+<tr>
+<td>Không hợp ngày hôm nay</td>
+<td>Bộ phù hợp sở thích nhưng không hợp sự kiện/thời tiết</td>
+<td>Một ngưỡng nhiệt độ đúng cho tất cả</td>
+</tr>
+<tr>
+<td>Gợi ý không hợp mình hoặc quá lặp</td>
+<td>Người dùng từ chối và nêu lý do cụ thể</td>
+<td>Mọi lần không chọn đều là ghét bộ đó</td>
+</tr>
+<tr>
+<td>Nhập tủ đồ quá mất công</td>
+<td>Thời gian chụp, gán/sửa nhãn, cập nhật trạng thái</td>
+<td>Ứng dụng có lợi tổng thể chỉ vì một phiên chọn nhanh hơn</td>
+</tr>
+</tbody></table>
+</div><p><strong>Chưa có khảo sát của nhóm để định lượng các khó khăn này.</strong> Không viết “sinh viên mất X phút mỗi sáng” hoặc “Y% sinh viên cần ứng dụng” nếu chưa đo và chưa có nguồn thích hợp.</p>
+<p><strong>Việc tuần 1:</strong> Cả nhóm phỏng vấn ngắn khoảng 5–8 người phù hợp phạm vi dự kiến, nếu được đồng ý; đây là khám phá vấn đề, không phải mẫu đại diện hoặc nghiên cứu chính. Hỏi về hành vi gần nhất, không hỏi dẫn dắt “Bạn có muốn AI giúp chọn nhanh hơn không?”.</p>
+<p>Năm câu nên hỏi:</p>
+<ol>
+<li>Lần gần nhất bạn khó chọn trang phục là khi nào, đi đâu?</li>
+<li>Bạn đã làm lần lượt những gì trước khi chốt?</li>
+<li>Bạn đổi vì màu, sự kiện, đồ không sẵn sàng, hay lý do khác?</li>
+<li>Bạn đang khắc phục bằng cách nào: chọn sẵn, hỏi bạn, mặc bộ quen?</li>
+<li>Bạn có chấp nhận công nhập/cập nhật tủ đồ không? Điều gì khiến bạn không muốn dùng?</li>
+</ol>
+<p>Nếu có quan sát tác vụ, ghi rõ phần nào là thời gian quan sát và phần nào chỉ là người tham gia nhớ lại. Báo cáo cả người không gặp khó khăn.</p>
+<p><strong>Cửa quyết định:</strong> Nếu khó khăn chính là tìm đồ ngoài đời hoặc nhập tủ quá phiền, không cố chứng minh bài toán xếp hạng; trao đổi với giảng viên để đổi trọng tâm hoặc thu hẹp nhóm đối tượng.</p>
+<h3 id="muc-0-3"><a class="heading-link" href="#muc-0-3">0.3. Đề tài đánh vào pain point bằng cách nào?</a></h3>
+<p>Không phải “thêm AI để phối đẹp”, mà là giảm các bước cân nhắc không cần thiết trước khi chốt bộ phù hợp.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Pain point</th>
+<th>Cơ chế nhóm làm</th>
+<th>Kỳ vọng cần kiểm chứng</th>
+<th>Chỉ số/bằng chứng</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gợi ý đồ không thể mặc</td>
+<td>Lọc quyền sở hữu và trạng thái sẵn sàng</td>
+<td>Không mất lượt chọn vì món không dùng được</td>
+<td>Test ràng buộc; số gợi ý không hợp lệ</td>
+</tr>
+<tr>
+<td>Phải tự cân nhắc sự kiện/thời tiết</td>
+<td>Điểm ngữ cảnh ở v2</td>
+<td>Bộ phù hợp hôm nay lên trước</td>
+<td>Số lần đổi, mức phù hợp, thời gian</td>
+</tr>
+<tr>
+<td>Nhiều bộ có thể chọn nhưng chưa biết ưu tiên</td>
+<td>Chỉ hiển thị tối đa 3 bộ đã xếp hạng</td>
+<td>Dễ bắt đầu và ít phải duyệt hơn</td>
+<td>Thời gian và tỷ lệ hoàn thành; Top-3 là lựa chọn thiết kế, chưa chứng minh tối ưu</td>
+</tr>
+<tr>
+<td>Gợi ý không hợp sở thích</td>
+<td>Re-ranking bằng lịch sử lựa chọn ở v3</td>
+<td>Bộ người dùng có khả năng chấp nhận lên trước</td>
+<td>So sánh v3 với v2, cùng giao diện</td>
+</tr>
+<tr>
+<td>Luôn đưa lại món vừa mặc</td>
+<td>Phạt lặp mềm dựa trên xác nhận đã mặc</td>
+<td>Tăng lựa chọn thay thế khi người dùng muốn luân phiên</td>
+<td>Phân tích thứ tự và phản hồi; không tự giả định mọi người ghét mặc lặp</td>
+</tr>
+<tr>
+<td>Phải thao tác rườm rà</td>
+<td>Một chạm chọn, một nút đổi</td>
+<td>Giảm thao tác trong phiên</td>
+<td>Log thao tác; giữ UI như nhau khi so sánh thuật toán</td>
+</tr>
+</tbody></table>
+</div><p><strong>Giả thuyết H1:</strong> v2 có thể giúp chọn nhanh/ít đổi hơn v1 nhờ phù hợp ngữ cảnh hơn.<br><strong>Giả thuyết H2:</strong> v3 có thể cải thiện thêm so với v2 nhờ sở thích và luân phiên.<br><strong>Điều kiện đi kèm:</strong> Không đánh đổi bằng nhiều phiên bỏ dở hơn hoặc mức phù hợp kém hơn; báo cáo cả ba mặt, không chỉ chọn chỉ số đẹp.</p>
+<p>Kết quả v3–v2 chỉ cho biết tác động của <strong>gói sở thích + phạt lặp</strong>. Muốn tách từng thành phần cần ablation. Một thử nghiệm ngắn cũng chưa chứng minh lợi ích sau N ngày.</p>
+<h3 id="muc-0-4"><a class="heading-link" href="#muc-0-4">0.4. Đề tài làm những gì và nộp những gì?</a></h3>
+<p><strong>Bắt buộc xây:</strong></p>
+<ol>
+<li>Tủ đồ số nhỏ: thêm ảnh, nhập/sửa loại–màu–thuộc tính, cập nhật sẵn sàng.</li>
+<li>Ngữ cảnh nhập tay: đi học, thuyết trình/họp, đi chơi; nhiệt độ và mưa nếu có dữ liệu.</li>
+<li>Ghép áo + quần + giày từ đồ sẵn có; không tạo đồ tưởng tượng.</li>
+<li>Ba phiên bản xếp hạng có thể chạy trên cùng dữ liệu.</li>
+<li>Giao diện tối đa 3 bộ, chọn/đổi/kết thúc và xử lý không đủ bộ.</li>
+<li>Log thời gian, gợi ý đã trả về, lựa chọn, phiên lỗi/bỏ dở và mức phù hợp.</li>
+<li>Pilot, nghiên cứu người dùng thăm dò, script phân tích và báo cáo trung thực.</li>
+</ol>
+<p><strong>Tùy chọn:</strong> Tự gợi ý màu, tách nền, API thời tiết. Đánh giá riêng công sức nhập liệu; bỏ các phần này trước nếu chậm tiến độ.</p>
+<p><strong>Không yêu cầu:</strong> Huấn luyện deep learning, thử đồ ảo, chatbot, sinh ảnh người mặc, contextual bandit, ứng dụng mobile riêng hoặc hệ thống bán hàng.</p>
+<p><strong>Bộ đầu ra cuối kỳ:</strong> Code chạy được + dữ liệu mẫu được phép chia sẻ + test + cấu hình v1/v2/v3 + giao thức thực nghiệm + kết quả ẩn danh theo sự đồng ý của người tham gia + script dựng bảng/biểu đồ + báo cáo giới hạn. Đây là bộ đầu ra của nghiên cứu, không chỉ một video demo ứng dụng.</p>
+<h3 id="muc-0-5"><a class="heading-link" href="#muc-0-5">0.5. Ba người ghép việc thành ba phiên bản ra sao?</a></h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Người</th>
+<th>Trách nhiệm chính</th>
+<th>v1 — tuần 5</th>
+<th>v2 — tuần 7</th>
+<th>v3 — tuần 9</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>SV 1</strong></td>
+<td>Dữ liệu, tủ đồ, ngữ cảnh</td>
+<td>Schema + tủ nhập tay + đồ sẵn sàng + lọc cơ bản</td>
+<td>Điểm phù hợp thời tiết/sự kiện</td>
+<td>Lịch sử đã mặc + snapshot dữ liệu</td>
+</tr>
+<tr>
+<td><strong>SV 2</strong></td>
+<td>Ghép bộ, xếp hạng, cá nhân hóa</td>
+<td>Tổ hợp + màu/phong cách + Top-3</td>
+<td>Kết hợp điểm ngữ cảnh</td>
+<td>Sở thích + phạt lặp + ablation</td>
+</tr>
+<tr>
+<td><strong>SV 3</strong></td>
+<td>Giao diện, tích hợp, đo lường</td>
+<td>Giao diện + timer + log</td>
+<td>Chạy v1/v2 trên cùng UI, lưu cấu hình</td>
+<td>Tích hợp v3 + pilot + phân tích phiên</td>
+</tr>
+</tbody></table>
+</div><p>Tuần 10–12, <strong>cả ba</strong> thu thập và phân tích thực nghiệm. Đây là kế hoạch dự kiến, không phải cam kết các phiên bản đã tồn tại. Checklist và đầu ra chi tiết từng người nằm ở mục 8; kế hoạch từng tuần ở mục 12.</p>
+<p><strong>Bản v1:</strong> “Ứng dụng quy tắc chạy và đo được.”<br><strong>Bản v2:</strong> “Ứng dụng xếp hạng có xét ngữ cảnh, chưa học sở thích.”<br><strong>Bản v3:</strong> “Ứng dụng cá nhân hóa heuristic, chưa phải reinforcement learning.”<br><strong>Bản nghiên cứu cuối:</strong> “Biết cải tiến nào hữu ích, mức độ nào và trong điều kiện nào, dựa trên số liệu thật.”</p>
+<h3 id="muc-0-6"><a class="heading-link" href="#muc-0-6">0.6. Phạm vi kết luận phải đúng với phép đo</a></h3>
+<ul>
+<li>Giao thức chính trong tài liệu đo từ <strong>Bắt đầu chọn sau khi xác nhận ngữ cảnh</strong> đến <strong>Chốt bộ</strong>, có tính thời gian chờ/đổi. Không gọi đó là toàn bộ thời gian chuẩn bị ra khỏi nhà.</li>
+<li>So sánh v1/v2/v3 chỉ cho thấy phiên bản nào tốt hơn phiên bản nào. Nếu muốn nói “nhanh hơn tự chọn không có gợi ý”, cần thêm điều kiện tự chọn với cùng dữ liệu/tác vụ và bố trí thứ tự hợp lý.</li>
+<li>Công nhập ảnh, xác nhận nhãn, cập nhật trạng thái và nhập ngữ cảnh phải được đo riêng nếu muốn bàn về tiết kiệm tổng thời gian.</li>
+<li>Nghiên cứu thăm dò với mẫu nhỏ không bảo đảm có ý nghĩa thống kê và không đại diện mọi sinh viên.</li>
+<li>Nếu chưa có bằng chứng tốt hơn, kết luận đúng là “chưa chứng minh được lợi ích trong điều kiện thử”, không tạo biểu đồ giả để hoàn thành mục tiêu.</li>
+</ul>
+<h3 id="muc-0-7"><a class="heading-link" href="#muc-0-7">0.7. Nguồn để đọc và kiểm tra phát biểu về gap</a></h3>
+<p><strong>[1]</strong> Edward Shen, Henry Lieberman, Francis Lam (2007). <em>What am I gonna wear?: Scenario-Oriented Recommendation</em>. IUI, bản tác giả. Đọc phần Evaluation/Results, trang PDF 6–7; đây là đối chứng trực tiếp cho việc thời gian chọn đã từng được đo. <a href="https://web.media.mit.edu/~lieber/Publications/What-am-I-Gonna-Wear.pdf">Toàn văn từ MIT</a>.</p>
+<p><strong>[2]</strong> Xintong Han, Zuxuan Wu, Yu-Gang Jiang, Larry S. Davis (2017). <em>Learning Fashion Compatibility with Bidirectional LSTMs</em>. ACM Multimedia. Đọc phần Experiments, phân biệt FITB/compatibility với nghiên cứu thời gian người dùng. <a href="https://arxiv.org/abs/1707.05691">Bản tác giả trên arXiv</a>.</p>
+<p><strong>[3]</strong> Leo Woiceshyn, Yuchi Wang, Goldie Nejat, Beno Benhabib (2017). <em>Personalized Clothing Recommendation by a Social Robot</em>. IEEE IRIS. Đọc các yếu tố cá nhân hóa và phương pháp đánh giá người dùng; không đồng nhất Likert với thời gian quyết định quan sát. <a href="https://asblab.mie.utoronto.ca/sites/default/files/iris-2017-clothing.pdf">Toàn văn từ nhóm tác giả</a>.</p>
+<p><strong>[4]</strong> Agung Toto Wibowo, Advaith Siddharthan, Judith Masthoff, Chenghua Lin (2018). <em>Understanding how to Explain Package Recommendations in the Clothes Domain</em>. IntRS@RecSys. Đọc mục 3–4, trang PDF 3–4: đo thời gian chọn thật, nhưng trên tác vụ người dùng giả định và các kiểu giải thích khác nhau. <a href="https://ceur-ws.org/Vol-2225/paper11.pdf">Toàn văn CEUR-WS</a>.</p>
+<p>Các tài liệu này chứng minh <strong>đã có nghiên cứu liên quan</strong>, không cung cấp sẵn kết quả cho hệ thống của nhóm. Khi bổ sung nguồn mới, ghi rõ nó hỗ trợ phát biểu nào và có điều kiện/giới hạn gì.</p>
+<hr>
+<h2 id="muc-1"><a class="heading-link" href="#muc-1">1. Hiểu đúng: Nhóm đang giải quyết vấn đề gì?</a></h2>
+<h3 id="muc-1-1"><a class="heading-link" href="#muc-1-1">1.1. Một tình huống cụ thể</a></h3>
+<p>Một bạn có 6 chiếc áo, 4 chiếc quần và 2 đôi giày. Sáng nay bạn ấy đi thuyết trình, trời có khả năng mưa và một chiếc áo đang giặt.</p>
+<p>Nếu ghép mọi khả năng, có:</p>
+<pre><code class="language-text">6 × 4 × 2 = 48 bộ trang phục
+</code></pre>
+<p>Nhưng không phải bộ nào cũng dùng được:</p>
+<ul>
+<li>Món đang giặt không thể mặc ngay.</li>
+<li>Một số món không phù hợp với yêu cầu trang phục của buổi thuyết trình.</li>
+<li>Một số món khiến người dùng cảm thấy không phù hợp với thời tiết.</li>
+<li>Một bộ phối hợp hợp lý vẫn có thể không đúng sở thích cá nhân.</li>
+</ul>
+<p>Hệ thống cần giúp người dùng đi từ nhiều khả năng xuống một vài lựa chọn dễ quyết định.</p>
+<h3 id="muc-1-2"><a class="heading-link" href="#muc-1-2">1.2. Câu hỏi nghiên cứu trung tâm</a></h3>
+<blockquote>
+<p>Với cùng tủ đồ, ngữ cảnh và giao diện, cách xếp hạng có xét sở thích cùng lịch sử mặc có giúp người dùng chốt trang phục nhanh hơn cách xếp hạng bằng quy tắc cơ bản không, mà vẫn giữ mức chấp nhận được về sự phù hợp?</p>
+</blockquote>
+<p>Đây là <strong>câu hỏi cần kiểm chứng</strong>, chưa phải kết luận.</p>
+<p>Không viết trước rằng “hệ thống giảm đáng kể thời gian” khi chưa thực nghiệm. Kết quả có thể là giảm, không thay đổi hoặc thậm chí tăng thời gian.</p>
+<h3 id="muc-1-3"><a class="heading-link" href="#muc-1-3">1.3. Phân biệt bốn việc dễ bị nhầm</a></h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Việc</th>
+<th>Ví dụ</th>
+<th>Có tự chứng minh người dùng chọn nhanh hơn không?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chương trình chạy được</td>
+<td>Tải ảnh lên và hiển thị 3 bộ</td>
+<td>Không</td>
+</tr>
+<tr>
+<td>Thuật toán chạy nhanh</td>
+<td>Sinh gợi ý trong 200 ms thay vì 800 ms</td>
+<td>Không; đây là độ trễ xử lý</td>
+</tr>
+<tr>
+<td>Người dùng chọn nhanh</td>
+<td>Thời gian từ bắt đầu phiên đến chốt bộ giảm</td>
+<td>Có liên quan trực tiếp, nhưng cần so sánh công bằng</td>
+</tr>
+<tr>
+<td>Gợi ý có chất lượng</td>
+<td>Người dùng thấy bộ phù hợp, có thể mặc</td>
+<td>Là điều kiện cần kiểm tra để tránh “nhanh nhưng chọn bừa”</td>
+</tr>
+</tbody></table>
+</div><p><strong>Mục tiêu không phải:</strong> Đưa thật nhiều tên công nghệ vào báo cáo.</p>
+<p><strong>Mục tiêu là:</strong> Xây được hệ thống nhỏ, đề xuất được một cải tiến có lý do và đánh giá trung thực tác động của cải tiến đó.</p>
+<h3 id="muc-1-4"><a class="heading-link" href="#muc-1-4">1.4. Giới hạn đề tài ở giai đoạn đầu</a></h3>
+<p>Phạm vi bắt buộc:</p>
+<ul>
+<li>Gợi ý từ đồ <strong>người dùng đã sở hữu</strong>, không phải tìm sản phẩm để mua.</li>
+<li>Một bộ gồm <strong>áo + quần + giày</strong>.</li>
+<li>Hỗ trợ trước 3 ngữ cảnh: đi học, thuyết trình/họp, đi chơi.</li>
+<li>Mỗi lượt đưa ra tối đa 3 bộ, không có nghĩa lúc nào cũng đủ 3 bộ.</li>
+<li>Chạy trên máy tính bằng ứng dụng web đơn giản.</li>
+<li>Cho phép người dùng sửa thuộc tính bị nhận dạng sai.</li>
+</ul>
+<p>Chưa làm trong bản đầu:</p>
+<ul>
+<li>Thử đồ ảo lên cơ thể, sinh ảnh người mặc đồ.</li>
+<li>Nhận dạng vóc dáng, khuôn mặt hoặc suy luận thuộc tính nhạy cảm.</li>
+<li>Mua sắm, thanh toán, mạng xã hội, ứng dụng Android/iOS riêng.</li>
+<li>Phối nhiều lớp, váy liền, phụ kiện và mọi loại trang phục cùng lúc.</li>
+<li>Huấn luyện mô hình lớn, triển khai hệ thống phục vụ hàng nghìn người.</li>
+</ul>
+<p>Chỉ mở rộng khi bản cơ bản đã vượt qua kiểm thử và được giảng viên đồng ý.</p>
+<hr>
+<h2 id="muc-2"><a class="heading-link" href="#muc-2">2. Những khái niệm cần hiểu bằng lời đơn giản</a></h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Khái niệm</th>
+<th>Hiểu trong đề tài này</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dữ liệu</td>
+<td>Thông tin về áo, quần, giày, thời tiết và các lần chọn đồ</td>
+</tr>
+<tr>
+<td>Thuộc tính — feature</td>
+<td>Đặc điểm của một món: loại, màu, độ trang trọng…</td>
+</tr>
+<tr>
+<td>Nhãn — label</td>
+<td>Câu trả lời dùng để kiểm tra, chẳng hạn người dùng xác nhận “đây là áo”</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>Cách ghi dữ liệu có cấu trúc để các phần chương trình trao đổi với nhau</td>
+</tr>
+<tr>
+<td>Hàm</td>
+<td>Một phần chương trình nhận đầu vào, xử lý và trả kết quả</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>Một nhóm chức năng có trách nhiệm rõ ràng, chẳng hạn lọc đồ đang giặt</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Cách chương trình yêu cầu một hệ thống khác cung cấp dữ liệu, ví dụ thời tiết</td>
+</tr>
+<tr>
+<td>Quy tắc — rule</td>
+<td>Điều kiện do người viết đặt ra: nếu đồ đang giặt thì không gợi ý</td>
+</tr>
+<tr>
+<td>Điểm — score</td>
+<td>Một con số dùng để sắp xếp các bộ, không tự động là xác suất hay “độ đẹp khách quan”</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>Phương pháp đơn giản được giữ lại để làm mốc so sánh</td>
+</tr>
+<tr>
+<td>Học máy — machine learning</td>
+<td>Học một quy luật từ dữ liệu thay vì viết toàn bộ quy tắc bằng tay</td>
+</tr>
+<tr>
+<td>Mô hình pretrained</td>
+<td>Mô hình đã được bên khác huấn luyện; nhóm có thể dùng để dự đoán</td>
+</tr>
+<tr>
+<td>Inference</td>
+<td>Dùng mô hình đã có để đưa ra dự đoán; khác với huấn luyện lại</td>
+</tr>
+<tr>
+<td>Embedding</td>
+<td>Dãy số biểu diễn một món đồ để máy tính xử lý hoặc so sánh</td>
+</tr>
+<tr>
+<td>Cá nhân hóa</td>
+<td>Hai người có cùng tủ đồ và thời tiết vẫn có thể nhận thứ tự gợi ý khác nhau</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td>Trợ lý AI có thể đọc, sửa tệp và chạy công cụ khi được cấp quyền; vẫn có thể hiểu sai hoặc viết sai</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>Ví dụ đầu vào có kết quả mong đợi, dùng để kiểm tra chương trình</td>
+</tr>
+<tr>
+<td>Ablation</td>
+<td>Tắt riêng một thành phần để xem thành phần đó thực sự đóng góp gì</td>
+</tr>
+</tbody></table>
+</div><p><strong>Chưa cần học ngay:</strong> CNN, Siamese Network, LinUCB, Thompson Sampling, huấn luyện reinforcement learning. Đây là kiến thức mở rộng, không phải điều kiện để bắt đầu đề tài.</p>
+<h3 id="muc-2-1"><a class="heading-link" href="#muc-2-1">2.1. Các em có thể nghiên cứu mà chưa biết học máy không?</a></h3>
+<p>Có. Chẳng hạn, nhóm có thể kiểm tra:</p>
+<blockquote>
+<p>Việc kết hợp điểm phù hợp ngữ cảnh với điểm sở thích đơn giản và phạt mặc lặp có tốt hơn chỉ dùng quy tắc màu sắc hay không?</p>
+</blockquote>
+<p>Đây là một nghiên cứu ứng dụng nhỏ nếu có giả thuyết rõ, thiết kế so sánh hợp lý, dữ liệu thật và phân tích kết quả. Không được gọi một công thức đếm đơn giản là “mô hình học tăng cường mới”.</p>
+<hr>
+<h2 id="muc-3"><a class="heading-link" href="#muc-3">3. Ba phiên bản vừa sức, không nhảy thẳng vào AI phức tạp</a></h2>
+<p>Giữ tên v1.0, v2.0, v3.0 để dễ đối chiếu với định hướng ban đầu, nhưng điều chỉnh mức triển khai cho phù hợp năng lực hiện tại.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Phiên bản</th>
+<th>Nội dung phải làm</th>
+<th>Nội dung chưa bắt buộc</th>
+<th>Điều cần chứng minh</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>v1.0 — Bản cơ bản</strong></td>
+<td>Nhập thuộc tính thủ công; lọc đồ không dùng được; ghép áo–quần–giày; chấm điểm quy tắc; giao diện chọn bộ; ghi log</td>
+<td>Tách nền, mô hình thị giác, cá nhân hóa</td>
+<td>Luồng chạy đúng và số đo thời gian đáng tin</td>
+</tr>
+<tr>
+<td><strong>v2.0 — Bản cải tiến ngữ cảnh</strong></td>
+<td>Chấm điểm mềm theo thời tiết/sự kiện từ dữ liệu đã xác nhận; cùng giao diện v1</td>
+<td>Gợi ý màu từ ảnh, API thời tiết, pretrained classification, embedding</td>
+<td>Đóng góp của ngữ cảnh; không đánh đồng tự động nhập ảnh với cải tiến xếp hạng</td>
+</tr>
+<tr>
+<td><strong>v3.0 — Bản cá nhân hóa đơn giản</strong></td>
+<td>Re-ranking bằng lịch sử lựa chọn và giảm ưu tiên đồ vừa mặc; đo thời gian, số lần đổi, mức hài lòng</td>
+<td>Contextual Bandit, học online nâng cao</td>
+<td>Có giảm thời gian và số lần đổi mà không làm chất lượng giảm hay không</td>
+</tr>
+</tbody></table>
+</div><h3 id="muc-3-1"><a class="heading-link" href="#muc-3-1">3.1. Điều chỉnh quan trọng so với định hướng ban đầu</a></h3>
+<ol>
+<li><strong>Không yêu cầu tự động hóa hoàn toàn khâu thêm đồ.</strong> Màu có thể ước lượng từ ảnh, nhưng chất liệu, độ dày và độ phù hợp thời tiết thường cần người dùng xác nhận.</li>
+<li><strong>Không bắt buộc CLIP/CNN ở v2.0.</strong> Nếu bản quy tắc còn sai thì thêm mô hình chỉ làm khó xác định nguyên nhân.</li>
+<li><strong>Không bắt buộc reinforcement learning ở v3.0.</strong> Ưu tiên cách re-ranking bằng số đếm mà cả nhóm giải thích được.</li>
+<li><strong>Không dùng mô phỏng để kết luận người thật chọn nhanh hơn.</strong> Mô phỏng chỉ hỗ trợ kiểm thử thuật toán và độ trễ.</li>
+<li><strong>Không gắn nhãn “tối ưu toàn cục” cho Top-3.</strong> Đây là 3 bộ có điểm cao nhất theo cách chấm điểm hiện tại, không chắc là 3 bộ tốt nhất trong thực tế.</li>
+</ol>
+<h3 id="muc-3-2"><a class="heading-link" href="#muc-3-2">3.2. Cửa dừng an toàn</a></h3>
+<ul>
+<li>v1.0 chưa đúng: chưa thêm mô hình thị giác.</li>
+<li>v2.0 chưa ổn định: chưa làm bandit.</li>
+<li>Chưa có người tham gia thực nghiệm: chỉ kết luận về chức năng và tính khả thi kỹ thuật, chưa kết luận giảm thời gian cho người dùng.</li>
+<li>Nếu giảng viên yêu cầu bắt buộc một thành phần học máy: dùng <strong>một mô hình pretrained cho một tác vụ hẹp</strong>, ví dụ phân loại áo/quần/giày, và đánh giá riêng độ đúng của tác vụ đó.</li>
+</ul>
+<hr>
+<h2 id="muc-4"><a class="heading-link" href="#muc-4">4. Hệ thống gồm những phần nào?</a></h2>
+<h3 id="muc-4-1"><a class="heading-link" href="#muc-4-1">4.1. Luồng số hóa tủ đồ</a></h3>
+<pre><code class="language-text">Ảnh một món đồ
+    ↓
+Người dùng nhập hoặc hệ thống gợi ý thuộc tính
+    ↓
+Người dùng kiểm tra, sửa và xác nhận
+    ↓
+Lưu món đồ vào tủ cá nhân
+</code></pre>
+<p>Tách nền và tự nhận dạng chỉ hỗ trợ nhập liệu. Nhận dạng sai không được âm thầm biến thành dữ liệu “đúng”.</p>
+<h3 id="muc-4-2"><a class="heading-link" href="#muc-4-2">4.2. Luồng gợi ý mỗi ngày</a></h3>
+<pre><code class="language-text">Tủ đồ + Ngữ cảnh + Trạng thái sẵn sàng
+    ↓
+Lọc món không được phép sử dụng
+    ↓
+Ghép áo + quần + giày thành các bộ hợp lệ
+    ↓
+Chấm điểm từng bộ
+    ↓
+Cá nhân hóa và giảm ưu tiên đồ vừa mặc nếu chạy v3.0
+    ↓
+Hiển thị tối đa 3 bộ
+    ↓
+Người dùng chọn / đổi bộ / kết thúc mà không chọn
+    ↓
+Lưu sự kiện và kết quả phiên
+</code></pre>
+<h3 id="muc-4-3"><a class="heading-link" href="#muc-4-3">4.3. Phân biệt “loại bỏ” và “giảm điểm”</a></h3>
+<p><strong>Ràng buộc cứng — hard constraint:</strong> Không được vi phạm.</p>
+<ul>
+<li>Món thuộc tủ của người khác.</li>
+<li>Món đang giặt hoặc được đánh dấu không khả dụng.</li>
+<li>Một bộ thiếu áo, quần hoặc giày trong phạm vi hiện tại.</li>
+<li>Quy định trang phục bắt buộc đã được người dùng xác nhận.</li>
+</ul>
+<p><strong>Ưu tiên mềm — soft preference:</strong> Có thể phù hợp ít hơn, nhưng chưa chắc phải loại.</p>
+<ul>
+<li>Màu người dùng ít chọn.</li>
+<li>Áo vừa mặc gần đây nhưng đã sạch và sẵn sàng.</li>
+<li>Kiểu phối chưa đúng sở thích.</li>
+<li>Mức phù hợp nhiệt độ theo cảm nhận cá nhân.</li>
+</ul>
+<p>Không tự đặt quy tắc “trời mưa thì cấm giày trắng” như một chân lý. Đây có thể là sở thích của một người, không phải của tất cả mọi người. Tương tự, ngưỡng “lạnh” phụ thuộc điều kiện địa phương và người sử dụng.</p>
+<p>Riêng v1.0 có thể dùng bộ lọc ngưỡng thời tiết để tạo baseline đơn giản. Đây là <strong>heuristic thử nghiệm</strong>, không phải ràng buộc bắt buộc của người dùng. Cần ghi riêng lý do loại theo heuristic để phân biệt với lý do không được phép dùng như đồ đang giặt; v2.0 sẽ thử thay phần heuristic này bằng điểm mềm.</p>
+<h3 id="muc-4-4"><a class="heading-link" href="#muc-4-4">4.4. Khi không đủ bộ để gợi ý</a></h3>
+<ul>
+<li>Có 2 bộ hợp lệ: hiển thị 2 bộ.</li>
+<li>Có 1 bộ: hiển thị 1 bộ.</li>
+<li>Không có bộ: giải thích chính xác lý do. Nếu thiếu giày hoặc toàn bộ quần đang giặt, cần cập nhật tủ/trạng thái thực tế; nới ưu tiên màu sắc không giải quyết được.</li>
+<li>Nếu hết bộ chỉ do bộ lọc heuristic hoặc ưu tiên do người dùng đặt, có thể đề nghị người dùng tự điều chỉnh; ghi lại việc điều chỉnh nếu đang thực nghiệm.</li>
+<li>Không tự ý đưa đồ đang giặt trở lại chỉ để đủ Top-3.</li>
+<li>Không tạo ra món đồ không có thật trong tủ.</li>
+<li>Khi đã xem hết các bộ: thông báo đã hết lựa chọn mới, không lặp vô hạn mà không giải thích.</li>
+</ul>
+<hr>
+<h2 id="muc-5"><a class="heading-link" href="#muc-5">5. Tổ chức thư mục và thống nhất dữ liệu</a></h2>
+<h3 id="muc-5-1"><a class="heading-link" href="#muc-5-1">5.1. Cấu trúc đề xuất</a></h3>
+<p>Đây là cấu trúc nhóm sẽ tạo khi bắt đầu lập trình, không phải một dự án đã được cài đặt sẵn.</p>
+<pre><code class="language-text">smart-outfit-recommender/
+├── core/
+│   ├── schema.py
+│   └── pipeline_manager.py
+├── modules/
+│   ├── vision_extractor/
+│   ├── context_filter/
+│   ├── compatibility_scorer/
+│   └── user_preference/
+├── app_ui/
+│   └── app.py
+├── datasets/
+│   └── sample_wardrobe.json
+├── tests/
+├── experiments/
+├── evaluate_simulation.py
+├── evaluate_sessions.py
+├── requirements.txt
+└── .gitignore
+</code></pre>
+<p>Vai trò:</p>
+<ul>
+<li><code>schema.py</code>: Quy ước chung về dữ liệu. Không phải mỗi người tự đặt một kiểu.</li>
+<li><code>pipeline_manager.py</code>: Gọi các module theo đúng thứ tự; không chứa mọi thuật toán.</li>
+<li><code>vision_extractor/</code>: Gợi ý thuộc tính từ ảnh.</li>
+<li><code>context_filter/</code>: Đọc ngữ cảnh và kiểm tra ràng buộc.</li>
+<li><code>compatibility_scorer/</code>: Ghép bộ, chấm điểm quy tắc và ngữ cảnh.</li>
+<li><code>user_preference/</code>: Tính điểm sở thích và mức phạt lặp. Tên này tránh hiểu nhầm rằng nhóm đã triển khai RL.</li>
+<li><code>tests/</code>: Kiểm thử nhỏ cho từng hàm và cả luồng.</li>
+<li><code>experiments/</code>: Cấu hình thí nghiệm và kết quả đã loại thông tin nhận dạng.</li>
+<li><code>evaluate_simulation.py</code>: Kiểm thử bằng dữ liệu giả lập, đo số ứng viên và độ trễ.</li>
+<li><code>evaluate_sessions.py</code>: Tính chỉ số từ phiên người dùng thật.</li>
+</ul>
+<p>Ảnh riêng tư, khóa API, log thô có thông tin cá nhân và môi trường <code>.venv</code> không được đưa lên kho mã công khai.</p>
+<h3 id="muc-5-2"><a class="heading-link" href="#muc-5-2">5.2. Bộ công cụ tối thiểu</a></h3>
+<ul>
+<li>Python 3.11 hoặc 3.12, thống nhất một phiên bản đã kiểm tra tương thích.</li>
+<li>Một trình soạn thảo mà nhóm biết sử dụng; AI agent là công cụ hỗ trợ, không thay thế kiến thức Python.</li>
+<li>Git để lưu lịch sử và ghép công việc.</li>
+<li>JSON cho dữ liệu ban đầu.</li>
+<li><code>pytest</code> cho kiểm thử.</li>
+<li><code>Streamlit</code> cho giao diện mẫu.</li>
+<li><code>Pillow</code> để đọc và xử lý ảnh đơn giản.</li>
+<li><code>requests</code> chỉ khi bắt đầu gọi API thời tiết.</li>
+</ul>
+<p>Chưa cần React, Docker, cơ sở dữ liệu vector hoặc máy có GPU.</p>
+<p>Nhóm chỉ chọn một cách dựng giao diện. Mục tiêu là nghiên cứu cách gợi ý, không phải cùng lúc học nhiều framework.</p>
+<h4 id="bat-dau-moi-truong-lap-trinh-nhu-the-nao"><a class="heading-link" href="#bat-dau-moi-truong-lap-trinh-nhu-the-nao">Bắt đầu môi trường lập trình như thế nào?</a></h4>
+<p>Mở Terminal tại thư mục dự án do nhóm tạo. Chọn đúng nhóm lệnh theo hệ điều hành, không chạy cả hai. Ví dụ dưới đây dùng Python 3.11; nếu nhóm đã thống nhất 3.12 thì thay số phiên bản tương ứng.</p>
+<p><strong>macOS/Linux:</strong></p>
+<pre><code class="language-bash">python3.11 --version
+python3.11 -m venv .venv
+.venv/bin/python -m pip install pytest
+.venv/bin/python -m pytest --version
+</code></pre>
+<p><strong>Windows — PowerShell:</strong></p>
+<pre><code class="language-powershell">py -3.11 --version
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install pytest
+.\.venv\Scripts\python.exe -m pytest --version
+</code></pre>
+<p>Dấu hiệu đúng: lệnh đầu hiển thị Python 3.11.x, thư mục <code>.venv</code> được tạo, lệnh cuối hiển thị phiên bản pytest. Nếu lệnh đầu báo không tìm thấy Python, dừng để kiểm tra việc cài Python với giảng viên hoặc bạn hỗ trợ; chưa chạy tiếp các lệnh sau.</p>
+<p>Các lệnh dùng trực tiếp Python trong <code>.venv</code>, nên chưa cần kích hoạt môi trường hoặc thay đổi chính sách thực thi của PowerShell. Môi trường ảo giúp thư viện của dự án không lẫn với dự án khác.</p>
+<p>Sau khi tự viết bài 1 vào tệp <code>exercise_01.py</code>, chạy:</p>
+<pre><code class="language-bash"># macOS/Linux
+.venv/bin/python exercise_01.py
+</code></pre>
+<pre><code class="language-powershell"># Windows
+.\.venv\Scripts\python.exe exercise_01.py
+</code></pre>
+<p>Khi bắt đầu viết test, đặt chúng trong <code>tests/</code>, tên tệp bắt đầu bằng <code>test_</code> và tên hàm kiểm thử cũng bắt đầu bằng <code>test_</code>. Ví dụ <code>tests/test_wardrobe.py</code> chứa những kiểm thử do các em tự viết.</p>
+<p>Chạy test bằng <code>.venv/bin/python -m pytest</code> trên macOS/Linux hoặc <code>.\.venv\Scripts\python.exe -m pytest</code> trên Windows. <code>passed</code> nghĩa là các test đã chạy đạt; <code>no tests ran</code> nghĩa là chưa có hoặc chưa tìm thấy test, <strong>không phải kiểm thử đã đạt</strong>.</p>
+<p>Đến tuần làm giao diện mới cài Streamlit và Pillow bằng Python của môi trường này:</p>
+<pre><code class="language-bash"># macOS/Linux — chạy khi đã có app_ui/app.py
+.venv/bin/python -m pip install streamlit Pillow
+.venv/bin/python -m streamlit run app_ui/app.py
+</code></pre>
+<pre><code class="language-powershell"># Windows — chạy khi đã có app_ui/app.py
+.\.venv\Scripts\python.exe -m pip install streamlit Pillow
+.\.venv\Scripts\python.exe -m streamlit run app_ui/app.py
+</code></pre>
+<p>Mở địa chỉ local mà terminal thực tế hiển thị. Đây là ứng dụng trên máy để phát triển, chưa phải triển khai công khai. Ghi lại các phiên bản thư viện đã chạy được vào <code>requirements.txt</code> trước khi chia sẻ cho thành viên khác.</p>
+<h3 id="muc-5-3"><a class="heading-link" href="#muc-5-3">5.3. Item — Một món đồ</a></h3>
+<p>Ví dụ dữ liệu minh họa, không phải dữ liệu người dùng thật:</p>
+<pre><code class="language-json">{
+  &quot;item_id&quot;: &quot;item_001&quot;,
+  &quot;user_id&quot;: &quot;user_demo&quot;,
+  &quot;category&quot;: &quot;top&quot;,
+  &quot;image_path&quot;: &quot;images/item_001.jpg&quot;,
+  &quot;color_group&quot;: &quot;white&quot;,
+  &quot;formality&quot;: &quot;formal&quot;,
+  &quot;warmth&quot;: &quot;light&quot;,
+  &quot;available&quot;: true,
+  &quot;last_worn_at&quot;: null
+}
+</code></pre>
+<p>Quy ước tối thiểu:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Trường</th>
+<th>Ý nghĩa</th>
+<th>Quy ước</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>item_id</code></td>
+<td>Mã món đồ</td>
+<td>Duy nhất, không đổi sau mỗi lần tải ảnh</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>Chủ tủ đồ</td>
+<td>Dùng mã giả, không cần họ tên thật</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td>Loại món</td>
+<td><code>top</code>, <code>bottom</code>, <code>footwear</code></td>
+</tr>
+<tr>
+<td><code>image_path</code></td>
+<td>Ảnh minh họa</td>
+<td>Ảnh không bắt buộc cho bài tập đầu tiên</td>
+</tr>
+<tr>
+<td><code>color_group</code></td>
+<td>Nhóm màu</td>
+<td>Nhóm thống nhất trước, ví dụ <code>black</code>, <code>white</code>, <code>gray</code>, <code>blue</code>, <code>other</code>, <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>formality</code></td>
+<td>Độ trang trọng</td>
+<td><code>casual</code>, <code>smart_casual</code>, <code>formal</code>, <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>warmth</code></td>
+<td>Mức giữ ấm</td>
+<td><code>light</code>, <code>medium</code>, <code>warm</code>, <code>unknown</code>; người dùng xác nhận</td>
+</tr>
+<tr>
+<td><code>available</code></td>
+<td>Có thể dùng ngay không?</td>
+<td><code>true</code> hoặc <code>false</code></td>
+</tr>
+<tr>
+<td><code>last_worn_at</code></td>
+<td>Lần thực sự mặc gần nhất</td>
+<td>Thời điểm có múi giờ hoặc <code>null</code> nếu chưa có dữ liệu</td>
+</tr>
+</tbody></table>
+</div><p>Phân biệt ba trạng thái:</p>
+<ul>
+<li>Hệ thống <strong>đã gợi ý</strong> món.</li>
+<li>Người dùng <strong>đã chọn</strong> bộ.</li>
+<li>Người dùng <strong>đã mặc</strong> bộ.</li>
+</ul>
+<p>Ba việc không đồng nghĩa. Chỉ cập nhật <code>last_worn_at</code> khi người dùng xác nhận đã mặc; không tự suy ra từ một cú bấm chọn thử.</p>
+<p>Ở giai đoạn xử lý ảnh, bổ sung thông tin như nguồn nhãn <code>manual</code>/<code>auto</code>, phiên bản bộ nhận dạng và việc người dùng đã xác nhận hay chưa. Nếu lưu giá trị HSV, phải thống nhất thang đo giữa các thư viện; không trộn các thang hue khác nhau.</p>
+<h3 id="muc-5-4"><a class="heading-link" href="#muc-5-4">5.4. Context — Ngữ cảnh</a></h3>
+<pre><code class="language-json">{
+  &quot;user_id&quot;: &quot;user_demo&quot;,
+  &quot;occasion&quot;: &quot;presentation&quot;,
+  &quot;temperature_c&quot;: 24.0,
+  &quot;rain_probability&quot;: 0.7,
+  &quot;weather_source&quot;: &quot;manual&quot;,
+  &quot;observed_at&quot;: &quot;2026-10-29T07:00:00+07:00&quot;
+}
+</code></pre>
+<ul>
+<li><code>occasion</code>: Trước hết chỉ dùng <code>study</code>, <code>presentation</code>, <code>leisure</code>.</li>
+<li><code>temperature_c</code>: Đơn vị độ C, không nhầm với Kelvin.</li>
+<li><code>rain_probability</code>: Trong khoảng 0–1; khác với lượng mưa tính bằng mm.</li>
+<li><code>weather_source</code>: <code>manual</code>, <code>api</code> hoặc nguồn đã thống nhất.</li>
+<li>Trường không lấy được từ API phải được đánh dấu thiếu, không tự đổi thành 0.</li>
+</ul>
+<p>Bản đầu cho nhập ngữ cảnh thủ công. Khi nối API, người dùng vẫn có quyền sửa.</p>
+<p>Không cần vị trí GPS chính xác. Chọn thành phố thường đủ cho bản thử nghiệm; kiểm tra điều khoản sử dụng, hạn mức và cách bảo vệ khóa API của nhà cung cấp.</p>
+<h3 id="muc-5-5"><a class="heading-link" href="#muc-5-5">5.5. Outfit — Một bộ trang phục</a></h3>
+<pre><code class="language-json">{
+  &quot;outfit_id&quot;: &quot;item_001|item_007|item_012&quot;,
+  &quot;item_ids&quot;: [&quot;item_001&quot;, &quot;item_007&quot;, &quot;item_012&quot;],
+  &quot;score&quot;: 0.76,
+  &quot;score_parts&quot;: {
+    &quot;color&quot;: 0.8,
+    &quot;style&quot;: 0.7
+  },
+  &quot;reasons&quot;: [&quot;Điểm phối màu: 0.8 theo bảng quy tắc&quot;, &quot;Điểm phong cách: 0.7 theo bảng quy tắc&quot;]
+}
+</code></pre>
+<p>Các con số trên chỉ minh họa định dạng, không phải kết quả đánh giá.</p>
+<ul>
+<li>Một bộ phải có đúng một <code>top</code>, một <code>bottom</code>, một <code>footwear</code>.</li>
+<li><code>outfit_id</code> được tạo nhất quán theo thứ tự loại món để phát hiện bộ trùng.</li>
+<li><code>score_parts</code> chứa các thành phần điểm mà phiên bản đó thực sự dùng; không yêu cầu mọi phiên bản có cùng các khóa thành phần.</li>
+<li>Lý do gợi ý phải được tạo từ quy tắc hoặc điểm thực tế, không để AI tự bịa lời giải thích.</li>
+</ul>
+<h3 id="muc-5-6"><a class="heading-link" href="#muc-5-6">5.6. Hợp đồng giữa các module</a></h3>
+<p>Nhóm cùng thống nhất các hàm ở mức ý nghĩa trước khi viết code:</p>
+<pre><code class="language-text">extract_attributes(image) → thuộc tính gợi ý, cho phép unknown
+filter_items(items, context) → món hợp lệ + lý do món bị loại
+build_outfits(valid_items) → danh sách bộ hợp lệ
+score_outfit(outfit, items_by_id, context) → tổng điểm + điểm thành phần
+rerank(outfits, items_by_id, user_history, context) → danh sách đã đổi thứ tự
+recommend(items, context, user_history, version, excluded_outfit_ids) → tối đa 3 bộ
+log_event(event) → lưu sự kiện của phiên
+</code></pre>
+<p><code>items_by_id</code> là dictionary tra món đồ theo mã, ví dụ <code>items_by_id[&quot;item_001&quot;]</code> trả về Item tương ứng. Outfit chỉ giữ mã món, nên hàm chấm điểm cần nhận dictionary này để đọc màu, phong cách và các thuộc tính; không dùng biến toàn cục ngầm định.</p>
+<p><code>excluded_outfit_ids</code> dùng để tránh đưa lại ngay các bộ vừa hiển thị khi người dùng bấm đổi.</p>
+<p><strong>Quy tắc tích hợp:</strong> Nếu sửa tên trường hoặc kiểu dữ liệu, phải báo cả nhóm, sửa kiểm thử liên quan và cùng xác nhận; không âm thầm đổi <code>category</code> thành <code>type</code> trong riêng một module.</p>
+<hr>
+<h2 id="muc-6"><a class="heading-link" href="#muc-6">6. Hai tuần đầu: Học gì và làm bài tập gì?</a></h2>
+<h3 id="muc-6-1"><a class="heading-link" href="#muc-6-1">6.1. Kiến thức nền tối thiểu</a></h3>
+<p>Mỗi thành viên phải làm được:</p>
+<ol>
+<li>Viết và gọi hàm Python.</li>
+<li>Dùng <code>list</code>, <code>dict</code>, vòng lặp và câu lệnh điều kiện.</li>
+<li>Đọc/ghi một tệp JSON.</li>
+<li>Sắp xếp danh sách theo một trường điểm.</li>
+<li>Đọc thông báo lỗi và tìm dòng lỗi đầu tiên trong code của mình.</li>
+<li>Viết một kiểm thử đơn giản.</li>
+<li>Giải thích được đầu vào, đầu ra của hàm mình viết.</li>
+<li>Dùng Git để xem thay đổi, lưu một thay đổi nhỏ và tạo nhánh làm việc.</li>
+</ol>
+<p>Chưa cần lập trình hướng đối tượng phức tạp. Chưa cần tự xây một framework.</p>
+<h3 id="muc-6-2"><a class="heading-link" href="#muc-6-2">6.2. Chuỗi bài tập chung — tất cả thành viên đều làm</a></h3>
+<h4 id="bai-1-mo-ta-tu-do-khong-dung-ai"><a class="heading-link" href="#bai-1-mo-ta-tu-do-khong-dung-ai">Bài 1 — Mô tả tủ đồ không dùng AI</a></h4>
+<ul>
+<li>Tạo dữ liệu gồm 2 áo, 2 quần, 1 đôi giày.</li>
+<li>Đọc dữ liệu và in tên/mã từng món.</li>
+<li>Đếm số món thuộc mỗi loại.</li>
+</ul>
+<p><strong>Nộp:</strong> Dữ liệu JSON, chương trình chạy được, ảnh hoặc bản ghi kết quả.</p>
+<p><strong>Phải trả lời:</strong> Vì sao cần mã món đồ thay vì chỉ dùng tên “áo trắng”?</p>
+<h4 id="bai-2-loc-do-dang-giat"><a class="heading-link" href="#bai-2-loc-do-dang-giat">Bài 2 — Lọc đồ đang giặt</a></h4>
+<ul>
+<li>Đánh dấu một chiếc quần <code>available = false</code>.</li>
+<li>Viết hàm chỉ trả về các món sẵn sàng.</li>
+<li>Không xóa chiếc quần đó khỏi dữ liệu gốc.</li>
+</ul>
+<p><strong>Kiểm thử:</strong> Đầu vào có 5 món, 1 món không sẵn sàng; đầu ra có 4 món và không chứa mã món bị loại.</p>
+<h4 id="bai-3-ghep-bo-bang-vong-lap"><a class="heading-link" href="#bai-3-ghep-bo-bang-vong-lap">Bài 3 — Ghép bộ bằng vòng lặp</a></h4>
+<ul>
+<li>Ghép mỗi áo với mỗi quần và mỗi đôi giày.</li>
+<li>Trước khi lọc có <code>2 × 2 × 1 = 4</code> bộ.</li>
+<li>Sau khi lọc chiếc quần đang giặt còn <code>2 × 1 × 1 = 2</code> bộ.</li>
+</ul>
+<p><strong>Phải giải thích:</strong> Vì sao lọc trước khi ghép tiết kiệm công việc hơn ghép mọi thứ rồi mới loại?</p>
+<h4 id="bai-4-cham-diem-va-lay-top-3"><a class="heading-link" href="#bai-4-cham-diem-va-lay-top-3">Bài 4 — Chấm điểm và lấy Top-3</a></h4>
+<ul>
+<li>Viết một bảng điểm màu sắc đơn giản do nhóm thống nhất.</li>
+<li>Tính điểm cho từng bộ, sắp xếp giảm dần.</li>
+<li>Nếu chỉ có 2 bộ thì trả 2 bộ.</li>
+<li>Nếu hai bộ bằng điểm, dùng quy tắc phụ cố định, chẳng hạn thứ tự <code>outfit_id</code>.</li>
+</ul>
+<p><strong>Phải giải thích:</strong> Vì sao cùng đầu vào nên cho cùng kết quả khi chạy baseline?</p>
+<h4 id="bai-5-viet-kiem-thu"><a class="heading-link" href="#bai-5-viet-kiem-thu">Bài 5 — Viết kiểm thử</a></h4>
+<p>Ít nhất 5 trường hợp:</p>
+<ul>
+<li>Đủ đồ, ghép được bộ.</li>
+<li>Không có giày, không ghép được bộ.</li>
+<li>Tất cả quần đang giặt.</li>
+<li>Có ít hơn 3 bộ.</li>
+<li>Hai bộ có điểm bằng nhau.</li>
+</ul>
+<h4 id="bai-6-giai-thich-lai-ma-khong-nhin-ai"><a class="heading-link" href="#bai-6-giai-thich-lai-ma-khong-nhin-ai">Bài 6 — Giải thích lại mà không nhìn AI</a></h4>
+<p>Mỗi người chọn một hàm mình đã làm và trình bày trong 3–5 phút:</p>
+<ul>
+<li>Dữ liệu đi vào là gì?</li>
+<li>Từng bước xử lý ra sao?</li>
+<li>Dữ liệu trả về là gì?</li>
+<li>Khi nào hàm trả danh sách rỗng?</li>
+<li>Test nào giúp phát hiện hàm bị viết sai?</li>
+</ul>
+<p><strong>Điều kiện chia nhánh:</strong> Không thành viên nào chỉ biết chạy chương trình mà không giải thích được bài 1–5.</p>
+<h3 id="muc-6-3"><a class="heading-link" href="#muc-6-3">6.3. Nhịp tự học đề xuất</a></h3>
+<p>Mỗi buổi khoảng 90 phút:</p>
+<ul>
+<li>20 phút đọc hoặc xem một chủ đề nhỏ.</li>
+<li>40 phút tự viết và chạy một bài tập.</li>
+<li>20 phút kiểm thử, sửa lỗi.</li>
+<li>10 phút ghi lại điều đã hiểu và câu hỏi còn vướng.</li>
+</ul>
+<p>Một tuần có thể dành 6–8 giờ/người nếu phù hợp lịch học. Đây là ước lượng để lập kế hoạch, không phải yêu cầu cố định; báo giảng viên nếu thời lượng thực tế thấp hơn để giảm phạm vi.</p>
+<hr>
+<h2 id="muc-7"><a class="heading-link" href="#muc-7">7. Cách xây thuật toán từ dễ đến khó</a></h2>
+<h3 id="muc-7-1"><a class="heading-link" href="#muc-7-1">7.1. v1.0 — Quy tắc đơn giản, giải thích được</a></h3>
+<p>Các bước:</p>
+<ol>
+<li>Lấy đúng tủ của người đang sử dụng.</li>
+<li>Lọc đồ không sẵn sàng và các ràng buộc bắt buộc đã xác nhận.</li>
+<li>Áp dụng bảng lọc thời tiết cơ bản đã thống nhất cho baseline.</li>
+<li>Chia danh sách thành áo, quần, giày.</li>
+<li>Ghép các tổ hợp hợp lệ.</li>
+<li>Tính điểm màu sắc và phong cách bằng bảng quy tắc.</li>
+<li>Sắp xếp, loại bộ trùng và lấy tối đa 3 bộ chưa hiển thị.</li>
+</ol>
+<p>Công thức khởi đầu để học, <strong>không phải công thức đã được chứng minh tốt</strong>:</p>
+<pre><code class="language-text">S1 = 0.6 × ColorScore + 0.4 × StyleScore
+</code></pre>
+<p>Mỗi điểm thành phần nằm trong khoảng 0–1.</p>
+<p>Ví dụ cách làm đơn giản:</p>
+<ul>
+<li>Nhóm màu trung tính kết hợp với một màu khác được điểm thuận lợi theo bảng của nhóm.</li>
+<li>Các món có độ trang trọng phù hợp nhau được điểm cao hơn.</li>
+<li>Nhãn <code>unknown</code> dùng mức điểm mặc định đã công bố, không tự coi là hoàn toàn phù hợp.</li>
+</ul>
+<p>Bảng quy tắc cần lưu thành dữ liệu hoặc cấu hình dễ kiểm tra. Không rải các con số khác nhau trong nhiều hàm.</p>
+<p><strong>Giới hạn phải ghi trong báo cáo:</strong> Bảng màu và phong cách là giả định thực nghiệm, không phải quy luật thẩm mỹ đúng với mọi người.</p>
+<h3 id="muc-7-2"><a class="heading-link" href="#muc-7-2">7.2. v2.0 — Ngữ cảnh bắt buộc, hỗ trợ ảnh tùy chọn</a></h3>
+<p>Tách thành phần nghiên cứu chính khỏi tính năng hỗ trợ. Với nhóm 3 người, hoàn thành A là đủ mốc v2.0; B chỉ làm khi không ảnh hưởng tiến độ đo lường.</p>
+<p><strong>A. Cải tiến xếp hạng — bắt buộc:</strong></p>
+<p>Thay vì mọi điều kiện thời tiết đều là “được/không được”, cho điểm mức độ phù hợp để tránh loại quá nhiều lựa chọn vì ngưỡng cứng.</p>
+<pre><code class="language-text">S2 = 0.3 × WeatherFit + 0.3 × OccasionFit + 0.4 × Compatibility
+</code></pre>
+<p>Trong bản vừa sức, <code>Compatibility</code> có thể chính là điểm quy tắc màu/phong cách của v1.0. Như vậy vẫn kiểm tra được đóng góp của ngữ cảnh mà chưa cần mô hình embedding.</p>
+<ul>
+<li>Định nghĩa rõ cách tính từng điểm.</li>
+<li>Các điểm thành phần cùng thang 0–1.</li>
+<li>Các ràng buộc cứng như quyền sở hữu và đồ đang giặt luôn giữ nguyên ở mọi phiên bản.</li>
+<li>Ngưỡng và trọng số chỉ chỉnh bằng dữ liệu thử phát triển, không chỉnh sau khi xem kết quả kiểm tra cuối.</li>
+</ul>
+<p><strong>B. Hỗ trợ nhập ảnh — tùy chọn, đánh giá riêng:</strong></p>
+<p>Làm theo thứ tự:</p>
+<ol>
+<li>Đọc ảnh và hiển thị đúng chiều.</li>
+<li>Thử ảnh một món đồ trên nền đơn giản.</li>
+<li>Trích màu trong vùng món đồ; tránh lấy màu nền làm màu áo.</li>
+<li>Gợi ý nhóm màu.</li>
+<li>Cho người dùng xác nhận hoặc sửa.</li>
+<li>Khi bước trước ổn định mới thử <code>rembg</code> hoặc mô hình phân loại pretrained.</li>
+</ol>
+<p>Không phải mọi ảnh đều nhận dạng được. Đồ nhiều họa tiết, ánh sáng màu, vùng bóng và ảnh chụp nhiều món có thể gây sai; cần cho phép kết quả <code>unknown</code> hoặc yêu cầu chụp lại.</p>
+<h3 id="muc-7-3"><a class="heading-link" href="#muc-7-3">7.3. Embedding giống nhau chưa chắc phối hợp tốt</a></h3>
+<p>Hai chiếc áo gần như giống nhau có thể có embedding rất gần nhau. Điều đó không có nghĩa chúng tạo thành một bộ áo–quần–giày.</p>
+<p>Ngược lại, áo và giày phối tốt với nhau không nhất thiết có hình ảnh giống nhau.</p>
+<p>Vì vậy:</p>
+<ul>
+<li>Không gọi cosine similarity trực tiếp là “độ đẹp của outfit”.</li>
+<li>Nếu thử CLIP/Fashion-CLIP, coi đây là một phương án cần kiểm chứng.</li>
+<li>Chỉ đưa vào phiên bản chính nếu có dữ liệu đánh giá phối hợp và có cải thiện đủ thuyết phục.</li>
+<li>Nếu dùng pretrained, ghi rõ mô hình, phiên bản, nguồn và điều kiện sử dụng.</li>
+</ul>
+<h3 id="muc-7-4"><a class="heading-link" href="#muc-7-4">7.4. v3.0 — Cá nhân hóa bằng số đếm, chưa cần RL</a></h3>
+<p>Cách dễ triển khai:</p>
+<ol>
+<li>Khi người dùng chọn một bộ, tăng số đếm cho nhóm màu/phong cách xuất hiện trong lựa chọn đó.</li>
+<li>Một nhóm thuộc tính có số đếm <code>c</code> được chuyển thành điểm đơn giản <code>c / (c + 2)</code>.</li>
+<li>Lấy trung bình điểm các thuộc tính đã thống nhất để có <code>PreferenceScore</code> trong khoảng 0–1.</li>
+<li>Nếu chưa có lịch sử lựa chọn, dùng nguyên <code>S2</code> làm điểm nền và không cộng điểm sở thích.</li>
+<li>Một món vừa được xác nhận đã mặc sẽ nhận mức giảm ưu tiên theo số ngày gần nhất, kể cả khi chưa có lịch sử lựa chọn trên ứng dụng.</li>
+</ol>
+<p>Ví dụ mức phạt từng món:</p>
+<pre><code class="language-text">Nếu chưa có lần mặc trước: RecentItemPenalty = 0
+Nếu đã có: RecentItemPenalty = max(0, 1 - days_since_last_worn / 3)
+RotationPenalty = trung bình RecentItemPenalty của 3 món
+</code></pre>
+<p>Ví dụ công thức kết hợp, xác định rõ từng trường hợp:</p>
+<pre><code class="language-text">Có lịch sử lựa chọn:
+S3 = 0.75 × S2 + 0.25 × PreferenceScore - 0.20 × RotationPenalty
+
+Chưa có lịch sử lựa chọn:
+S3 = S2 - 0.20 × RotationPenalty
+</code></pre>
+<p>Nếu chưa có cả lịch sử lựa chọn lẫn lịch sử mặc, <code>RotationPenalty = 0</code> và <code>S3 = S2</code>. Viết test riêng cho trường hợp chưa từng chọn trên ứng dụng nhưng đã khai báo lần mặc gần nhất.</p>
+<p>Đây chỉ là cấu hình ban đầu để thử nghiệm. Tổng điểm có thể âm; không hiển thị nó như xác suất hoặc phần trăm chắc chắn phù hợp.</p>
+<p>Lưu ý:</p>
+<ul>
+<li>Đồ đang giặt đã bị loại từ trước, không chỉ bị giảm điểm.</li>
+<li>Một món vừa mặc nhưng đã sạch vẫn có thể được gợi ý khi ít lựa chọn; lặp lại là ưu tiên mềm.</li>
+<li>Nếu chưa có lịch sử lựa chọn, v3.0 dùng <code>S2</code> và vẫn có thể áp dụng phạt lặp nếu có lịch sử mặc thực tế.</li>
+<li>Không cập nhật sở thích chỉ vì hệ thống hiển thị một bộ.</li>
+<li>Chưa chọn không đồng nghĩa với ghét. Bấm đổi có thể do nhiều nguyên nhân.</li>
+<li>Số đếm lựa chọn bị ảnh hưởng bởi những gì hệ thống từng cho xem; đây là heuristic, chưa phải ước lượng sở thích không thiên lệch.</li>
+<li>Không dùng lựa chọn tương lai để tính gợi ý cho một phiên trong quá khứ.</li>
+</ul>
+<p>Nếu chưa có bằng chứng v3.0 tốt hơn, giữ nó là phương án thử nghiệm; không mặc định phiên bản số lớn hơn là tốt hơn.</p>
+<h3 id="muc-7-5"><a class="heading-link" href="#muc-7-5">7.5. Khi nào mới học Contextual Bandit?</a></h3>
+<p>Chỉ xem là hướng mở rộng sau khi hệ thống và thực nghiệm chính đã ổn.</p>
+<p>Trước khi dùng, nhóm phải trả lời được:</p>
+<ul>
+<li><strong>Context:</strong> Thuật toán nhìn thấy những thông tin nào trước khi gợi ý?</li>
+<li><strong>Action:</strong> Nó chọn một bộ hay chọn cả danh sách 3 bộ?</li>
+<li><strong>Reward:</strong> “Chốt”, “đổi” và thời gian được chuyển thành phản hồi như thế nào?</li>
+<li><strong>Exploration:</strong> Có cho thử lựa chọn chưa chắc phù hợp không? Giới hạn trải nghiệm ra sao?</li>
+<li><strong>Evaluation:</strong> Đánh giá chính sách khác nhau bằng dữ liệu nào, khi người dùng chỉ phản hồi những gì đã được hiển thị?</li>
+</ul>
+<p>Chưa trả lời được thì chưa nên viết LinUCB hay Thompson Sampling bằng cách sao chép code do AI tạo.</p>
+<hr>
+<h2 id="muc-8"><a class="heading-link" href="#muc-8">8. Phân công chính thức: Nhóm 3 thành viên</a></h2>
+<p><strong>Chỉ có 3 vai trò.</strong> Gộp dữ liệu và ngữ cảnh vào một đầu mối; không chia người thứ tư làm AI. Thị giác nâng cao và API thời tiết là phần tùy chọn để tránh quá tải. Cả ba cùng hiểu schema, baseline và cách đo.</p>
+<h3 id="muc-8-1"><a class="heading-link" href="#muc-8-1">8.1. SV 1 — Tủ đồ, dữ liệu và ngữ cảnh</a></h3>
+<p><strong>Nhánh:</strong> <code>feat/wardrobe-context</code><br><strong>Phụ trách:</strong> <code>core/schema.py</code>, dữ liệu mẫu, <code>modules/context_filter/</code>; <code>modules/vision_extractor/</code> chỉ khi mở rộng được duyệt.</p>
+<p><strong>Câu hỏi em chịu trách nhiệm:</strong> “Những món nào thực sự dùng được, và phù hợp ngữ cảnh đến đâu?”</p>
+<p><strong>Để có v1.0:</strong></p>
+<ol>
+<li>Soạn Item/Context mẫu, cùng cả nhóm thống nhất schema.</li>
+<li>Tạo 30–50 món mẫu có quyền sử dụng; cho nhập/sửa nhãn thủ công.</li>
+<li>Viết hàm đọc tủ, cập nhật <code>available</code>, lọc đúng người sở hữu và đồ sẵn sàng.</li>
+<li>Viết bảng ngữ cảnh nhập tay và bộ lọc nhiệt độ baseline, trả lý do loại.</li>
+<li>Gửi SV 2 danh sách món hợp lệ; gửi SV 3 cấu trúc biểu mẫu nhập/sửa.</li>
+</ol>
+<p><strong>Để có v2.0:</strong></p>
+<ol>
+<li>Tách ràng buộc cứng khỏi điểm phù hợp mềm.</li>
+<li>Viết <code>WeatherFit</code> và <code>OccasionFit</code>, có ví dụ tính tay.</li>
+<li>Giữ dữ liệu thiếu là <code>unknown</code>, không tự coi là phù hợp hoàn toàn.</li>
+<li>Chỉ khi phần bắt buộc đã xong mới thử gợi ý màu từ ảnh nền đơn giản hoặc nối một API thời tiết; không làm cả hai bằng mọi giá.</li>
+</ol>
+<p><strong>Để có v3.0 và thực nghiệm:</strong></p>
+<ol>
+<li>Lưu lịch sử đã mặc tách khỏi lịch sử đã chọn; thêm thao tác xác nhận đã mặc với SV 3.</li>
+<li>Tạo snapshot tủ/ngữ cảnh đã ẩn danh để các phiên bản dùng cùng đầu vào.</li>
+<li>Kiểm tra quyền sử dụng ảnh, nhãn và sự nhất quán dữ liệu.</li>
+<li>Cùng SV 3 kiểm tra các phiên bị loại hoặc thiếu dữ liệu; không sửa nhãn sau khi xem kết quả để ưu ái một phiên bản.</li>
+</ol>
+<p><strong>Phải bàn giao:</strong> Schema, dữ liệu mẫu, bảng quy tắc, module lọc/điểm ngữ cảnh, test và bảng lỗi dữ liệu. Nếu có nhận dạng màu, thêm bảng đúng/sai và ví dụ thất bại.</p>
+<p><strong>Nghiệm thu:</strong> Không lọt đồ của người khác/đang giặt; thiếu giày trả không có bộ; đầu vào thiếu nhiệt độ được ghi nhận rõ. Giải thích được một món bị loại vì ràng buộc hay chỉ vì heuristic.</p>
+<p><strong>Tự học:</strong> <code>dict</code>, JSON → hàm lọc → đơn vị thời tiết → hard/soft constraints → xử lý ảnh hoặc HTTP/API nếu còn thời gian.</p>
+<h3 id="muc-8-2"><a class="heading-link" href="#muc-8-2">8.2. SV 2 — Ghép bộ, xếp hạng và cá nhân hóa</a></h3>
+<p><strong>Nhánh:</strong> <code>feat/outfit-ranking</code><br><strong>Phụ trách:</strong> <code>modules/compatibility_scorer/</code>, <code>modules/user_preference/</code>, <code>evaluate_simulation.py</code>.</p>
+<p><strong>Câu hỏi em chịu trách nhiệm:</strong> “Trong các bộ dùng được, nên đưa bộ nào lên trước và vì sao?”</p>
+<p><strong>Để có v1.0:</strong></p>
+<ol>
+<li>Nhận danh sách món hợp lệ từ SV 1.</li>
+<li>Sinh tổ hợp áo–quần–giày; loại trùng và tính điểm quy tắc màu/phong cách.</li>
+<li>Xếp hạng có quy tắc phụ cố định khi bằng điểm.</li>
+<li>Trả tối đa 3 bộ và lý do thật cho SV 3; hỗ trợ loại các bộ đã hiển thị khi bấm đổi.</li>
+<li>Viết test tủ nhỏ có thể kiểm tra toàn bộ bằng tay.</li>
+</ol>
+<p><strong>Để có v2.0:</strong></p>
+<ol>
+<li>Nhận <code>WeatherFit</code>, <code>OccasionFit</code> từ SV 1.</li>
+<li>Kết hợp thành <code>S2</code>, chuẩn hóa thang điểm và tách cấu hình trọng số.</li>
+<li>Chạy v1/v2 trên cùng dữ liệu, giải thích trường hợp thứ tự thay đổi.</li>
+<li>Đo độ trễ và số ứng viên; không gọi đây là thời gian quyết định của người dùng.</li>
+</ol>
+<p><strong>Để có v3.0 và thực nghiệm:</strong></p>
+<ol>
+<li>Nhận lịch sử lựa chọn từ log của SV 3 và lịch sử mặc từ dữ liệu của SV 1.</li>
+<li>Viết điểm sở thích bằng số đếm và phạt lặp; xử lý người mới theo công thức ở mục 7.</li>
+<li>Có cách tắt riêng sở thích/phạt lặp phục vụ ablation, không thay cả pipeline.</li>
+<li>Đóng băng cấu hình trước nghiên cứu chính; kiểm tra không dùng dữ liệu tương lai.</li>
+<li>Cùng SV 3 phân tích kết quả, kể cả khi v3 không hơn v2.</li>
+</ol>
+<p><strong>Phải bàn giao:</strong> Ba thuật toán chạy lại được, cấu hình, điểm thành phần, test, kết quả hiệu năng và ví dụ xếp hạng đúng/sai mong đợi.</p>
+<p><strong>Nghiệm thu:</strong> Tự tính điểm một bộ bằng tay và khớp code; không tạo bộ không có thật; lịch sử rỗng không lỗi; tắt từng thành phần có tác động kiểm tra được.</p>
+<p><strong>Tự học:</strong> Vòng lặp → tích Descartes → sắp xếp → chuẩn hóa điểm → thống kê đếm → ablation. Chưa học bandit trước khi các bước này ổn định.</p>
+<h3 id="muc-8-3"><a class="heading-link" href="#muc-8-3">8.3. SV 3 — Giao diện, tích hợp và đo trải nghiệm</a></h3>
+<p><strong>Nhánh:</strong> <code>feat/ui-evaluation</code><br><strong>Phụ trách:</strong> <code>app_ui/</code>, <code>core/pipeline_manager.py</code>, log sự kiện và <code>evaluate_sessions.py</code>.</p>
+<p><strong>Câu hỏi em chịu trách nhiệm:</strong> “Người dùng có chọn được nhanh và phù hợp hơn không, và số đo có đáng tin không?”</p>
+<p><strong>Để có v1.0:</strong></p>
+<ol>
+<li>Dựng Streamlit nhập/sửa tủ theo schema chung, không tự tạo schema khác.</li>
+<li>Hiển thị tối đa 3 bộ với nút chọn, đổi, kết thúc không chọn.</li>
+<li>Tích hợp hàm lọc của SV 1 và hàm xếp hạng của SV 2.</li>
+<li>Lưu <code>session_started</code> ngay lúc bắt đầu; đổi bộ không reset timer.</li>
+<li>Kiểm tra bấm chốt lặp, tủ trống, tải lại trang và log chưa có sự kiện kết thúc.</li>
+</ol>
+<p><strong>Để có v2.0:</strong></p>
+<ol>
+<li>Cho chạy v1/v2 với cùng giao diện, ngữ cảnh và tủ đồ.</li>
+<li>Lưu mã phiên bản, cấu hình, snapshot và danh sách gợi ý thực tế.</li>
+<li>Viết script tính thời gian, số lần đổi, tỷ lệ hoàn thành từ dữ liệu thử có thể tính tay.</li>
+<li>Không cho giao diện v2 ít thao tác hơn rồi quy cải thiện đó cho xếp hạng.</li>
+</ol>
+<p><strong>Để có v3.0 và thực nghiệm:</strong></p>
+<ol>
+<li>Tích hợp re-ranking của SV 2, hiển thị lý do có cơ sở.</li>
+<li>Thêm đánh giá phù hợp 1–5 và xác nhận đã mặc, không gộp hai hành vi này.</li>
+<li>Chủ trì kiểm tra log pilot và luân phiên thứ tự v1/v2/v3.</li>
+<li>Cả ba cùng tổ chức phiên người dùng; SV 3 không phải tự tuyển và quan sát toàn bộ.</li>
+<li>Tạo bảng/biểu đồ theo người từ log thật và ghi nhận phiên bỏ dở, timeout, lỗi.</li>
+</ol>
+<p><strong>Phải bàn giao:</strong> Ứng dụng tích hợp, schema log, test luồng, script phân tích, giao thức thực nghiệm và bảng kết quả có thể chạy lại.</p>
+<p><strong>Nghiệm thu:</strong> Người ngoài nhóm tự làm được một phiên theo hướng dẫn; timer/log đúng; các phiên không hoàn thành không biến mất khỏi báo cáo.</p>
+<p><strong>Tự học:</strong> Streamlit → Session State → sự kiện → đo khoảng thời gian → CSV/JSONL → trung vị và so sánh theo cặp.</p>
+<h3 id="muc-8-4"><a class="heading-link" href="#muc-8-4">8.4. Ghép việc của 3 người sẽ ra phiên bản nào?</a></h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Mốc</th>
+<th>SV 1 bàn giao</th>
+<th>SV 2 bàn giao</th>
+<th>SV 3 bàn giao</th>
+<th>Phiên bản cả nhóm nhận được</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tuần 1–2</td>
+<td>Dữ liệu và schema thử</td>
+<td>Ghép bộ, sắp xếp thử</td>
+<td>Form và log thử</td>
+<td>Bài tập nền, chưa phải sản phẩm hoàn chỉnh</td>
+</tr>
+<tr>
+<td>Tuần 3–5</td>
+<td>Nhập tay, trạng thái đồ, lọc baseline</td>
+<td>Điểm màu/phong cách, Top-3</td>
+<td>Giao diện và đo phiên đầu-cuối</td>
+<td><strong>v1.0: bản quy tắc chạy được và đo được</strong></td>
+</tr>
+<tr>
+<td>Tuần 6–7</td>
+<td>Điểm ngữ cảnh mềm</td>
+<td>Kết hợp ngữ cảnh vào thứ hạng</td>
+<td>Cùng UI, log có mã cấu hình</td>
+<td><strong>v2.0: gợi ý có xét ngữ cảnh; chưa cá nhân hóa</strong></td>
+</tr>
+<tr>
+<td>Tuần 8–9</td>
+<td>Lịch sử mặc và snapshot</td>
+<td>Điểm sở thích + phạt lặp</td>
+<td>Tích hợp và pilot</td>
+<td><strong>v3.0: cá nhân hóa heuristic sẵn sàng kiểm chứng</strong></td>
+</tr>
+<tr>
+<td>Tuần 10–12</td>
+<td>Kiểm tra dữ liệu, cùng thu thập</td>
+<td>Phân tích thuật toán/ablation</td>
+<td>Tổng hợp phiên và trình bày</td>
+<td><strong>Bản nghiên cứu: v1/v2/v3 + dữ liệu thật + kết luận có giới hạn</strong></td>
+</tr>
+</tbody></table>
+</div><p><strong>Không nhầm:</strong> v3 chạy được không đồng nghĩa v3 tốt hơn. Nếu số liệu không cho thấy lợi ích, sản phẩm nghiên cứu vẫn phải báo cáo kết quả đó.</p>
+<p><strong>Luồng bàn giao:</strong> SV 1 → danh sách món/điểm ngữ cảnh → SV 2 → danh sách bộ đã xếp hạng → SV 3 → phản hồi/log → SV 2 dùng cho các phiên tương lai. Snapshot lịch sử trong thí nghiệm chính vẫn giữ cố định theo giao thức.</p>
+<h3 id="muc-8-5"><a class="heading-link" href="#muc-8-5">8.5. Mỗi người bắt đầu ngay bằng việc gì?</a></h3>
+<ul>
+<li><strong>SV 1:</strong> Viết 5 Item mẫu và một Context; viết test loại đúng món đang giặt.</li>
+<li><strong>SV 2:</strong> Dùng chính 5 Item đó để ghép 4 bộ trước lọc và 2 bộ sau lọc; tính tay thứ tự.</li>
+<li><strong>SV 3:</strong> Tạo một màn hình hiển thị các bộ mẫu, nút bắt đầu/chọn/đổi; lưu một phiên thử.</li>
+<li><strong>Cả nhóm:</strong> Mỗi người vẫn tự hoàn thành bài tập nền ở mục 6 trước; đây là đầu việc sau khi đã nắm phần chung.</li>
+</ul>
+<h3 id="muc-8-6"><a class="heading-link" href="#muc-8-6">8.6. Trách nhiệm chung và vai trò nhóm trưởng</a></h3>
+<ul>
+<li>Cả 3 người cùng phỏng vấn để kiểm tra pain point, gán/kiểm tra nhãn và thu thập thực nghiệm.</li>
+<li>SV 1 viết phần dữ liệu/ngữ cảnh; SV 2 viết phương pháp/xếp hạng; SV 3 viết tích hợp/đo lường; cả nhóm cùng viết kết luận.</li>
+<li>Mỗi người đọc ít nhất một tài liệu liên quan và trình bày lại.</li>
+<li>Nhóm trưởng do nhóm chọn; chức danh này không tạo thêm một thành viên hoặc buộc một người làm thay các phần khác.</li>
+<li>Kiểm tra chéo: SV 1 đọc test của SV 2, SV 2 kiểm tra log của SV 3, SV 3 kiểm tra dữ liệu của SV 1.</li>
+<li>Nếu chậm tiến độ, bỏ xử lý ảnh nâng cao và API trước; không bỏ logging, đối chứng hoặc kiểm thử để giữ tính năng trình diễn.</li>
+</ul>
+<hr>
+<h2 id="muc-9"><a class="heading-link" href="#muc-9">9. Dữ liệu: Nhỏ, sạch, có quyền sử dụng</a></h2>
+<h3 id="muc-9-1"><a class="heading-link" href="#muc-9-1">9.1. Bắt đầu bằng ba loại dữ liệu</a></h3>
+<p><strong>Bộ A — Dữ liệu học và kiểm thử:</strong></p>
+<ul>
+<li>5 món cho bài tập đầu.</li>
+<li>Sau đó tăng lên khoảng 30–50 món mẫu do nhóm tự chụp hoặc được cho phép sử dụng.</li>
+<li>Có đủ áo, quần, giày và một số trường hợp khó.</li>
+<li>Dùng để phát triển quy tắc, sửa lỗi và thử trọng số.</li>
+</ul>
+<p><strong>Bộ B — Dữ liệu kiểm tra xử lý ảnh:</strong></p>
+<ul>
+<li>Giữ riêng những món không dùng để chỉnh bộ nhận dạng hoặc ngưỡng màu.</li>
+<li>Người kiểm tra xác nhận nhãn trước khi xem dự đoán.</li>
+<li>Nếu một món có nhiều ảnh, tất cả ảnh của món đó thuộc cùng một phần dữ liệu; không để ảnh gần trùng lọt sang tập kiểm tra.</li>
+<li>Bộ dữ liệu nhỏ chỉ cho bằng chứng thăm dò, chưa đại diện mọi loại quần áo.</li>
+</ul>
+<p><strong>Bộ C — Tủ đồ phục vụ nghiên cứu người dùng:</strong></p>
+<ul>
+<li>Mỗi người có khoảng 12–20 món để tạo đủ lựa chọn trong phạm vi đề tài.</li>
+<li>Ví dụ mức tối thiểu khởi đầu: 6 áo, 4 quần, 2 đôi giày.</li>
+<li>Ưu tiên đồ người tham gia thực sự sở hữu và biết rõ.</li>
+<li>Nếu chỉ dùng tủ giả định, phải mô tả là nghiên cứu lựa chọn trên giao diện với tủ giả định, không suy rộng thành giảm thời gian mặc đồ ngoài đời.</li>
+</ul>
+<p>Tủ đồ 50–100 món không phải điều kiện bắt buộc để nghiên cứu lần đầu. Quy mô lớn hơn chủ yếu dùng thử tốc độ tính toán sau khi bản nhỏ đã đúng.</p>
+<h3 id="muc-9-2"><a class="heading-link" href="#muc-9-2">9.2. Các tập dữ liệu trong định hướng ban đầu dùng để làm gì?</a></h3>
+<ul>
+<li><strong>Fashion-MNIST:</strong> Có ích để học quy trình phân loại ảnh nhỏ, ảnh xám; không đại diện đầy đủ ảnh quần áo người dùng chụp bằng điện thoại, cũng không phải dữ liệu đo phối outfit.</li>
+<li><strong>Polyvore:</strong> Có thể tham khảo nghiên cứu phối hợp outfit; cần kiểm tra phiên bản, khả năng tải, quyền sử dụng và cách chia dữ liệu. Không mặc định còn một nguồn tải hoạt động hoặc được phép tái phân phối ảnh.</li>
+<li><strong>Tủ đồ tự thu thập:</strong> Phù hợp trực tiếp nhất với bản thử nghiệm nhỏ, nhưng phải thừa nhận quy mô hạn chế.</li>
+</ul>
+<p>Không cần tải mọi dataset ngay đầu kỳ. Dữ liệu phải phục vụ câu hỏi cụ thể, không phải tải về để báo cáo trông nhiều hơn.</p>
+<h3 id="muc-9-3"><a class="heading-link" href="#muc-9-3">9.3. Quyền riêng tư và sự đồng ý</a></h3>
+<ul>
+<li>Chỉ thu thập sau khi người tham gia đồng ý và hiểu mục đích.</li>
+<li>Ưu tiên ảnh riêng món đồ; không cần chụp mặt hoặc cơ thể người.</li>
+<li>Dùng mã như <code>P01</code>, không ghi họ tên vào log phân tích.</li>
+<li>Không ghi địa chỉ nhà hay vị trí GPS chính xác nếu không cần.</li>
+<li>Kiểm tra, loại bỏ metadata định vị trong ảnh trước khi chia sẻ.</li>
+<li>Thống nhất thời hạn giữ dữ liệu, nơi lưu và ai được truy cập.</li>
+<li>Cho phép người tham gia dừng và yêu cầu xử lý dữ liệu theo nội dung đã đồng ý.</li>
+<li>Không tải ảnh riêng tư, dữ liệu người tham gia hoặc khóa API lên AI agent/dịch vụ bên ngoài khi chưa được phép.</li>
+</ul>
+<hr>
+<h2 id="muc-10"><a class="heading-link" href="#muc-10">10. Đo thời gian: Định nghĩa trước rồi mới lập trình</a></h2>
+<h3 id="muc-10-1"><a class="heading-link" href="#muc-10-1">10.1. Chỉ số chính và chỉ số hỗ trợ</a></h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Chỉ số</th>
+<th>Cách hiểu</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>decision_time_ms</code></td>
+<td>Từ khi bấm bắt đầu phiên, sau khi ngữ cảnh đã được xác nhận, đến khi chốt một bộ</td>
+<td>Chỉ số chính của nghiên cứu giao diện</td>
+</tr>
+<tr>
+<td><code>refresh_count</code></td>
+<td>Số lần yêu cầu xem nhóm bộ khác trong phiên</td>
+<td>Chỉ số hỗ trợ về công sức lựa chọn</td>
+</tr>
+<tr>
+<td><code>completion_rate</code></td>
+<td>Số phiên chốt được bộ / số phiên thử theo giao thức</td>
+<td>Tránh kết luận “nhanh” do bỏ qua người không chọn được</td>
+</tr>
+<tr>
+<td><code>satisfaction</code></td>
+<td>Người dùng đánh giá mức phù hợp sau phiên, thang 1–5</td>
+<td>Kiểm tra chất lượng lựa chọn</td>
+</tr>
+<tr>
+<td><code>engine_latency_ms</code></td>
+<td>Thời gian chương trình lọc, ghép và xếp hạng</td>
+<td>Chỉ số kỹ thuật, không thay thế thời gian quyết định</td>
+</tr>
+<tr>
+<td><code>invalid_recommendation_count</code></td>
+<td>Số gợi ý vi phạm ràng buộc cứng</td>
+<td>Bắt buộc bằng 0 trong các kiểm thử đã xác định</td>
+</tr>
+<tr>
+<td>Thời gian thêm món</td>
+<td>Thời gian nhập ảnh và xác nhận thuộc tính</td>
+<td>Đánh giá riêng công sức số hóa tủ đồ</td>
+</tr>
+</tbody></table>
+</div><p><code>decision_time_ms</code> ở giao thức này bao gồm chờ hệ thống và thao tác đổi bộ. Không bao gồm chụp ảnh tủ đồ, mặc thử, tìm đồ trong nhà hoặc nhập ngữ cảnh. Vì vậy kết luận phải đúng phạm vi: <strong>thời gian chọn bộ trên giao diện sau khi đã có tủ đồ số</strong>.</p>
+<p>Nếu muốn kết luận tiết kiệm tổng thời gian sử dụng, cần đo thêm chi phí nhập tủ và bảo trì dữ liệu; không bỏ qua chi phí này trong thảo luận.</p>
+<p>Câu hỏi mức phù hợp dùng thống nhất sau khi chốt: <strong>“Bộ vừa chọn phù hợp với nhu cầu và ngữ cảnh của bạn trong phiên này ở mức nào?”</strong></p>
+<ul>
+<li>1: Hoàn toàn không phù hợp.</li>
+<li>2: Ít phù hợp.</li>
+<li>3: Tạm chấp nhận được.</li>
+<li>4: Phù hợp.</li>
+<li>5: Rất phù hợp.</li>
+</ul>
+<p>Phiên không chọn được không có điểm đánh giá bộ đã chọn; ghi thiếu, không tự gán 1 hoặc 0. Có thể hỏi riêng lý do không chọn. Nếu muốn báo tỷ lệ bộ được đánh giá phù hợp, chốt trước ngưỡng, ví dụ điểm từ 4 trở lên, và luôn ghi rõ mẫu số là các phiên đã chọn có đánh giá.</p>
+<p>Nghiên cứu thăm dò nên báo song song phân bố mức phù hợp và tỷ lệ hoàn thành. Chưa có tiêu chí cùng thiết kế phù hợp thì không kết luận đã chứng minh “chất lượng không giảm”; không tìm thấy khác biệt rõ cũng chưa chứng minh hai phiên bản tương đương.</p>
+<h3 id="muc-10-2"><a class="heading-link" href="#muc-10-2">10.2. Đồng hồ bắt đầu và kết thúc ở đâu?</a></h3>
+<p>Quy trình một phiên:</p>
+<ol>
+<li>Người dùng kiểm tra ngữ cảnh, chưa thấy gợi ý của phiên.</li>
+<li>Bấm <strong>Bắt đầu chọn</strong> → tạo phiên và ghi mốc bắt đầu.</li>
+<li>Hệ thống tạo, hiển thị các bộ.</li>
+<li>Người dùng chọn ngay hoặc bấm <strong>Đổi bộ khác</strong>.</li>
+<li>Bấm <strong>Chọn bộ này</strong> → ghi kết quả và kết thúc đồng hồ.</li>
+<li>Hỏi mức phù hợp 1–5; thời gian trả lời khảo sát không cộng vào thời gian chọn.</li>
+</ol>
+<p>Nguyên tắc kỹ thuật:</p>
+<ul>
+<li>Dùng đồng hồ đo khoảng thời gian đơn điệu, chẳng hạn <code>time.perf_counter()</code> nếu đo tại server.</li>
+<li>Mốc thời gian có múi giờ dùng để đối chiếu log, không thay thế đồng hồ đo khoảng thời gian.</li>
+<li>Hai mốc dùng tính chênh lệch phải thuộc cùng hệ đồng hồ; không trừ thời gian client và server với nhau.</li>
+<li>Với Streamlit, giữ mốc trong trạng thái phiên; rerun do bấm đổi không được tạo phiên mới hoặc reset timer.</li>
+<li>Nếu đo lúc server nhận sự kiện bấm nút, phải ghi rõ đây là phép đo từ phía server, có ảnh hưởng của độ trễ mạng/xử lý sự kiện.</li>
+<li>Không gọi thời điểm server dựng xong trang là thời điểm người dùng thực sự nhìn thấy trang.</li>
+<li>Nếu muốn đo riêng từ lúc thẻ đã hiển thị đến lúc bấm chọn, cần bổ sung phép đo phía trình duyệt; đây là mở rộng, không bắt buộc bản đầu.</li>
+</ul>
+<p>Kiểm tra với đồng hồ quan sát thủ công trong vài phiên pilot để phát hiện sai lệch lớn, không coi hai cách đo là giống nhau tuyệt đối.</p>
+<h3 id="muc-10-3"><a class="heading-link" href="#muc-10-3">10.3. Những sự kiện cần lưu</a></h3>
+<p>Tối thiểu:</p>
+<pre><code class="language-text">session_started
+recommendations_served
+refresh_requested
+outfit_selected
+session_abandoned
+session_timeout
+session_error
+</code></pre>
+<p>Tên <code>recommendations_served</code> chỉ khẳng định ứng dụng đã tạo/trả nhóm gợi ý, không khẳng định đã quan sát được thời điểm trình duyệt vẽ xong.</p>
+<p>Một bản tóm tắt phiên minh họa:</p>
+<pre><code class="language-json">{
+  &quot;session_id&quot;: &quot;session_demo_001&quot;,
+  &quot;participant_id&quot;: &quot;P_DEMO&quot;,
+  &quot;version&quot;: &quot;v1.0&quot;,
+  &quot;config_id&quot;: &quot;rules_demo_01&quot;,
+  &quot;context_id&quot;: &quot;context_demo_01&quot;,
+  &quot;wardrobe_snapshot_id&quot;: &quot;wardrobe_demo_01&quot;,
+  &quot;history_snapshot_id&quot;: &quot;history_demo_01&quot;,
+  &quot;decision_time_ms&quot;: 18000,
+  &quot;refresh_count&quot;: 1,
+  &quot;selected_outfit_id&quot;: &quot;item_001|item_007|item_012&quot;,
+  &quot;status&quot;: &quot;selected&quot;,
+  &quot;satisfaction&quot;: 4
+}
+</code></pre>
+<p><strong>Dữ liệu trên hoàn toàn minh họa; không đưa các giá trị này vào bảng kết quả thực nghiệm.</strong></p>
+<p>Log sự kiện chi tiết cần thêm mã/thứ tự sự kiện, nhóm outfit đã trả về, điểm tương ứng và mốc thời gian. Chỉ lưu một dòng tổng kết là chưa đủ để kiểm tra hệ thống có đếm lần đổi đúng hay không.</p>
+<h3 id="muc-10-4"><a class="heading-link" href="#muc-10-4">10.4. Phiên không chốt được bộ thì sao?</a></h3>
+<ul>
+<li>Giữ lại phiên bỏ dở, timeout và lỗi; không xóa khỏi dữ liệu gốc.</li>
+<li>Với phiên không chọn, <code>decision_time_ms</code> để thiếu/null theo định nghĩa “thời gian tới khi chốt”; lưu riêng thời lượng đã quan sát và trạng thái kết thúc.</li>
+<li>Có thể đặt ngưỡng tối đa, ví dụ 180 giây sau khi pilot cho thấy phù hợp; phải chốt ngưỡng trước nghiên cứu chính.</li>
+<li>Báo cáo thời gian của phiên hoàn thành <strong>kèm</strong> tỷ lệ hoàn thành và số timeout/lỗi. Không chỉ báo thời gian những người dễ chọn.</li>
+<li>Không coi timeout là một lần chốt đúng ở mốc 180 giây. Nếu dùng thời lượng bị chặn để phân tích bổ sung, đặt tên khác và giải thích rõ.</li>
+<li>Bị gián đoạn, chuyển tab hoặc tải lại trang phải được đánh dấu theo quy tắc đã thống nhất trước; không tùy ý bỏ chỉ vì kết quả làm thuật toán trông kém.</li>
+<li>Chỉ một sự kiện chọn đầu tiên hợp lệ được dùng để kết thúc phiên; bấm hai lần không tạo hai phiên thành công.</li>
+</ul>
+<p><strong>Tải lại trang khác với rerun:</strong> Streamlit có thể mất Session State khi tải lại trang hoặc mất kết nối. Lưu <code>session_started</code> và các sự kiện xuống nơi lưu bền ngay khi chúng xảy ra, không chờ đến lúc chốt mới lưu toàn bộ.</p>
+<p>Khi tổng hợp, đối soát các phiên có bắt đầu nhưng thiếu sự kiện kết thúc và đánh dấu <code>incomplete_unknown</code> nếu chưa biết nguyên nhân. Trong nghiên cứu có người quan sát, ghi nhận thủ công việc tải lại/đóng tab hoặc bị gián đoạn là cách vừa sức. Không giả định trình duyệt luôn gửi được sự kiện bỏ dở, không lấy thời điểm sự kiện cuối làm chính xác thời điểm người dùng rời đi, và không nối timer đã mất sang phiên mới.</p>
+<h3 id="muc-10-5"><a class="heading-link" href="#muc-10-5">10.5. Hit Rate@3 và MRR có bắt buộc không?</a></h3>
+<p>Chưa bắt buộc cho bản đầu.</p>
+<ul>
+<li>Hit Rate@3 cần biết bộ nào được xem là phù hợp trong một tập đánh giá đã xác định.</li>
+<li>MRR cần danh sách xếp hạng và nhãn phù hợp để tìm thứ hạng của bộ phù hợp đầu tiên.</li>
+<li>Nếu chỉ cho người dùng chọn trong 3 bộ rồi lấy chính bộ đã chọn làm “đáp án”, Hit Rate@3 sẽ bị tính theo vòng lặp và không chứng minh chất lượng.</li>
+</ul>
+<p>Chỉ dùng khi nhóm có cách lấy nhãn độc lập, chẳng hạn người tham gia đánh giá một tập bộ cố định mà không thấy thứ hạng thuật toán. Với nghiên cứu nhỏ, ưu tiên thời gian, số lần đổi, tỷ lệ hoàn thành và mức phù hợp.</p>
+<hr>
+<h2 id="muc-11"><a class="heading-link" href="#muc-11">11. Thiết kế thực nghiệm vừa sức nhưng không sai phương pháp</a></h2>
+<h3 id="muc-11-1"><a class="heading-link" href="#muc-11-1">11.1. Tách ba câu hỏi thành ba phép đánh giá</a></h3>
+<ol>
+<li><strong>Chức năng có đúng không?</strong> Dùng unit test và kiểm thử luồng.</li>
+<li><strong>Số hóa có hữu ích không?</strong> Đo lỗi nhận dạng và thời gian thêm/sửa món.</li>
+<li><strong>Xếp hạng có giúp chọn nhanh không?</strong> Dùng nghiên cứu người dùng với giao diện và dữ liệu đầu vào được kiểm soát.</li>
+</ol>
+<p>Không trộn ba phép đánh giá rồi kết luận chỉ từ một biểu đồ tổng hợp.</p>
+<h3 id="muc-11-2"><a class="heading-link" href="#muc-11-2">11.2. Pilot trước, nghiên cứu chính sau</a></h3>
+<p><strong>Pilot gợi ý:</strong> 2–3 người để kiểm tra hướng dẫn, log, nút bấm, độ khó tình huống và thời lượng. Nếu thay đổi giao thức sau pilot thì không gộp dữ liệu pilot vào kết quả chính.</p>
+<p><strong>Nghiên cứu chính gợi ý:</strong> Khoảng 8–12 người tham gia tự nguyện là quy mô thăm dò có thể cân nhắc cho nhóm mới. Đây không phải cỡ mẫu đã được tính toán để bảo đảm có ý nghĩa thống kê.</p>
+<p>Nếu trường/khoa có quy trình phê duyệt nghiên cứu người tham gia, phải thực hiện trước khi thu thập. Nên bắt đầu với người trưởng thành và tránh tạo cảm giác tham gia ảnh hưởng điểm học tập.</p>
+<h3 id="muc-11-3"><a class="heading-link" href="#muc-11-3">11.3. So sánh v1.0, v2.0, v3.0 cho công bằng</a></h3>
+<p>Thiết kế đơn giản là mỗi người thử cả ba phiên bản.</p>
+<p>So sánh này chỉ đánh giá các phiên bản hệ thống với nhau. Muốn nói hệ thống nhanh hơn <strong>tự chọn không có gợi ý</strong>, cần thêm điều kiện đối chứng tự chọn với phạm vi nhiệm vụ tương đương; không suy ra kết luận đó chỉ từ v1/v2/v3.</p>
+<p>Giữ giống nhau:</p>
+<ul>
+<li>Tủ đồ và thuộc tính đã được người dùng xác nhận.</li>
+<li>Giao diện, số thẻ, số nút và nội dung hướng dẫn.</li>
+<li>Thiết bị và điều kiện kết nối nếu có thể.</li>
+<li>Snapshot thời tiết và ngữ cảnh tương đương; không để thời tiết thật thay đổi giữa các lượt so sánh trong phòng thử.</li>
+<li>Trạng thái sẵn sàng của đồ trong một khối so sánh.</li>
+<li>Mọi lời giải thích gợi ý có độ dài/cách trình bày tương đương.</li>
+</ul>
+<p>Thay đổi có chủ đích:</p>
+<ul>
+<li>Cách lọc thời tiết cơ bản so với cho điểm mềm, nếu đó là khác biệt đã định nghĩa giữa v1.0 và v2.0.</li>
+<li>Cách tính điểm và cá nhân hóa giữa các phiên bản.</li>
+</ul>
+<p>Không để v1.0 chậm vì giao diện khó dùng, còn v3.0 có ít nút hơn rồi quy toàn bộ cải thiện cho thuật toán.</p>
+<p><strong>Đặc biệt:</strong> Trong thử nghiệm thời gian chọn, cả ba phiên bản dùng cùng metadata đã xác nhận. Khác biệt tự động nhập ảnh của v2.0 được đánh giá riêng; nếu không, nhóm không biết thời gian thay đổi do xếp hạng hay do dữ liệu đầu vào khác nhau.</p>
+<h3 id="muc-11-4"><a class="heading-link" href="#muc-11-4">11.4. Tránh hiệu ứng “làm sau nên quen hơn”</a></h3>
+<p>Không cho mọi người luôn thử theo thứ tự v1 → v2 → v3.</p>
+<p>Luân phiên và phân bổ gần đều các thứ tự:</p>
+<pre><code class="language-text">v1 → v2 → v3
+v1 → v3 → v2
+v2 → v1 → v3
+v2 → v3 → v1
+v3 → v1 → v2
+v3 → v2 → v1
+</code></pre>
+<ul>
+<li>Cho mọi người một lượt làm quen không tính vào kết quả chính.</li>
+<li>Dùng tình huống tương đương về độ khó, phân bổ tình huống cho phiên bản một cách cân bằng.</li>
+<li>Không lặp nguyên xi một bài ngay sau khi người dùng vừa nhớ đáp án nếu có thể tránh.</li>
+<li>Có thể đặt tên giao diện là A/B/C và không nói phiên bản nào “thông minh hơn”.</li>
+</ul>
+<p>Ví dụ khối lượng khả thi: 3 phiên mỗi phiên bản, tức 9 phiên/người. Đây chỉ là gợi ý tổ chức; cần pilot trước, không tăng số phiên đến mức người tham gia chọn cho xong.</p>
+<h3 id="muc-11-5"><a class="heading-link" href="#muc-11-5">11.5. v3.0 lấy lịch sử ở đâu?</a></h3>
+<p>Nếu thử cá nhân hóa, cần lịch sử <strong>có trước</strong> phiên kiểm tra.</p>
+<p>Cách đơn giản:</p>
+<ol>
+<li>Có một giai đoạn làm quen/thu thập lựa chọn trước nghiên cứu chính.</li>
+<li>Trong giai đoạn đó dùng một cách hiển thị chung cho mọi người, chưa ưu tiên theo phiên bản đang đánh giá.</li>
+<li>Thu thập riêng lịch sử đã mặc nếu muốn thử phạt lặp; không suy ra từ lựa chọn giả định.</li>
+<li>Chốt một snapshot lịch sử cho từng người.</li>
+<li>Trong khối so sánh chính, v3.0 dùng snapshot đó và chưa cập nhật online; v1.0/v2.0 bỏ qua phần sở thích theo định nghĩa phiên bản.</li>
+<li>Không để các lần thử v1.0 ngay trước đó làm v3.0 được thêm lợi thế dữ liệu.</li>
+</ol>
+<p>Thiết kế này đánh giá <strong>cá nhân hóa dựa trên lịch sử cố định</strong>, chưa chứng minh “hệ thống càng dùng càng học tốt”.</p>
+<p>Nếu không có lịch sử thực, phải đánh giá rõ trường hợp người mới. Lịch sử giả có thể dùng test code, không dùng thay lịch sử thật để kết luận hiệu quả cá nhân hóa.</p>
+<h3 id="muc-11-6"><a class="heading-link" href="#muc-11-6">11.6. Muốn chứng minh cải thiện sau N ngày thì cần thêm gì?</a></h3>
+<p>Đó là nghiên cứu dài ngày, khó hơn nghiên cứu một buổi.</p>
+<p>Nhóm cần:</p>
+<ul>
+<li>Theo dõi người dùng thật qua nhiều ngày, với N được xác định trước.</li>
+<li>Lưu ngữ cảnh, mức độ sẵn sàng của tủ đồ và phiên bản thuật toán.</li>
+<li>Có đối chứng phù hợp được giảng viên duyệt, chẳng hạn so sánh chính sách thích nghi với chính sách cố định qua cách phân bổ người/lượt đã xác định trước.</li>
+<li>Phân biệt tác động học sở thích với tác động người dùng quen giao diện hoặc lịch sinh hoạt thay đổi.</li>
+<li>Không lấy riêng biểu đồ thời gian giảm dần của một nhóm làm bằng chứng chắc chắn do thuật toán học.</li>
+</ul>
+<p>Với năng lực và thời gian hiện tại, nghiên cứu lịch sử cố định là phần chính; nghiên cứu N ngày có thể để phần mở rộng.</p>
+<h3 id="muc-11-7"><a class="heading-link" href="#muc-11-7">11.7. Ablation — Tắt từng phần để biết đóng góp</a></h3>
+<p>Nếu v3.0 tốt hơn, hỏi tiếp: tốt hơn nhờ thành phần nào?</p>
+<p>Đánh giá thêm nếu đủ thời gian/người tham gia:</p>
+<ul>
+<li>v3 đầy đủ.</li>
+<li>v3 không dùng điểm sở thích.</li>
+<li>v3 không dùng phạt lặp.</li>
+</ul>
+<p>Giữ nguyên các phần khác, cùng dữ liệu và cách phân bổ lượt; không đồng thời đổi giao diện hoặc điều chỉnh lại toàn bộ trọng số.</p>
+<p>Nếu chưa đủ điều kiện làm ablation với người dùng, có thể kiểm tra tác động lên thứ tự gợi ý bằng dữ liệu cố định, nhưng phải gọi đúng là phân tích thuật toán, không phải bằng chứng giảm thời gian người dùng.</p>
+<h3 id="muc-11-8"><a class="heading-link" href="#muc-11-8">11.8. Cách tổng hợp kết quả ở mức nhập môn</a></h3>
+<p>Với mỗi người:</p>
+<ol>
+<li>Tính trung vị thời gian của các phiên hoàn thành ở từng phiên bản.</li>
+<li>Tính chênh lệch giữa các phiên bản cho chính người đó.</li>
+<li>Tổng hợp chênh lệch trên các người tham gia.</li>
+<li>Báo cáo song song số phiên hoàn thành, timeout, lỗi và mức phù hợp.</li>
+</ol>
+<p>Trung vị là giá trị giữa sau khi sắp xếp, thường ít bị chi phối bởi một phiên quá dài hơn trung bình.</p>
+<p>Nếu tính tỷ lệ giảm cho từng người:</p>
+<pre><code class="language-text">reduction_percent = (T_baseline - T_new) / T_baseline × 100
+</code></pre>
+<p>Trong đó <code>T_baseline</code> và <code>T_new</code> phải cùng định nghĩa, cùng người và có đủ dữ liệu hợp lệ. Người không có phiên hoàn thành ở một phía vẫn được báo cáo trong tỷ lệ hoàn thành và số người thiếu cặp; không bị âm thầm biến mất.</p>
+<p>Không coi 90 phiên của 10 người là 90 người độc lập. Nếu muốn kiểm định hoặc khoảng tin cậy, trao đổi với giảng viên để chọn phương pháp theo cặp và xử lý việc nhiều phiên thuộc cùng một người.</p>
+<p>Bảng kết quả chưa đo nên để đúng như sau:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Phiên bản</th>
+<th>Số người</th>
+<th>Phiên hoàn thành / tổng phiên</th>
+<th>Thời gian</th>
+<th>Số lần đổi</th>
+<th>Mức phù hợp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v1.0</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+</tr>
+<tr>
+<td>v2.0</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+</tr>
+<tr>
+<td>v3.0</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+<td>Chưa đo</td>
+</tr>
+</tbody></table>
+</div><p>Trước khi điền, chốt cách tổng hợp từng cột và đơn vị. Ưu tiên biểu đồ ghép cặp theo từng người hơn chỉ vẽ ba cột trung bình làm mất khác biệt cá nhân.</p>
+<hr>
+<h2 id="muc-12"><a class="heading-link" href="#muc-12">12. Lộ trình gợi ý 12 tuần và các mốc nghiệm thu</a></h2>
+<p>Đây là kế hoạch tham khảo, cần điều chỉnh theo lịch học và thời gian được giao. Không bỏ bước kiểm thử để giữ đủ mọi tính năng.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Tuần</th>
+<th>Việc chính</th>
+<th>Bằng chứng phải nộp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Hiểu bài toán; kiểm tra pain point bằng phỏng vấn nhỏ; ôn Python</td>
+<td>Ghi chép ẩn danh về vấn đề thật, mỗi người chạy được bài đọc/lọc JSON</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bài ghép bộ, chấm điểm, test; thống nhất schema và Git</td>
+<td>Dữ liệu chung, hợp đồng module, test bài cơ bản</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Trạng thái đồ; ngữ cảnh nhập tay; quy tắc cơ bản</td>
+<td>Test lọc hợp lệ và lý do loại</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Ghép bộ, điểm v1.0, Top-3 và xử lý thiếu đồ</td>
+<td>Chạy được pipeline không cần giao diện</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Giao diện tối giản và logging</td>
+<td><strong>Mốc A: v1.0 chạy đầu-cuối, timer không reset</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>SV 1 xây điểm ngữ cảnh; SV 2 tích hợp; SV 3 kiểm tra log so sánh</td>
+<td>Ví dụ điểm tính tay; ảnh/API chỉ thử khi còn thời gian</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Điểm ngữ cảnh v2.0; so sánh kỹ thuật</td>
+<td><strong>Mốc B: cùng đầu vào chạy được v1/v2, cấu hình tách rõ</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Số đếm sở thích, phạt lặp và re-ranking v3.0</td>
+<td>Test lịch sử rỗng, lịch sử cố định, không dùng dữ liệu tương lai</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Pilot, kiểm tra đồng hồ, chốt giao thức và tham số</td>
+<td><strong>Mốc C: log đúng, hướng dẫn thực nghiệm và cấu hình được chốt</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Thu thập nghiên cứu chính</td>
+<td>Log người tham gia thật, ghi nhận các lỗi/gián đoạn</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Tổng hợp theo người; ablation nếu đủ điều kiện</td>
+<td>Bảng/biểu đồ có nguồn dữ liệu và script tái tạo</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Phân tích thất bại, viết báo cáo, tập bảo vệ</td>
+<td><strong>Mốc D: kết quả tái lập được, kết luận đúng phạm vi</strong></td>
+</tr>
+</tbody></table>
+</div><p>Sau mốc C, không âm thầm thay thuật toán trong khi thu thập. Nếu phát hiện lỗi buộc phải sửa, ghi phiên bản mới và trao đổi cách xử lý các phiên đã thu với giảng viên.</p>
+<h3 id="muc-12-1"><a class="heading-link" href="#muc-12-1">12.1. Nội dung họp hằng tuần</a></h3>
+<p>Mỗi thành viên báo cáo ngắn:</p>
+<ol>
+<li>Tuần này đã hoàn thành đầu ra nào?</li>
+<li>Chạy bằng thao tác/lệnh nào để người khác kiểm tra?</li>
+<li>Những test nào đã đạt, test nào chưa đạt?</li>
+<li>AI đã giúp phần nào? Em tự sửa hoặc bác bỏ gợi ý nào của AI?</li>
+<li>Vướng điều gì và tuần tới làm một việc cụ thể nào?</li>
+</ol>
+<p>Không báo cáo chỉ bằng “đã tìm hiểu CLIP” hoặc “đã làm 80%”. Hãy chỉ ra một ví dụ, một hàm, một test hoặc một bảng kết quả.</p>
+<hr>
+<h2 id="muc-13"><a class="heading-link" href="#muc-13">13. Dùng AI agent như người hướng dẫn, không như người làm hộ</a></h2>
+<h3 id="muc-13-1"><a class="heading-link" href="#muc-13-1">13.1. Quy trình 6 bước cho mỗi nhiệm vụ nhỏ</a></h3>
+<ol>
+<li><strong>Tự mô tả bài toán:</strong> Viết đầu vào, đầu ra và ví dụ mong đợi.</li>
+<li><strong>Hỏi cách làm:</strong> Yêu cầu giải thích bằng kiến thức đang có.</li>
+<li><strong>Tự viết phần đầu:</strong> Thử ít nhất một phiên bản nhỏ.</li>
+<li><strong>Nhờ AI kiểm tra:</strong> Cung cấp code, lỗi thật và ví dụ tái hiện.</li>
+<li><strong>Chạy test:</strong> Không tin câu “đã sửa xong” nếu chưa chạy.</li>
+<li><strong>Giải thích lại:</strong> Không nhìn câu trả lời của AI mà trình bày thuật toán.</li>
+</ol>
+<p>Được dùng AI để gợi ý cấu trúc, giải thích lỗi, viết test mẫu và kiểm tra trường hợp biên. Không được để AI tạo số liệu, trích dẫn không kiểm tra hoặc giải thích kết quả không có trong log.</p>
+<h3 id="muc-13-2"><a class="heading-link" href="#muc-13-2">13.2. Khi mới dùng agent có quyền sửa file</a></h3>
+<ul>
+<li>Bắt đầu bằng một nhiệm vụ nhỏ trong một module.</li>
+<li>Lưu trạng thái công việc bằng Git trước khi cho sửa.</li>
+<li>Yêu cầu agent nêu những file dự định sửa và phạm vi sửa.</li>
+<li>Không cấp quyền thao tác tài khoản, triển khai công khai hay xóa dữ liệu nếu không cần.</li>
+<li>Đọc phần thay đổi trước khi chấp nhận.</li>
+<li>Không gửi khóa API, dữ liệu cá nhân hoặc ảnh chưa được phép chia sẻ.</li>
+<li>Không cho agent sửa test chỉ để làm test “xanh” nếu yêu cầu ban đầu vẫn đúng.</li>
+<li>Không để agent cài hàng loạt thư viện khi một vòng lặp Python đã giải quyết được bài toán.</li>
+</ul>
+<h3 id="muc-13-3"><a class="heading-link" href="#muc-13-3">13.3. Prompt 1 — Hiểu nhiệm vụ trước khi code</a></h3>
+<pre><code class="language-text">Tôi là sinh viên học kỳ 1 năm 2, mới biết biến, điều kiện, vòng lặp,
+list, dict và hàm Python. Tôi chưa học machine learning.
+
+Tôi tham gia đề tài gợi ý trang phục từ tủ đồ cá nhân.
+Nhiệm vụ hiện tại: [một nhiệm vụ nhỏ].
+
+Đầu vào: [dán ví dụ dữ liệu đã ẩn thông tin cá nhân].
+Đầu ra mong đợi: [dán ví dụ].
+
+Chưa viết code ngay. Hãy:
+1. Giải thích bài toán bằng một ví dụ đời thường.
+2. Chỉ ra kiến thức Python tối thiểu cần dùng.
+3. Viết các bước xử lý bằng ngôn ngữ tự nhiên.
+4. Cho tôi một bài tập nhỏ để tự làm.
+5. Hỏi tôi 3 câu để kiểm tra đã hiểu trước khi chuyển sang code.
+Không thêm framework, mô hình học máy hoặc tính năng ngoài nhiệm vụ.
+</code></pre>
+<h3 id="muc-13-4"><a class="heading-link" href="#muc-13-4">13.4. Prompt 2 — Thiết kế và kiểm tra một hàm</a></h3>
+<pre><code class="language-text">Tôi đang viết hàm [tên hàm] trong module [tên module].
+Đây là quy ước dữ liệu nhóm đã thống nhất:
+[dán phần schema liên quan, không chứa dữ liệu riêng tư].
+
+Yêu cầu:
+- Đầu vào: [...]
+- Đầu ra: [...]
+- Ràng buộc: [...]
+- Trường hợp không có kết quả: [...]
+
+Hãy đề xuất chữ ký hàm, thuật toán đơn giản và 5 test.
+Giải thích vì sao từng test cần thiết.
+Chưa sửa file hoặc sinh code toàn dự án.
+Tôi sẽ tự viết bản đầu rồi gửi bạn nhận xét.
+</code></pre>
+<h3 id="muc-13-5"><a class="heading-link" href="#muc-13-5">13.5. Prompt 3 — Sửa lỗi có bằng chứng</a></h3>
+<pre><code class="language-text">Tôi đã tự viết đoạn code dưới đây:
+[code liên quan].
+
+Dữ liệu tái hiện lỗi:
+[dữ liệu nhỏ].
+
+Kết quả tôi mong đợi: [...]
+Kết quả thực tế/thông báo lỗi đầy đủ: [...]
+Lệnh hoặc thao tác đã chạy: [...]
+
+Hãy giải thích nguyên nhân phù hợp với bằng chứng.
+Nếu chưa đủ dữ liệu, hãy nói cần xem thêm gì, không đoán là đã tìm ra lỗi.
+Chỉ đề xuất thay đổi nhỏ nhất và một test tái hiện lỗi.
+Không sửa các phần không liên quan, không đổi yêu cầu để test dễ vượt qua.
+</code></pre>
+<h3 id="muc-13-6"><a class="heading-link" href="#muc-13-6">13.6. Prompt 4 — Nhờ agent sửa code trong phạm vi được giao</a></h3>
+<pre><code class="language-text">Tôi đã hiểu và thống nhất cách làm sau:
+[mô tả ngắn thuật toán].
+
+Hãy chỉ triển khai phần [nhiệm vụ] trong [file/module được phép sửa].
+Không thay đổi schema hoặc file khác nếu chưa hỏi tôi.
+Trước khi sửa, đọc code hiện tại và nêu các thay đổi dự định thực hiện.
+Không xóa dữ liệu, không cài thư viện mới, không triển khai công khai.
+
+Sau khi sửa:
+1. Chạy các test liên quan nếu môi trường cho phép.
+2. Nêu chính xác test đã chạy và kết quả thật.
+3. Nêu test/chức năng chưa kiểm tra.
+4. Giải thích phần sửa bằng kiến thức Python cơ bản.
+5. Cho tôi 3 câu hỏi để tự kiểm tra mức hiểu.
+</code></pre>
+<h3 id="muc-13-7"><a class="heading-link" href="#muc-13-7">13.7. Prompt 5 — Riêng cho ba nhánh chính thức</a></h3>
+<p><strong>SV 1 — Tủ đồ và ngữ cảnh:</strong></p>
+<pre><code class="language-text">Tôi phụ trách feat/wardrobe-context trong nhóm 3 người.
+Tôi cần thống nhất Item/Context rồi lọc đồ theo user_id, available
+và ngữ cảnh nhập tay. Hãy giúp tôi phân biệt ràng buộc cứng với
+ưu tiên mềm trên 6 ví dụ. Không coi mọi sở thích cá nhân như
+&#39;không đi giày trắng khi mưa&#39; là quy tắc cho mọi người.
+Cho tôi bài tập viết hàm và test; chưa nối API hoặc dùng deep learning.
+Đầu ra cần được SV 2 dùng ghép bộ và SV 3 dùng dựng biểu mẫu.
+</code></pre>
+<p><strong>SV 2 — Xếp hạng và cá nhân hóa:</strong></p>
+<pre><code class="language-text">Tôi phụ trách feat/outfit-ranking, nhận dữ liệu hợp lệ từ SV 1.
+Tôi có 2 áo, 2 quần, 1 đôi giày. Hãy hướng dẫn tôi tự liệt kê các bộ,
+tự tính điểm bằng bảng quy tắc và sắp xếp Top-3 để gửi cho SV 3.
+Giải thích bằng điểm, thiếu giày, bộ trùng và đồ đang giặt.
+Sau khi tôi làm đúng baseline mới hướng dẫn điểm ngữ cảnh,
+số đếm sở thích và phạt lặp. Không nhảy vào embedding hoặc RL.
+</code></pre>
+<p><strong>SV 3 — Giao diện và đo lường:</strong></p>
+<pre><code class="language-text">Tôi phụ trách feat/ui-evaluation, dùng Streamlit và tích hợp
+hàm lọc của SV 1 cùng hàm xếp hạng của SV 2.
+Tôi đo thời gian từ nút Bắt đầu đến nút Chọn bộ.
+Người dùng có thể bấm Đổi nhiều lần và Streamlit sẽ rerun.
+Hãy hướng dẫn thiết kế trạng thái và lưu sự kiện để timer không reset,
+không đếm chọn lặp và không làm mất dấu phiên tải lại/đóng tab.
+Phân biệt mốc server nhận sự kiện với lúc trình duyệt hiển thị thật.
+Chưa viết toàn ứng dụng; trước hết mô tả state và test cần có.
+</code></pre>
+<h3 id="muc-13-8"><a class="heading-link" href="#muc-13-8">13.8. Prompt 6 — Kiểm tra thiết kế thực nghiệm</a></h3>
+<pre><code class="language-text">Nhóm tôi muốn so sánh v1, v2, v3 về thời gian chọn trang phục.
+Đây là giao thức dự kiến:
+[dán giao thức, định nghĩa thời gian, cách tạo lịch sử và thứ tự thử].
+
+Hãy tìm các yếu tố gây nhiễu, rò rỉ dữ liệu và cách tính sai chỉ số.
+Đặc biệt kiểm tra:
+- Người làm sau có quen giao diện hơn không?
+- Các phiên bản có dùng cùng tủ đồ và metadata không?
+- v3 có vô tình nhìn thấy lựa chọn tương lai không?
+- Phiên không chọn được có bị bỏ khỏi báo cáo không?
+- Chúng tôi có đang gọi thời gian server chạy là thời gian người dùng chọn không?
+
+Chỉ đề xuất sửa thiết kế. Không tạo số liệu hoặc khẳng định phiên bản nào tốt hơn.
+</code></pre>
+<h3 id="muc-13-9"><a class="heading-link" href="#muc-13-9">13.9. Prompt 7 — Phân tích kết quả thật</a></h3>
+<pre><code class="language-text">Đây là schema log và một mẫu dữ liệu đã ẩn danh:
+[đính kèm phần được phép chia sẻ].
+
+Định nghĩa chỉ số và quy tắc xử lý phiên đã chốt trước:
+[đính kèm].
+
+Hãy giúp tôi viết script tổng hợp theo từng người, rồi so sánh theo cặp.
+Giữ riêng phiên hoàn thành, bỏ dở, timeout và lỗi.
+Không coi nhiều phiên của một người là nhiều người độc lập.
+Không thay dữ liệu thiếu bằng số tự đoán.
+Phân biệt kết quả quan sát được với giả thuyết giải thích.
+Nếu chưa đủ bằng chứng, hãy kết luận chưa đủ bằng chứng.
+</code></pre>
+<h3 id="muc-13-10"><a class="heading-link" href="#muc-13-10">13.10. Prompt 8 — Đọc tài liệu nghiên cứu</a></h3>
+<pre><code class="language-text">Tôi mới học lập trình, chưa học machine learning.
+Đây là nội dung một tài liệu/bài báo mà tôi có quyền chia sẻ:
+[dán phần liên quan].
+
+Hãy giải thích theo đúng trình tự của tác giả:
+1. Bài toán họ giải quyết.
+2. Đầu vào và đầu ra.
+3. Ý tưởng chính bằng một ví dụ nhỏ.
+4. Họ so sánh với baseline nào và đo gì.
+5. Điều tác giả thực sự chứng minh và giới hạn.
+6. Phần nào phù hợp hoặc chưa phù hợp với nhóm tôi.
+
+Không bịa nội dung ngoài tài liệu. Nếu bạn không truy cập được toàn văn,
+hãy nói rõ chỉ đang giải thích phần được cung cấp.
+</code></pre>
+<hr>
+<h2 id="muc-14"><a class="heading-link" href="#muc-14">14. Git và phối hợp để không phá bài của nhau</a></h2>
+<p>Quy trình tối thiểu:</p>
+<ol>
+<li>Có một nhánh <code>main</code> luôn giữ phiên bản chạy được.</li>
+<li>Mỗi người làm trên nhánh được giao.</li>
+<li>Chia thay đổi thành các phần nhỏ: một hàm, một test, một tính năng.</li>
+<li>Trước khi ghép, tự chạy test của module và luồng cơ bản.</li>
+<li>Có ít nhất một người khác đọc thay đổi và chạy thử.</li>
+<li>Nếu đụng schema hoặc pipeline, trao đổi trước khi sửa.</li>
+<li>Ghi lại phiên bản code, cấu hình và dữ liệu dùng cho từng thí nghiệm.</li>
+</ol>
+<p>Không:</p>
+<ul>
+<li>Gửi qua lại các thư mục tên <code>final</code>, <code>final2</code>, <code>final_moi_nhat</code> để thay cho Git.</li>
+<li>Đưa <code>.env</code>, khóa API, ảnh riêng tư và dữ liệu thô của người tham gia lên kho công khai.</li>
+<li>Sao chép thư mục <code>.venv</code> sang máy bạn khác.</li>
+<li>Gộp hàng loạt code chưa chạy ngay trước ngày báo cáo.</li>
+<li>Nhờ agent xử lý xung đột bằng cách bỏ toàn bộ code của một thành viên mà chưa xem nội dung.</li>
+</ul>
+<hr>
+<h2 id="muc-15"><a class="heading-link" href="#muc-15">15. Đọc tài liệu và viết báo cáo ở mức phù hợp</a></h2>
+<h3 id="muc-15-1"><a class="heading-link" href="#muc-15-1">15.1. Từ khóa tự học theo từng giai đoạn</a></h3>
+<p><strong>Giai đoạn bắt đầu:</strong></p>
+<ul>
+<li>Python list dictionary JSON functions.</li>
+<li>Python sorting key, itertools product, pytest basics.</li>
+<li>Streamlit session state.</li>
+<li>Rule-based recommender system.</li>
+</ul>
+<p><strong>Sau khi v1.0 chạy:</strong></p>
+<ul>
+<li>Context-aware recommendation.</li>
+<li>Outfit compatibility recommendation.</li>
+<li>Dominant color extraction foreground segmentation.</li>
+<li>User study time to decision recommender systems.</li>
+<li>Within-subject study counterbalancing.</li>
+</ul>
+<p><strong>Chỉ tìm khi có nhu cầu mở rộng:</strong></p>
+<ul>
+<li>Fashion-CLIP, type-aware fashion compatibility.</li>
+<li>Contextual bandit recommendation, LinUCB, Thompson Sampling.</li>
+<li>Off-policy evaluation và các giới hạn của log phản hồi.</li>
+</ul>
+<p>Các tên công nghệ trên là từ khóa để tìm hiểu, không phải danh sách thư viện bắt buộc cài.</p>
+<h3 id="muc-15-2"><a class="heading-link" href="#muc-15-2">15.2. Mỗi tài liệu chỉ cần trả lời sáu câu lúc đầu</a></h3>
+<ol>
+<li>Tác giả muốn giải quyết việc gì?</li>
+<li>Họ nhận dữ liệu gì và trả kết quả gì?</li>
+<li>Ý tưởng chính là gì?</li>
+<li>Họ so với cách đơn giản nào?</li>
+<li>Họ dùng dữ liệu và chỉ số nào để kết luận?</li>
+<li>Nhóm học được gì và phần nào chưa đủ khả năng áp dụng?</li>
+</ol>
+<p>Với nguồn đọc được, ghi tên, tác giả, năm và nơi tìm thực tế. Không yêu cầu AI tự điền thông tin trích dẫn mà không kiểm tra.</p>
+<h3 id="muc-15-3"><a class="heading-link" href="#muc-15-3">15.3. Bố cục báo cáo gợi ý</a></h3>
+<ol>
+<li><strong>Bài toán và phạm vi:</strong> Ai gặp khó khăn, tối ưu loại thời gian nào?</li>
+<li><strong>Cơ sở và nghiên cứu liên quan:</strong> Các hướng đã có, nhóm chọn mức nào và vì sao?</li>
+<li><strong>Dữ liệu và hệ thống:</strong> Schema, module, quyền riêng tư, giới hạn dữ liệu.</li>
+<li><strong>Phương pháp:</strong> v1/v2/v3, quy tắc, công thức, trọng số và cách chọn.</li>
+<li><strong>Thiết kế đánh giá:</strong> Người tham gia, giao thức, đối chứng, cách tính chỉ số.</li>
+<li><strong>Kết quả:</strong> Bảng/biểu đồ từ dữ liệu thật, có thể chạy lại.</li>
+<li><strong>Thảo luận:</strong> Khi nào tốt, khi nào kém, yếu tố gây nhiễu và hạn chế.</li>
+<li><strong>Kết luận:</strong> Chỉ khẳng định điều được số liệu hỗ trợ.</li>
+</ol>
+<p>Nếu không có mô hình học máy, viết đúng là “hệ thống gợi ý theo quy tắc kết hợp cá nhân hóa heuristic”. Không đổi tên thành “học sâu” để làm báo cáo có vẻ nâng cao.</p>
+<h3 id="muc-15-4"><a class="heading-link" href="#muc-15-4">15.4. Bằng chứng nào tương ứng với kết luận nào?</a></h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang"><table>
+<thead>
+<tr>
+<th>Bằng chứng có được</th>
+<th>Có thể kết luận</th>
+<th>Chưa thể kết luận</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Test chức năng đạt</td>
+<td>Hệ thống xử lý đúng các trường hợp đã kiểm tra</td>
+<td>Đúng với mọi tình huống thực tế</td>
+</tr>
+<tr>
+<td>Chạy dữ liệu giả lập nhanh</td>
+<td>Độ trễ tốt trên cấu hình và quy mô đã thử</td>
+<td>Người dùng thật quyết định nhanh</td>
+</tr>
+<tr>
+<td>Bộ nhận dạng đúng trên tập kiểm tra nhỏ</td>
+<td>Có hiệu quả trên dữ liệu kiểm tra đó</td>
+<td>Tự động nhận dạng tốt mọi ảnh ngoài đời</td>
+</tr>
+<tr>
+<td>Nghiên cứu người dùng nhỏ, có kiểm soát</td>
+<td>Bằng chứng thăm dò trong phạm vi người và tình huống đã thử</td>
+<td>Hiệu quả phổ quát hoặc dài hạn</td>
+</tr>
+<tr>
+<td>Thời gian giảm nhưng tỷ lệ chốt/mức phù hợp giảm</td>
+<td>Có sự đánh đổi cần phân tích</td>
+<td>Hệ thống chắc chắn tốt hơn</td>
+</tr>
+<tr>
+<td>Không thấy cải thiện rõ</td>
+<td>Chưa đủ bằng chứng cho giả thuyết, hoặc phương pháp chưa hữu ích ở điều kiện thử</td>
+<td>Được phép sửa số liệu để “đạt mục tiêu”</td>
+</tr>
+</tbody></table>
+</div><hr>
+<h2 id="muc-16"><a class="heading-link" href="#muc-16">16. Checklist nghiệm thu cuối cùng</a></h2>
+<h3 id="a-hieu-va-lam-chu"><a class="heading-link" href="#a-hieu-va-lam-chu">A. Hiểu và làm chủ</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Mỗi người giải thích được module của mình mà không đọc câu trả lời AI.</li>
+<li><input disabled="" type="checkbox"> Mỗi người biết ít nhất một trường hợp module thất bại.</li>
+<li><input disabled="" type="checkbox"> Nhóm phân biệt được quy tắc, pretrained inference và tự huấn luyện.</li>
+<li><input disabled="" type="checkbox"> Nhóm không gọi similarity là compatibility mà không có kiểm chứng.</li>
+</ul>
+<h3 id="b-he-thong"><a class="heading-link" href="#b-he-thong">B. Hệ thống</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Chỉ gợi ý đồ đúng người sở hữu và đang sẵn sàng.</li>
+<li><input disabled="" type="checkbox"> Một bộ có đúng cấu trúc trong phạm vi đã chọn.</li>
+<li><input disabled="" type="checkbox"> Không lặp bộ trong cùng nhóm Top-3.</li>
+<li><input disabled="" type="checkbox"> Xử lý được ít hơn 3 bộ, không có bộ và hết lựa chọn mới.</li>
+<li><input disabled="" type="checkbox"> Có đường sửa thuộc tính ảnh bị nhận sai.</li>
+<li><input disabled="" type="checkbox"> API lỗi/thiếu dữ liệu được thông báo đúng.</li>
+<li><input disabled="" type="checkbox"> v1, v2, v3 chạy lại được với cấu hình rõ ràng.</li>
+</ul>
+<h3 id="c-o-luong"><a class="heading-link" href="#c-o-luong">C. Đo lường</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Định nghĩa rõ mốc bắt đầu/kết thúc thời gian.</li>
+<li><input disabled="" type="checkbox"> Đổi bộ không reset timer.</li>
+<li><input disabled="" type="checkbox"> Bấm chọn lặp không tạo nhiều kết quả.</li>
+<li><input disabled="" type="checkbox"> Giữ lại phiên bỏ dở, timeout, lỗi.</li>
+<li><input disabled="" type="checkbox"> Phân biệt thời gian engine với thời gian chọn trên giao diện.</li>
+<li><input disabled="" type="checkbox"> Không tính Hit Rate@3 bằng một “đáp án” được tạo từ chính Top-3 đã hiển thị.</li>
+</ul>
+<h3 id="d-thuc-nghiem-va-bao-cao"><a class="heading-link" href="#d-thuc-nghiem-va-bao-cao">D. Thực nghiệm và báo cáo</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Người tham gia đã đồng ý; dữ liệu phân tích đã được ẩn danh.</li>
+<li><input disabled="" type="checkbox"> Có pilot và giao thức nghiên cứu chính được chốt.</li>
+<li><input disabled="" type="checkbox"> Có kiểm soát thứ tự thử và điều kiện đầu vào.</li>
+<li><input disabled="" type="checkbox"> Lịch sử v3 có trước phiên kiểm tra; không rò rỉ dữ liệu tương lai.</li>
+<li><input disabled="" type="checkbox"> Không dùng mô phỏng như bằng chứng giảm thời gian người thật.</li>
+<li><input disabled="" type="checkbox"> Bảng kết quả được tạo từ log thật bằng script.</li>
+<li><input disabled="" type="checkbox"> Kết luận đi kèm tỷ lệ hoàn thành và mức phù hợp.</li>
+<li><input disabled="" type="checkbox"> Trình bày cả kết quả không tốt, hạn chế và chi phí nhập tủ đồ.</li>
+</ul>
+<hr>
+<h2 id="muc-17"><a class="heading-link" href="#muc-17">17. Việc cần làm ngay trong buổi đầu tiên</a></h2>
+<ol>
+<li>Cả nhóm đọc mục 1–3 và mỗi người diễn đạt lại bài toán bằng 3 câu.</li>
+<li>Chốt phạm vi áo–quần–giày, 3 ngữ cảnh, giao diện web đơn giản.</li>
+<li>Thống nhất phiên bản Python và cách lưu mã nguồn.</li>
+<li>Cùng tạo tủ đồ mẫu 2 áo, 2 quần, 1 đôi giày.</li>
+<li>Mỗi người tự làm bài đọc JSON, lọc và ghép bộ.</li>
+<li>Hẹn buổi kiểm tra lại: từng người chạy chương trình và giải thích một test.</li>
+<li>Chỉ sau đó mới chia nhánh module theo mục 8.</li>
+</ol>
+<p><strong>Buổi đầu chưa cần:</strong> Tải Polyvore, cài CLIP, viết bandit hoặc yêu cầu agent sinh toàn bộ hệ thống.</p>
+<blockquote>
+<p><strong>Nguyên tắc xuyên suốt:</strong> Làm nhỏ → hiểu rõ → kiểm tra đúng → đo thật → mới nâng cấp. Một baseline đơn giản có đối chứng và số liệu trung thực có giá trị học tập, nghiên cứu hơn một ứng dụng gắn nhiều nhãn AI nhưng nhóm không giải thích hoặc kiểm chứng được.</p>
+</blockquote>
+</article>
+      <footer class="document-footer"><span>Smart Outfit Recommender · Nhóm 2 · Bản 3 thành viên</span><a href="#dau-trang">Về đầu trang ↑</a><p>Tài liệu nguồn và trang đọc được cập nhật từ cùng một nội dung. Ngày chỉnh sửa: 29/10/2026.</p></footer>
+    </main>
+  </div>
+  <div id="copy-status" role="status" aria-live="polite"></div>
+</body>
+</html>

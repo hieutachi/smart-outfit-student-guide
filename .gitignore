@@ -1,0 +1,8 @@
+node_modules/
+.npm-cache/
+.DS_Store
+.env
+.env.*
+*.qoder.site
+__pycache__/
+.venv/

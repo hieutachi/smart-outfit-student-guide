@@ -1,0 +1,74 @@
+import assert from 'node:assert/strict';
+import { mkdtemp, readFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { chromium, expect } from '@playwright/test';
+
+const base = process.env.BASE_URL || 'http://127.0.0.1:4173/';
+const output = await mkdtemp(path.join(tmpdir(), 'smart-outfit-browser-'));
+const browser = await chromium.launch({ channel: 'chrome', headless: true });
+const issues = [];
+const track = (page) => {
+  page.on('pageerror', (error) => issues.push(error.message));
+  page.on('console', (message) => { if (message.type() === 'error') issues.push(message.text()); });
+  page.on('response', (response) => { if (response.status() >= 400) issues.push(`${response.status()} ${response.url()}`); });
+};
+try {
+  const desktop = await browser.newContext({ viewport: { width: 1365, height: 900 }, permissions: ['clipboard-read', 'clipboard-write'] });
+  const page = await desktop.newPage();
+  track(page);
+  await page.goto(base, { waitUntil: 'networkidle' });
+  await expect(page).toHaveTitle(/Smart Outfit/);
+  await expect(page.locator('.document h2')).toHaveCount(18);
+  assert(await page.locator('#toc').evaluate((element) => element.open));
+  assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await page.screenshot({ path: path.join(output, 'desktop.png') });
+  await page.getByRole('navigation', { name: 'Đọc nhanh theo nhu cầu' }).getByRole('link', { name: /Phần việc của tôi/ }).click();
+  await expect(page).toHaveURL(/#muc-8$/);
+  await expect(page.locator('#muc-8')).toBeInViewport();
+  await expect(page.locator('#muc-8-3')).toContainText('SV 3');
+  await page.goto(base);
+  const firstCopy = page.getByRole('button', { name: 'Sao chép khối mã hoặc prompt' }).first();
+  await firstCopy.click();
+  await expect(page.locator('#copy-status')).toHaveText('Đã sao chép nội dung.');
+  assert.equal(await page.evaluate(() => navigator.clipboard.readText()), await page.locator('.document pre').first().textContent());
+  await page.evaluate(() => { navigator.clipboard.writeText = async () => { throw new Error('Simulated permission denial'); }; });
+  await firstCopy.click();
+  await expect(page.locator('#copy-status')).toContainText('chưa cho phép sao chép');
+  assert((await page.evaluate(() => window.getSelection().toString())).length > 0);
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('link', { name: 'Tải tài liệu', exact: true }).click();
+  const download = await downloadPromise;
+  const downloadedText = await readFile(await download.path(), 'utf8');
+  const sourceResponse = await page.request.get(new URL('huong-dan.md', base).href);
+  assert(sourceResponse.ok());
+  assert.equal(downloadedText, await sourceResponse.text());
+  assert(downloadedText.includes('Nhóm 3 thành viên'));
+  await desktop.close();
+
+  const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, deviceScaleFactor: 1 });
+  const phone = await mobile.newPage();
+  track(phone);
+  await phone.goto(base, { waitUntil: 'networkidle' });
+  assert(!(await phone.locator('#toc').evaluate((element) => element.open)));
+  assert(await phone.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await phone.screenshot({ path: path.join(output, 'mobile.png') });
+  await phone.locator('#toc summary').click();
+  assert(await phone.locator('#toc').evaluate((element) => element.open));
+  await phone.locator('.toc-links a[href="#muc-8"]').click();
+  await expect(phone).toHaveURL(/#muc-8$/);
+  await expect(phone.locator('#muc-8')).toBeInViewport();
+  assert(!(await phone.locator('#toc').evaluate((element) => element.open)));
+  await phone.reload({ waitUntil: 'networkidle' });
+  await expect(phone.locator('#muc-8')).toBeInViewport();
+  assert(await phone.evaluate(() => [...document.querySelectorAll('.table-scroll')].some((table) => table.scrollWidth > table.clientWidth)));
+  await phone.setViewportSize({ width: 320, height: 720 });
+  await phone.goto(base, { waitUntil: 'networkidle' });
+  assert(await phone.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Page overflow at 320px');
+  await phone.screenshot({ path: path.join(output, 'mobile-320.png') });
+  await mobile.close();
+  assert.deepEqual(issues, [], 'Browser console, runtime or network errors');
+  console.log(JSON.stringify({ status: 'PASS', base, checks: ['desktop layout', '18 chapters', 'role navigation', 'clipboard success', 'clipboard denied fallback', 'download content', '390px navigation', 'deep-link reload', 'table scroll', '320px layout', 'no browser errors'], screenshots: output }, null, 2));
+} finally {
+  await browser.close();
+}
