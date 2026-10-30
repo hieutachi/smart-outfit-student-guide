@@ -13,6 +13,7 @@ const headingId = (text) => {
   if (number) return `muc-${number.replaceAll('.', '-')}`;
   return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll('đ', 'd').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 };
+const githubSlug = (text) => text.toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu, '').replace(/\s/g, '-');
 const sections = tokens.filter((token) => token.type === 'heading' && token.depth === 2);
 const navigation = sections.map((token) => {
   const number = token.text.match(/^\d+/)?.[0] ?? '';
@@ -23,7 +24,9 @@ const renderer = new Renderer();
 renderer.heading = function (token) {
   if (token.depth === 1) return '';
   const id = headingId(token.text);
-  return `<h${token.depth} id="${id}"><a class="heading-link" href="#${id}">${this.parser.parseInline(token.tokens)}</a></h${token.depth}>\n`;
+  const alias = githubSlug(token.text);
+  const aliasAnchor = alias && alias !== id ? `<a id="${alias}" aria-hidden="true"></a>` : '';
+  return `<h${token.depth} id="${id}"><a class="heading-link" href="#${id}">${this.parser.parseInline(token.tokens)}</a>${aliasAnchor}</h${token.depth}>\n`;
 };
 renderer.table = function (token) {
   return `<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng trong tài liệu; có thể cuộn ngang">${Renderer.prototype.table.call(this, token)}</div>`;

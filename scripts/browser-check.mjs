@@ -27,6 +27,20 @@ try {
   await expect(page).toHaveURL(/#muc-8$/);
   await expect(page.locator('#muc-8')).toBeInViewport();
   await expect(page.locator('#muc-8-3')).toContainText('SV 3');
+  for (const [number, label] of [[1, 'dữ liệu'], [2, 'xếp hạng'], [3, 'giao diện và đo lường']]) {
+    await page.locator('.reading-note').getByRole('link', { name: `SV ${number} — ${label}`, exact: true }).click();
+    await expect(page).toHaveURL(new RegExp(`#muc-8-${number}$`));
+    await expect(page.locator(`#muc-8-${number}`)).toBeInViewport();
+  }
+  await expect(page.locator('#muc-8-4')).toContainText('Ranh giới phối hợp');
+  await expect(page.locator('#muc-8-8')).toContainText('Tiêu chí hoàn thành cá nhân');
+  await page.getByRole('link', { name: 'SV 2 — Xếp hạng', exact: true }).click();
+  assert.equal(await page.evaluate(() => decodeURIComponent(location.hash)), '#82-sv-2--chủ-nhiệm-ghép-bộ-xếp-hạng-và-cá-nhân-hóa');
+  await expect(page.locator('#muc-8-2')).toBeInViewport();
+  await expect(page.locator('.document td').filter({ hasText: /^D10$/ })).toHaveCount(1);
+  await expect(page.locator('.document td').filter({ hasText: /^R11$/ })).toHaveCount(1);
+  await expect(page.locator('.document td').filter({ hasText: /^U11$/ })).toHaveCount(1);
+  await page.screenshot({ path: path.join(output, 'roles-desktop.png') });
   await page.goto(base);
   const firstCopy = page.getByRole('button', { name: 'Sao chép khối mã hoặc prompt' }).first();
   await firstCopy.click();
@@ -44,6 +58,8 @@ try {
   assert(sourceResponse.ok());
   assert.equal(downloadedText, await sourceResponse.text());
   assert(downloadedText.includes('Nhóm 3 thành viên'));
+  assert(downloadedText.includes('Không chia “mỗi người làm một version”'));
+  assert(downloadedText.includes('"suitability": 4'));
   await desktop.close();
 
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, deviceScaleFactor: 1 });
@@ -61,6 +77,16 @@ try {
   assert(!(await phone.locator('#toc').evaluate((element) => element.open)));
   await phone.reload({ waitUntil: 'networkidle' });
   await expect(phone.locator('#muc-8')).toBeInViewport();
+  await phone.getByRole('link', { name: 'SV 1 — Dữ liệu và ngữ cảnh', exact: true }).click();
+  await expect(phone.locator('#muc-8-1')).toBeInViewport();
+  assert(await phone.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await phone.screenshot({ path: path.join(output, 'roles-mobile.png') });
+  const taskTable = phone.getByRole('region', { name: 'Bảng trong tài liệu; có thể cuộn ngang' }).filter({ has: phone.getByRole('cell', { name: 'D1', exact: true }) });
+  await taskTable.scrollIntoViewIfNeeded();
+  assert(await taskTable.evaluate((element) => {
+    element.scrollLeft = element.scrollWidth;
+    return element.scrollLeft > 0;
+  }), 'Assignment table must scroll on mobile');
   assert(await phone.evaluate(() => [...document.querySelectorAll('.table-scroll')].some((table) => table.scrollWidth > table.clientWidth)));
   await phone.setViewportSize({ width: 320, height: 720 });
   await phone.goto(base, { waitUntil: 'networkidle' });
@@ -68,7 +94,7 @@ try {
   await phone.screenshot({ path: path.join(output, 'mobile-320.png') });
   await mobile.close();
   assert.deepEqual(issues, [], 'Browser console, runtime or network errors');
-  console.log(JSON.stringify({ status: 'PASS', base, checks: ['desktop layout', '18 chapters', 'role navigation', 'clipboard success', 'clipboard denied fallback', 'download content', '390px navigation', 'deep-link reload', 'table scroll', '320px layout', 'no browser errors'], screenshots: output }, null, 2));
+  console.log(JSON.stringify({ status: 'PASS', base, checks: ['desktop layout', '18 chapters', 'role navigation', 'individual role links', 'github anchor aliases', '32 task cards', 'separate rating fields', 'clipboard success', 'clipboard denied fallback', 'download content', '390px navigation', 'deep-link reload', 'table scroll', '320px layout', 'no browser errors'], screenshots: output }, null, 2));
 } finally {
   await browser.close();
 }

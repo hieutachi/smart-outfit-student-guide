@@ -15,9 +15,27 @@ const examples = [...source.matchAll(/```json\n([\s\S]*?)\n```/g)].map((match) =
 assert.equal(examples.length, 4);
 const outfit = examples.find((example) => example.score_parts);
 assert(Math.abs(outfit.score - (0.6 * outfit.score_parts.color + 0.4 * outfit.score_parts.style)) < 1e-9);
+assert.equal(examples.find((example) => example.item_id).rain_suitability, 'unknown');
+assert(examples.find((example) => example.occasion).reference_time);
+const session = examples.find((example) => example.session_id);
+assert.equal(session.phase, 'development');
+assert.equal(examples.find((example) => example.item_id).user_id, session.participant_id);
+assert.equal(examples.find((example) => example.occasion).user_id, session.participant_id);
+assert.equal(session.suitability, 4);
+assert.equal(session.satisfaction, 3);
+assert(!/Áp dụng bảng lọc thời tiết cơ bản|bộ lọc nhiệt độ baseline, trả lý do/.test(source), 'Outdated baseline weather filter');
+assert(source.includes('load_selection_history(user_id, cutoff, allowed_phases)'), 'Missing history phase contract');
+assert(source.includes('`session_started.payload`'), 'Missing durable session metadata contract');
+assert(source.includes('ghép các phiên hoàn thành theo `scenario_id`'), 'Missing paired-scenario time comparison');
+const assignments = source.slice(source.indexOf('## 8.'), source.indexOf('## 9.'));
+for (const [prefix, count] of [['D', 10], ['R', 11], ['U', 11]]) {
+  for (let index = 1; index <= count; index++) {
+    assert(assignments.includes(`| ${prefix}${index} |`), `Missing assignment ${prefix}${index}`);
+  }
+}
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'Duplicate HTML id');
-for (const match of html.matchAll(/href="#([^"]+)"/g)) assert(ids.includes(match[1]), `Missing anchor: ${match[1]}`);
+for (const match of html.matchAll(/href="#([^"]+)"/g)) assert(ids.includes(decodeURIComponent(match[1])), `Missing anchor: ${match[1]}`);
 for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
   if (/^(https?:|data:)/.test(match[1])) continue;
   await access(path.join(root, 'dist', match[1]));

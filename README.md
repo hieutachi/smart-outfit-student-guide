@@ -15,7 +15,9 @@ Tài liệu dành cho **3 sinh viên học kỳ 1 năm 2**, đã học lập tr�
 4. **Phạm vi:** Tủ đồ nhỏ, áo–quần–giày, ba phiên bản, giao diện tối giản và nghiên cứu người dùng thăm dò. Không bắt buộc deep learning, bandit hoặc thử đồ ảo.
 5. **Phân công:** SV 1 làm dữ liệu/ngữ cảnh; SV 2 làm ghép bộ/xếp hạng/cá nhân hóa; SV 3 làm giao diện/tích hợp/đo lường. Cả ba cùng thu thập và phân tích thực nghiệm.
 
-Xem mục **0** để hiểu bài toán, mục **8** để xem bàn giao theo từng người/từng phiên bản, mục **12** để xem kế hoạch 12 tuần.
+**Bản điều chỉnh 30/10/2026 theo đề xuất của nhóm:** v1 không lọc thời tiết/sự kiện; v2 thêm điểm ngữ cảnh mềm trên cùng tập ứng viên; v3 dùng lịch sử chọn và phạt mềm theo xác nhận đã mặc. Mức phù hợp và hài lòng được hỏi/lưu riêng; số lần đổi là yêu cầu đổi gợi ý trên giao diện.
+
+Xem mục **0** để hiểu bài toán, **5.6** để thống nhất hợp đồng module, **8.1–8.3** để nhận việc cá nhân (D1–D10, R1–R11, U1–U11), **8.4** để biết ranh giới phối hợp, **8.5** để xem bàn giao từng phiên bản và **12** để xem việc của từng người trong 12 tuần. Mỗi đầu việc có đầu ra, test và tiêu chí nghiệm thu; không chia mỗi người một version.
 
 Đây là **hướng dẫn nghiên cứu**, chưa phải ứng dụng gợi ý trang phục đã triển khai hoặc kết quả nghiên cứu đã chứng minh. Tài liệu có nguồn tham khảo và phân biệt ví dụ minh họa với dữ liệu thật.
 

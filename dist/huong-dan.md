@@ -6,7 +6,7 @@
 
 **Cách sử dụng tài liệu:** Đọc mục 0 để nắm gap, pain point và phạm vi; xem mục 8 để biết ai làm gì và ghép thành phiên bản nào; làm bài tập ở mục 6 trước khi chia nhánh. Mục 10–11 dành cho việc đo và kiểm chứng, không cần học hết thuật ngữ ngay ngày đầu tiên.
 
-**Trạng thái:** Tài liệu định hướng, chưa có kết quả khảo sát hoặc thực nghiệm của nhóm. Các con số ví dụ không phải kết quả nghiên cứu. Cập nhật phân công 3 người ngày 29/10/2026.
+**Trạng thái:** Tài liệu định hướng, chưa có kết quả khảo sát hoặc thực nghiệm của nhóm. Các con số ví dụ không phải kết quả nghiên cứu. Cập nhật ngày 30/10/2026 theo đề xuất của nhóm: v1 quy tắc, v2 ngữ cảnh mềm, v3 cá nhân hóa heuristic; khoanh vùng nhiệm vụ 3 người.
 
 > **Thông điệp của giảng viên hướng dẫn:** Các em không phải bắt đầu bằng việc huấn luyện AI. Trước hết, hãy viết được một chương trình nhỏ mà mình giải thích được, đo được và sửa được. Sau đó mới bổ sung từng cải tiến để kiểm tra xem chúng có thực sự giúp người dùng chọn đồ nhanh hơn không.
 
@@ -93,27 +93,31 @@ Không phải “thêm AI để phối đẹp”, mà là giảm các bước c�
 
 **Giả thuyết H1:** v2 có thể giúp chọn nhanh/ít đổi hơn v1 nhờ phù hợp ngữ cảnh hơn.  
 **Giả thuyết H2:** v3 có thể cải thiện thêm so với v2 nhờ sở thích và luân phiên.  
-**Điều kiện đi kèm:** Không đánh đổi bằng nhiều phiên bỏ dở hơn hoặc mức phù hợp kém hơn; báo cáo cả ba mặt, không chỉ chọn chỉ số đẹp.
+**Điều kiện đi kèm:** Theo dõi cả phù hợp, hài lòng và tỷ lệ hoàn thành để phát hiện đánh đổi; báo cáo cùng thời gian/số lần đổi, không chỉ chọn chỉ số đẹp hoặc hứa trước “chất lượng không giảm”.
 
 Kết quả v3–v2 chỉ cho biết tác động của **gói sở thích + phạt lặp**. Muốn tách từng thành phần cần ablation. Một thử nghiệm ngắn cũng chưa chứng minh lợi ích sau N ngày.
 
 ### 0.4. Đề tài làm những gì và nộp những gì?
 
+**Mô tả tổng quan thống nhất để nhóm dùng trong đề cương:**
+
+> Smart Outfit Recommender nghiên cứu hệ thống gợi ý bộ áo–quần–giày từ tủ đồ cá nhân đã được người dùng xác nhận. Nhóm đánh giá tác động của ba cách xếp hạng: quy tắc màu/phong cách (v1), bổ sung điểm ngữ cảnh mềm (v2), và tái xếp hạng bằng lịch sử lựa chọn cùng phạt lặp mềm theo lịch sử thực sự mặc (v3). Mục tiêu kiểm chứng là rút ngắn thời gian chốt bộ và giảm số lần yêu cầu đổi gợi ý, đồng thời theo dõi mức phù hợp, sự hài lòng và tỷ lệ hoàn thành. Các phiên bản dùng cùng bộ lọc hợp lệ, tập ứng viên ban đầu, dữ liệu đã xác nhận và giao diện tối đa 3 bộ. Đóng góp dự kiến là bằng chứng thực nghiệm thăm dò trên tủ đồ thật, không phải một thuật toán AI mới hay lời khẳng định chắc chắn sẽ tiết kiệm thời gian.
+
 **Bắt buộc xây:**
 
-1. Tủ đồ số nhỏ: thêm ảnh, nhập/sửa loại–màu–thuộc tính, cập nhật sẵn sàng.
-2. Ngữ cảnh nhập tay: đi học, thuyết trình/họp, đi chơi; nhiệt độ và mưa nếu có dữ liệu.
-3. Ghép áo + quần + giày từ đồ sẵn có; không tạo đồ tưởng tượng.
-4. Ba phiên bản xếp hạng có thể chạy trên cùng dữ liệu.
-5. Giao diện tối đa 3 bộ, chọn/đổi/kết thúc và xử lý không đủ bộ.
-6. Log thời gian, gợi ý đã trả về, lựa chọn, phiên lỗi/bỏ dở và mức phù hợp.
+1. Tủ đồ số nhỏ: thêm ảnh, nhập/sửa loại–màu–thuộc tính, cập nhật sẵn sàng; người dùng tự xác nhận, không cần nhận dạng AI.
+2. Ngữ cảnh nhập tay: đi học, thuyết trình/họp, đi chơi; nhiệt độ và xác suất mưa, có quy ước dữ liệu thiếu.
+3. Một bộ lọc chung chỉ giữ đồ đúng chủ, sẵn sàng, đúng ba loại; ghép áo + quần + giày từ đồ có thật.
+4. Ba phiên bản xếp hạng trên cùng tập ứng viên đầu vào. **v1 không lọc hoặc chấm điểm thời tiết/sự kiện**; v2 chỉ bổ sung điểm mềm; v3 không loại đồ chỉ vì vừa mặc.
+5. Một giao diện tối đa 3 bộ, chọn/đổi/kết thúc; xử lý tủ trống, thiếu loại và hết lựa chọn mới.
+6. Log tự động thời gian, yêu cầu đổi, gợi ý đã trả về, lựa chọn và trạng thái phiên; hỏi riêng điểm phù hợp và hài lòng rồi lưu câu trả lời.
 7. Pilot, nghiên cứu người dùng thăm dò, script phân tích và báo cáo trung thực.
 
-**Tùy chọn:** Tự gợi ý màu, tách nền, API thời tiết. Đánh giá riêng công sức nhập liệu; bỏ các phần này trước nếu chậm tiến độ.
+**Chỉnh cách diễn đạt để không hứa quá bằng chứng:** “Đổi bộ” trong nghiên cứu là bấm yêu cầu nhóm gợi ý khác, không phải thay quần áo ngoài đời; chưa đủ căn cứ gọi mọi lần đổi là “không cần thiết”. Máy tự ghi thao tác/thời gian, nhưng **không tự đoán điểm hài lòng**. “Vẫn bảo đảm phù hợp và hài lòng” là mục tiêu cần đánh giá, chưa phải kết quả đã đạt.
 
-**Không yêu cầu:** Huấn luyện deep learning, thử đồ ảo, chatbot, sinh ảnh người mặc, contextual bandit, ứng dụng mobile riêng hoặc hệ thống bán hàng.
+**Ngoài phạm vi bắt buộc của cả ba phiên bản:** Nhận dạng ảnh, tách nền, API thời tiết, CLIP/CNN, embedding, reinforcement learning/bandit, thử đồ ảo, chatbot, sinh ảnh người mặc, ứng dụng mobile riêng hoặc bán hàng. Chỉ mở một nhánh mở rộng sau khi phần chính ổn định và được giảng viên đồng ý; không dùng nó làm điều kiện nghiệm thu v2/v3.
 
-**Bộ đầu ra cuối kỳ:** Code chạy được + dữ liệu mẫu được phép chia sẻ + test + cấu hình v1/v2/v3 + giao thức thực nghiệm + kết quả ẩn danh theo sự đồng ý của người tham gia + script dựng bảng/biểu đồ + báo cáo giới hạn. Đây là bộ đầu ra của nghiên cứu, không chỉ một video demo ứng dụng.
+**Bộ đầu ra cuối kỳ:** Code chạy được + dữ liệu mẫu được phép chia sẻ + test + cấu hình v1/v2/v3 + giao thức thực nghiệm + dữ liệu nghiên cứu đã xử lý quyền riêng tư theo sự đồng ý của người tham gia + script dựng bảng/biểu đồ + báo cáo giới hạn. Dữ liệu bàn giao cho giảng viên không mặc nhiên được công khai lên GitHub; gán mã giả chưa có nghĩa đã ẩn danh hoàn toàn. Đây là bộ đầu ra của nghiên cứu, không chỉ một video demo ứng dụng.
 
 ### 0.5. Ba người ghép việc thành ba phiên bản ra sao?
 
@@ -175,7 +179,7 @@ Hệ thống cần giúp người dùng đi từ nhiều khả năng xuống m�
 
 ### 1.2. Câu hỏi nghiên cứu trung tâm
 
-> Với cùng tủ đồ, ngữ cảnh và giao diện, cách xếp hạng có xét sở thích cùng lịch sử mặc có giúp người dùng chốt trang phục nhanh hơn cách xếp hạng bằng quy tắc cơ bản không, mà vẫn giữ mức chấp nhận được về sự phù hợp?
+> Với cùng tủ đồ thật, tập ứng viên ban đầu, ngữ cảnh và giao diện, thêm điểm ngữ cảnh vào quy tắc (v2 so với v1), rồi thêm sở thích và phạt lặp (v3 so với v2), ảnh hưởng thế nào tới thời gian chốt, số yêu cầu đổi gợi ý, mức phù hợp, hài lòng và tỷ lệ hoàn thành?
 
 Đây là **câu hỏi cần kiểm chứng**, chưa phải kết luận.
 
@@ -322,28 +326,29 @@ Lưu sự kiện và kết quả phiên
 - Món thuộc tủ của người khác.
 - Món đang giặt hoặc được đánh dấu không khả dụng.
 - Một bộ thiếu áo, quần hoặc giày trong phạm vi hiện tại.
-- Quy định trang phục bắt buộc đã được người dùng xác nhận.
 
 **Ưu tiên mềm — soft preference:** Có thể phù hợp ít hơn, nhưng chưa chắc phải loại.
 
 - Màu người dùng ít chọn.
 - Áo vừa mặc gần đây nhưng đã sạch và sẵn sàng.
 - Kiểu phối chưa đúng sở thích.
-- Mức phù hợp nhiệt độ theo cảm nhận cá nhân.
+- Mức phù hợp với sự kiện, nhiệt độ và mưa theo bảng do nhóm quy định.
 
 Không tự đặt quy tắc “trời mưa thì cấm giày trắng” như một chân lý. Đây có thể là sở thích của một người, không phải của tất cả mọi người. Tương tự, ngưỡng “lạnh” phụ thuộc điều kiện địa phương và người sử dụng.
 
-Riêng v1.0 có thể dùng bộ lọc ngưỡng thời tiết để tạo baseline đơn giản. Đây là **heuristic thử nghiệm**, không phải ràng buộc bắt buộc của người dùng. Cần ghi riêng lý do loại theo heuristic để phân biệt với lý do không được phép dùng như đồ đang giặt; v2.0 sẽ thử thay phần heuristic này bằng điểm mềm.
+**Chốt cho phép so sánh chính:** v1 chỉ lọc quyền sở hữu/trạng thái/loại món; v2 và v3 dùng nguyên bộ lọc này. Không có bộ lọc nhiệt độ baseline và không biến sự kiện thành điều kiện loại. Trường hợp bắt buộc đồng phục hoặc dress code đặc biệt nằm ngoài ba tình huống thử thông thường; nếu muốn bổ sung phải thống nhất schema và áp dụng giống nhau cho cả ba phiên bản.
+
+Cùng tủ và trạng thái sẵn sàng phải sinh cùng tập ứng viên trước xếp hạng. Sau khi người dùng bấm đổi, tập bộ chưa xem có thể khác do các phiên bản đã xếp hạng khác nhau; chính sách bỏ qua bộ đã xem vẫn phải giống nhau.
 
 ### 4.4. Khi không đủ bộ để gợi ý
 
 - Có 2 bộ hợp lệ: hiển thị 2 bộ.
 - Có 1 bộ: hiển thị 1 bộ.
 - Không có bộ: giải thích chính xác lý do. Nếu thiếu giày hoặc toàn bộ quần đang giặt, cần cập nhật tủ/trạng thái thực tế; nới ưu tiên màu sắc không giải quyết được.
-- Nếu hết bộ chỉ do bộ lọc heuristic hoặc ưu tiên do người dùng đặt, có thể đề nghị người dùng tự điều chỉnh; ghi lại việc điều chỉnh nếu đang thực nghiệm.
+- Điểm ngữ cảnh/sở thích thấp không làm mất ứng viên; không dùng ngưỡng điểm để loại thêm bộ ở một phiên bản.
 - Không tự ý đưa đồ đang giặt trở lại chỉ để đủ Top-3.
 - Không tạo ra món đồ không có thật trong tủ.
-- Khi đã xem hết các bộ: thông báo đã hết lựa chọn mới, không lặp vô hạn mà không giải thích.
+- Khi đã xem hết các bộ: giữ nhóm cuối để người dùng còn chọn hoặc kết thúc, báo đã hết lựa chọn mới và vô hiệu hóa nút đổi; không tự quay vòng hoặc tự chốt hộ.
 
 ---
 
@@ -359,34 +364,41 @@ smart-outfit-recommender/
 │   ├── schema.py
 │   └── pipeline_manager.py
 ├── modules/
-│   ├── vision_extractor/
+│   ├── wardrobe_store.py
 │   ├── context_filter/
 │   ├── compatibility_scorer/
-│   └── user_preference/
+│   ├── user_preference/
+│   └── event_log.py
 ├── app_ui/
 │   └── app.py
 ├── datasets/
 │   └── sample_wardrobe.json
 ├── tests/
 ├── experiments/
+│   ├── configs/
+│   └── protocol.md
 ├── evaluate_simulation.py
 ├── evaluate_sessions.py
 ├── requirements.txt
 └── .gitignore
 ```
 
-Vai trò:
+Vai trò và người sở hữu:
 
-- `schema.py`: Quy ước chung về dữ liệu. Không phải mỗi người tự đặt một kiểu.
-- `pipeline_manager.py`: Gọi các module theo đúng thứ tự; không chứa mọi thuật toán.
-- `vision_extractor/`: Gợi ý thuộc tính từ ảnh.
-- `context_filter/`: Đọc ngữ cảnh và kiểm tra ràng buộc.
-- `compatibility_scorer/`: Ghép bộ, chấm điểm quy tắc và ngữ cảnh.
-- `user_preference/`: Tính điểm sở thích và mức phạt lặp. Tên này tránh hiểu nhầm rằng nhóm đã triển khai RL.
-- `tests/`: Kiểm thử nhỏ cho từng hàm và cả luồng.
-- `experiments/`: Cấu hình thí nghiệm và kết quả đã loại thông tin nhận dạng.
-- `evaluate_simulation.py`: Kiểm thử bằng dữ liệu giả lập, đo số ứng viên và độ trễ.
-- `evaluate_sessions.py`: Tính chỉ số từ phiên người dùng thật.
+- `core/schema.py` — **SV 1** cập nhật sau khi cả nhóm duyệt: Item, Context, Outfit, Event, bản tóm tắt phiên. SV 2 đề xuất cấu trúc điểm; SV 3 đề xuất cấu trúc log.
+- `modules/wardrobe_store.py` — **SV 1**: đọc/lưu tủ JSON, cập nhật trạng thái và xác nhận đã mặc; không dựng giao diện.
+- `modules/context_filter/` — **SV 1**: lọc hợp lệ dùng chung và tính riêng WeatherFit/OccasionFit; không tự xếp hạng.
+- `modules/compatibility_scorer/` — **SV 2**: ghép bộ, chấm màu/phong cách, kết hợp điểm ngữ cảnh thành S2, sắp xếp.
+- `modules/user_preference/` — **SV 2**: tính sở thích và phạt lặp từ dữ liệu được truyền vào; không ghi lịch sử hoặc làm RL.
+- `modules/event_log.py` — **SV 3**: lưu sự kiện bền vững, đọc lịch sử lựa chọn hợp lệ; không tự xác nhận đã mặc.
+- `core/pipeline_manager.py`, `app_ui/` — **SV 3**: điều phối các hàm có sẵn và giao diện; không chép công thức của SV 1/SV 2 vào UI.
+- `tests/` — mỗi người viết test phần mình; SV 3 sở hữu test tích hợp, cả nhóm đọc chéo.
+- `experiments/configs/` — SV 1 sở hữu bảng ngữ cảnh; SV 2 sở hữu bảng màu/phong cách và trọng số; SV 3 sở hữu lịch thử và cấu hình đo. Cấu hình có mã, được đóng băng trước nghiên cứu chính.
+- `experiments/protocol.md` — **SV 3** tổng hợp giao thức đã được cả nhóm và giảng viên duyệt; đây là tài liệu nhóm cần viết khi bắt đầu nghiên cứu.
+- `evaluate_simulation.py` — **SV 2**: dữ liệu giả lập để kiểm tra ứng viên/độ trễ, không phải số liệu thời gian người dùng.
+- `evaluate_sessions.py` — **SV 3**: tổng hợp phiên người dùng thật; SV 1 đối soát dữ liệu, SV 2 kiểm tra so sánh theo cặp.
+
+Không tạo `vision_extractor/` trong phần bắt buộc. Nếu mở rộng nhận dạng ảnh được duyệt, mới thêm module riêng và test riêng, không thay dữ liệu xác nhận của phép so sánh chính.
 
 Ảnh riêng tư, khóa API, log thô có thông tin cá nhân và môi trường `.venv` không được đưa lên kho mã công khai.
 
@@ -470,12 +482,13 @@ Ví dụ dữ liệu minh họa, không phải dữ liệu người dùng thật
 ```json
 {
   "item_id": "item_001",
-  "user_id": "user_demo",
+  "user_id": "P_DEMO",
   "category": "top",
   "image_path": "images/item_001.jpg",
   "color_group": "white",
   "formality": "formal",
   "warmth": "light",
+  "rain_suitability": "unknown",
   "available": true,
   "last_worn_at": null
 }
@@ -486,12 +499,13 @@ Quy ước tối thiểu:
 | Trường | Ý nghĩa | Quy ước |
 |---|---|---|
 | `item_id` | Mã món đồ | Duy nhất, không đổi sau mỗi lần tải ảnh |
-| `user_id` | Chủ tủ đồ | Dùng mã giả, không cần họ tên thật |
+| `user_id` | Chủ tủ đồ | Dùng cùng mã giả với `participant_id` trong log, không cần họ tên thật |
 | `category` | Loại món | `top`, `bottom`, `footwear` |
 | `image_path` | Ảnh minh họa | Ảnh không bắt buộc cho bài tập đầu tiên |
 | `color_group` | Nhóm màu | Nhóm thống nhất trước, ví dụ `black`, `white`, `gray`, `blue`, `other`, `unknown` |
 | `formality` | Độ trang trọng | `casual`, `smart_casual`, `formal`, `unknown` |
 | `warmth` | Mức giữ ấm | `light`, `medium`, `warm`, `unknown`; người dùng xác nhận |
+| `rain_suitability` | Người dùng thấy có hợp khi mưa không? | `low`, `medium`, `high`, `unknown`; nhập tay, không suy từ màu ảnh |
 | `available` | Có thể dùng ngay không? | `true` hoặc `false` |
 | `last_worn_at` | Lần thực sự mặc gần nhất | Thời điểm có múi giờ hoặc `null` nếu chưa có dữ liệu |
 
@@ -509,12 +523,13 @@ Ba việc không đồng nghĩa. Chỉ cập nhật `last_worn_at` khi người 
 
 ```json
 {
-  "user_id": "user_demo",
+  "user_id": "P_DEMO",
   "occasion": "presentation",
   "temperature_c": 24.0,
   "rain_probability": 0.7,
   "weather_source": "manual",
-  "observed_at": "2026-10-29T07:00:00+07:00"
+  "observed_at": "2026-10-30T07:00:00+07:00",
+  "reference_time": "2026-10-30T07:00:00+07:00"
 }
 ```
 
@@ -522,7 +537,10 @@ Ba việc không đồng nghĩa. Chỉ cập nhật `last_worn_at` khi người 
 - `temperature_c`: Đơn vị độ C, không nhầm với Kelvin.
 - `rain_probability`: Trong khoảng 0–1; khác với lượng mưa tính bằng mm.
 - `weather_source`: `manual`, `api` hoặc nguồn đã thống nhất.
-- Trường không lấy được từ API phải được đánh dấu thiếu, không tự đổi thành 0.
+- `observed_at`: Thời điểm quan sát/dự báo thời tiết; không thay bằng thời điểm ghi log.
+- `reference_time`: Mốc tính số ngày đã mặc, giữ cố định trong khối so sánh và mọi lần đổi của phiên. Có thể trùng `observed_at` trong ví dụ, nhưng ý nghĩa khác nhau.
+- Nhiệt độ hoặc xác suất mưa thiếu dùng `null`, không tự đổi thành 0. Kiểm tra xác suất trong 0–1 ở biểu mẫu; `70%` phải đổi thành `0.7`.
+- Ngữ cảnh không được đổi giữa một phiên đang đo; nếu cần sửa, kết thúc phiên hiện tại có lý do và bắt đầu phiên khác.
 
 Bản đầu cho nhập ngữ cảnh thủ công. Khi nối API, người dùng vẫn có quyền sửa.
 
@@ -555,18 +573,37 @@ Các con số trên chỉ minh họa định dạng, không phải kết quả �
 Nhóm cùng thống nhất các hàm ở mức ý nghĩa trước khi viết code:
 
 ```text
-extract_attributes(image) → thuộc tính gợi ý, cho phép unknown
-filter_items(items, context) → món hợp lệ + lý do món bị loại
-build_outfits(valid_items) → danh sách bộ hợp lệ
-score_outfit(outfit, items_by_id, context) → tổng điểm + điểm thành phần
-rerank(outfits, items_by_id, user_history, context) → danh sách đã đổi thứ tự
-recommend(items, context, user_history, version, excluded_outfit_ids) → tối đa 3 bộ
-log_event(event) → lưu sự kiện của phiên
+SV 1:
+load_wardrobe(user_id) → danh sách Item của đúng người
+save_item(user_id, item) → Item đã lưu hoặc lỗi dữ liệu cụ thể
+confirm_worn(user_id, item_ids, worn_at) → cập nhật các món thực sự đã mặc
+filter_items(items, context) → {valid_items, excluded_items kèm reason_code}
+context_fit(outfit, items_by_id, context, context_rules) → {weather, occasion, reasons}
+
+SV 2:
+build_outfits(valid_items) → tất cả Outfit hợp lệ, chưa lấy Top-3
+score_outfit(outfit, items_by_id, context, version, config) → Outfit có score, score_parts, reasons
+rerank(scored_outfits, items_by_id, selection_history, reference_time, config) → mọi Outfit đã tính S3 và sắp xếp
+
+SV 3:
+load_selection_history(user_id, cutoff, allowed_phases) → lựa chọn hợp lệ trước cutoff, đúng phase được duyệt, không trùng event
+recommend(items, context, selection_history, version, config, excluded_outfit_ids) → {outfits: tối đa 3, remaining_count, empty_reason}
+log_event(event) → ghi sự kiện của phiên xuống nơi lưu bền
 ```
 
 `items_by_id` là dictionary tra món đồ theo mã, ví dụ `items_by_id["item_001"]` trả về Item tương ứng. Outfit chỉ giữ mã món, nên hàm chấm điểm cần nhận dictionary này để đọc màu, phong cách và các thuộc tính; không dùng biến toàn cục ngầm định.
 
-`excluded_outfit_ids` dùng để tránh đưa lại ngay các bộ vừa hiển thị khi người dùng bấm đổi.
+`score_outfit` của SV 2 chỉ nhận `v1.0` hoặc `v2.0`; với v2, nó gọi `context_fit` của SV 1, không tính lại ngữ cảnh ở chỗ khác. Khi yêu cầu v3, pipeline chấm **tất cả** ứng viên bằng v2 rồi gọi `rerank`. Không lấy Top-3 v2 trước khi tính v3 vì có thể bỏ sót bộ đáng được đưa lên.
+
+`excluded_outfit_ids` chứa toàn bộ mã bộ đã trả về trong phiên, bắt đầu rỗng và không xóa khi bấm đổi. Pipeline bỏ các mã đó, sắp điểm giảm dần rồi `outfit_id` tăng dần khi bằng điểm, lấy tối đa 3. `remaining_count` là số bộ chưa trả về còn lại **sau nhóm hiện tại**. Khi hết bộ mới, UI giữ nhóm đang xem theo mục 4.4; phiên mới bắt đầu lại danh sách đã xem.
+
+**Định danh xuyên suốt:** Trong bản nhỏ, `user_id` của tủ/Context và `participant_id` trong log phải có **cùng một giá trị mã giả**, ví dụ `P01`; không tạo hai bộ mã độc lập. SV 1 và SV 3 cùng test với P01/P02 để `load_selection_history(P01, cutoff)` chỉ trả lịch sử P01, tuyệt đối không dùng dữ liệu P02. Mã `P_DEMO` trong các ví dụ chỉ dành cho dữ liệu minh họa.
+
+`selection_history` chỉ chứa lựa chọn thật có trước mốc đóng băng, kèm thuộc tính màu/phong cách tại lúc chọn hoặc snapshot tương ứng. Không tra lại nhãn hiện tại đã bị sửa rồi coi như lịch sử ban đầu. Dữ liệu mặc nằm trong `last_worn_at` của snapshot Item; `reference_time` lấy từ Context đã đóng băng, không gọi đồng hồ hiện tại bên trong hàm phạt lặp.
+
+`allowed_phases` được chốt trước nghiên cứu: với nghiên cứu một buổi, danh sách này thường chỉ gồm `history_collection`; các lựa chọn trong `development`, `practice` hoặc `pilot` không được vào PreferenceScore dù đúng người và trước cutoff. Test bắt buộc: lịch sử trộn nhiều phase chỉ trả về event thuộc phase được duyệt.
+
+**Phân chia lưu trữ:** SV 1 ghi tủ đồ và lịch sử mặc; SV 3 ghi sự kiện chọn/đổi/đánh giá. SV 2 chỉ đọc các dữ liệu được truyền vào để tính điểm. Trong bản dùng hằng ngày, sự kiện hợp lệ được dùng cho phiên tương lai; trong nghiên cứu chính, log mới vẫn được lưu nhưng không thay snapshot lịch sử đang dùng.
 
 **Quy tắc tích hợp:** Nếu sửa tên trường hoặc kiểu dữ liệu, phải báo cả nhóm, sửa kiểm thử liên quan và cùng xác nhận; không âm thầm đổi `category` thành `type` trong riêng một module.
 
@@ -668,12 +705,12 @@ Một tuần có thể dành 6–8 giờ/người nếu phù hợp lịch học.
 Các bước:
 
 1. Lấy đúng tủ của người đang sử dụng.
-2. Lọc đồ không sẵn sàng và các ràng buộc bắt buộc đã xác nhận.
-3. Áp dụng bảng lọc thời tiết cơ bản đã thống nhất cho baseline.
-4. Chia danh sách thành áo, quần, giày.
-5. Ghép các tổ hợp hợp lệ.
-6. Tính điểm màu sắc và phong cách bằng bảng quy tắc.
-7. Sắp xếp, loại bộ trùng và lấy tối đa 3 bộ chưa hiển thị.
+2. Lọc đồ không sẵn sàng; kiểm tra loại món và mã trùng ngay khi nhập dữ liệu.
+3. Chia danh sách thành áo, quần, giày và ghép mọi tổ hợp hợp lệ.
+4. Tính điểm màu sắc và phong cách bằng bảng quy tắc, **không dùng thời tiết, sự kiện, sở thích hay lịch sử mặc**.
+5. Sắp xếp, loại bộ trùng và lấy tối đa 3 bộ chưa hiển thị.
+
+Tính phong cách ở v1 là độ tương thích **giữa các món trong bộ**, không phải độ phù hợp với sự kiện. Ví dụ độ trang trọng áo–quần có hợp nhau không thuộc v1; có hợp buổi thuyết trình không thuộc v2.
 
 Công thức khởi đầu để học, **không phải công thức đã được chứng minh tốt**:
 
@@ -693,37 +730,47 @@ Bảng quy tắc cần lưu thành dữ liệu hoặc cấu hình dễ kiểm tr
 
 **Giới hạn phải ghi trong báo cáo:** Bảng màu và phong cách là giả định thực nghiệm, không phải quy luật thẩm mỹ đúng với mọi người.
 
-### 7.2. v2.0 — Ngữ cảnh bắt buộc, hỗ trợ ảnh tùy chọn
+### 7.2. v2.0 — Thêm điểm ngữ cảnh mềm, giữ nguyên tập ứng viên
 
-Tách thành phần nghiên cứu chính khỏi tính năng hỗ trợ. Với nhóm 3 người, hoàn thành A là đủ mốc v2.0; B chỉ làm khi không ảnh hưởng tiến độ đo lường.
-
-**A. Cải tiến xếp hạng — bắt buộc:**
-
-Thay vì mọi điều kiện thời tiết đều là “được/không được”, cho điểm mức độ phù hợp để tránh loại quá nhiều lựa chọn vì ngưỡng cứng.
+v2 nhận chính các bộ hợp lệ của v1, không loại thêm vì nóng/lạnh/mưa/sự kiện. **SV 1** tính WeatherFit và OccasionFit; **SV 2** kết hợp chúng với điểm v1; **SV 3** chỉ gọi pipeline và hiển thị.
 
 ```text
-S2 = 0.3 × WeatherFit + 0.3 × OccasionFit + 0.4 × Compatibility
+Compatibility = S1
+S2 = 0.3 × WeatherFit + 0.3 × OccasionFit + 0.4 × S1
 ```
 
-Trong bản vừa sức, `Compatibility` có thể chính là điểm quy tắc màu/phong cách của v1.0. Như vậy vẫn kiểm tra được đóng góp của ngữ cảnh mà chưa cần mô hình embedding.
+Đây là công thức khởi đầu do nhóm lựa chọn để thử, không lấy từ kết quả thực nghiệm đã có. Giữ bảng màu/phong cách và trọng số bên trong S1 như v1 để phép so sánh rõ ràng.
 
-- Định nghĩa rõ cách tính từng điểm.
-- Các điểm thành phần cùng thang 0–1.
-- Các ràng buộc cứng như quyền sở hữu và đồ đang giặt luôn giữ nguyên ở mọi phiên bản.
-- Ngưỡng và trọng số chỉ chỉnh bằng dữ liệu thử phát triển, không chỉnh sau khi xem kết quả kiểm tra cuối.
+**Cách viết điểm ngữ cảnh đủ cụ thể để bắt đầu:**
 
-**B. Hỗ trợ nhập ảnh — tùy chọn, đánh giá riêng:**
+1. `TemperatureFit`: tra bảng theo `warmth` của áo và quần rồi lấy trung bình hai món. Giày không được tính vào thành phần giữ ấm trong bản nhỏ này.
+2. `RainFit`: đổi `rain_suitability` của cả ba món thành điểm `low = 0`, `medium = 0.5`, `high = 1`, `unknown = 0.5`; lấy trung bình thành `R`. Với xác suất mưa `p`, dùng `RainFit = (1 - p) × 0.5 + p × R`.
+3. `WeatherFit = 0.7 × TemperatureFit + 0.3 × RainFit`.
+4. `OccasionFit`: tra bảng sự kiện–độ trang trọng cho từng món, lấy trung bình ba món.
 
-Làm theo thứ tự:
+Bảng nhiệt độ **minh họa để lập trình và kiểm tra**, cần rà lại với người dùng ở giai đoạn phát triển:
 
-1. Đọc ảnh và hiển thị đúng chiều.
-2. Thử ảnh một món đồ trên nền đơn giản.
-3. Trích màu trong vùng món đồ; tránh lấy màu nền làm màu áo.
-4. Gợi ý nhóm màu.
-5. Cho người dùng xác nhận hoặc sửa.
-6. Khi bước trước ổn định mới thử `rembg` hoặc mô hình phân loại pretrained.
+| Nhiệt độ °C | light | medium | warm | unknown |
+|---|---|---|---|---|
+| Dưới 20 | 0.2 | 0.6 | 1.0 | 0.5 |
+| Từ 20 đến dưới 28 | 0.8 | 1.0 | 0.4 | 0.5 |
+| Từ 28 trở lên | 1.0 | 0.5 | 0.1 | 0.5 |
 
-Không phải mọi ảnh đều nhận dạng được. Đồ nhiều họa tiết, ánh sáng màu, vùng bóng và ảnh chụp nhiều món có thể gây sai; cần cho phép kết quả `unknown` hoặc yêu cầu chụp lại.
+Bảng sự kiện **minh họa**, không phải quy tắc trang phục bắt buộc hoặc chuẩn thẩm mỹ:
+
+| Sự kiện | casual | smart_casual | formal | unknown |
+|---|---|---|---|---|
+| study | 0.8 | 1.0 | 0.7 | 0.5 |
+| presentation | 0.3 | 0.8 | 1.0 | 0.5 |
+| leisure | 1.0 | 0.8 | 0.4 | 0.5 |
+
+Thiếu nhiệt độ thì `TemperatureFit = 0.5`; thiếu xác suất mưa thì `RainFit = 0.5`. Không thay dữ liệu thiếu bằng “0°C” hoặc “không mưa”. Cách cho điểm trung tính là quy ước công khai, không phải dự đoán dữ liệu thiếu. Giữ nguyên trọng số, không tự chuẩn hóa lại riêng từng phiên.
+
+**Ví dụ kiểm tra tay:** Áo/quần đều `light`, cả ba món `formal`, nhiệt độ 24°C, mưa 0.7, cả ba nhãn mưa `unknown`, S1 = 0.76. Khi đó TemperatureFit = 0.8, RainFit = 0.5, WeatherFit = 0.71, OccasionFit = 1, nên S2 = 0.817. Đây là toy data để test công thức, không phải kết quả về người dùng.
+
+**Test bắt buộc:** Đúng tại 20°C và 28°C; xác suất 0 và 1; nhãn thiếu; đầu vào y hệt cho điểm y hệt; đổi ngữ cảnh có thể đổi điểm v2 nhưng không đổi ứng viên hoặc điểm v1. Bảng/trọng số chỉ sửa trước khi đóng băng giao thức, không điều chỉnh theo kết quả nghiên cứu chính.
+
+**Nhận dạng ảnh không thuộc v2 bắt buộc.** Nếu sau này mở rộng, hãy đánh giá riêng gợi ý màu và công sức xác nhận nhãn; không thay metadata giữa các phiên bản trong nghiên cứu thời gian.
 
 ### 7.3. Embedding giống nhau chưa chắc phối hợp tốt
 
@@ -735,18 +782,18 @@ Vì vậy:
 
 - Không gọi cosine similarity trực tiếp là “độ đẹp của outfit”.
 - Nếu thử CLIP/Fashion-CLIP, coi đây là một phương án cần kiểm chứng.
-- Chỉ đưa vào phiên bản chính nếu có dữ liệu đánh giá phối hợp và có cải thiện đủ thuyết phục.
+- Không đưa embedding vào ba phiên bản đã chốt trong tài liệu này. Nếu nghiên cứu riêng ở nhánh mở rộng, cần dữ liệu đánh giá phối hợp và giao thức mới được duyệt.
 - Nếu dùng pretrained, ghi rõ mô hình, phiên bản, nguồn và điều kiện sử dụng.
 
 ### 7.4. v3.0 — Cá nhân hóa bằng số đếm, chưa cần RL
 
 Cách dễ triển khai:
 
-1. Khi người dùng chọn một bộ, tăng số đếm cho nhóm màu/phong cách xuất hiện trong lựa chọn đó.
-2. Một nhóm thuộc tính có số đếm `c` được chuyển thành điểm đơn giản `c / (c + 2)`.
-3. Lấy trung bình điểm các thuộc tính đã thống nhất để có `PreferenceScore` trong khoảng 0–1.
-4. Nếu chưa có lịch sử lựa chọn, dùng nguyên `S2` làm điểm nền và không cộng điểm sở thích.
-5. Một món vừa được xác nhận đã mặc sẽ nhận mức giảm ưu tiên theo số ngày gần nhất, kể cả khi chưa có lịch sử lựa chọn trên ứng dụng.
+1. SV 3 cung cấp các sự kiện chọn hợp lệ trước mốc đóng băng, đã loại trùng theo sự kiện/phiên. SV 2 tính số đếm, không tự ghi sự kiện thêm lần nữa.
+2. Dùng khóa `(category, attribute, value)`, ví dụ `(top, color_group, white)`. Mỗi món trong mỗi lựa chọn đóng góp một lượt cho màu và một lượt cho độ trang trọng; bỏ qua giá trị `unknown`.
+3. Với mỗi bộ cần chấm, tra sáu khóa: màu và độ trang trọng của áo, quần, giày. Mỗi khóa có số đếm `c` nhận điểm `c / (c + 2)`; khóa chưa từng có nhận 0, thuộc tính hiện tại `unknown` cũng nhận 0. Lấy trung bình **sáu** điểm thành PreferenceScore.
+4. Có ít nhất một số đếm thuộc tính hợp lệ thì dùng nhánh có lịch sử ở công thức dưới. Lịch sử rỗng hoặc toàn `unknown` dùng nhánh chưa có lịch sử; không tự tạo sở thích giả.
+5. Lịch sử thực sự mặc là nguồn riêng do SV 1 quản lý. Một món đã xác nhận vừa mặc nhận mức giảm ưu tiên, kể cả khi chưa có lịch sử lựa chọn trên ứng dụng.
 
 Ví dụ mức phạt từng món:
 
@@ -766,7 +813,11 @@ Chưa có lịch sử lựa chọn:
 S3 = S2 - 0.20 × RotationPenalty
 ```
 
+`days_since_last_worn` là số giây từ `last_worn_at` đến `reference_time` chia 86.400, cho phép ngày lẻ; không chỉ lấy phần ngày trên lịch. Mốc mặc nằm sau `reference_time` là dữ liệu không hợp lệ cần xử lý trước khi tạo snapshot, không âm thầm dùng trong nghiên cứu. Sau đúng 3 ngày, phạt bằng 0 theo cấu hình khởi đầu này.
+
 Nếu chưa có cả lịch sử lựa chọn lẫn lịch sử mặc, `RotationPenalty = 0` và `S3 = S2`. Viết test riêng cho trường hợp chưa từng chọn trên ứng dụng nhưng đã khai báo lần mặc gần nhất.
+
+**Ví dụ phạt lặp mềm, không phải loại đồ:** Hai bộ A/B cùng S2 = 0.8 và PreferenceScore = 0.5. A có một món mặc cách đây 1 ngày, hai món còn lại chưa có lịch sử: RotationPenalty của A = 2/9; B không bị phạt. S3(A) xấp xỉ 0.68056, S3(B) = 0.725. B lên trước nhưng A vẫn nằm trong tập ứng viên. Nếu chỉ còn A hợp lệ, hệ thống vẫn có thể gợi ý A.
 
 Đây chỉ là cấu hình ban đầu để thử nghiệm. Tổng điểm có thể âm; không hiển thị nó như xác suất hoặc phần trăm chắc chắn phù hợp.
 
@@ -800,150 +851,241 @@ Chưa trả lời được thì chưa nên viết LinUCB hay Thompson Sampling b
 
 ## 8. Phân công chính thức: Nhóm 3 thành viên
 
-**Chỉ có 3 vai trò.** Gộp dữ liệu và ngữ cảnh vào một đầu mối; không chia người thứ tư làm AI. Thị giác nâng cao và API thời tiết là phần tùy chọn để tránh quá tải. Cả ba cùng hiểu schema, baseline và cách đo.
+**Không chia “mỗi người làm một version”.** Cả ba cùng tạo v1, rồi nâng đúng phần mình để có v2 và v3. Mỗi phần có **một người chịu trách nhiệm cuối**, một người nhận bàn giao và test kiểm chứng. Hỗ trợ nhau không có nghĩa cả nhóm cùng sửa một file hoặc để SV 3 làm thay thuật toán.
 
-### 8.1. SV 1 — Tủ đồ, dữ liệu và ngữ cảnh
+**Đọc phần của mình:** [SV 1 — Dữ liệu và ngữ cảnh](#81-sv-1--chủ-nhiệm-dữ-liệu-tủ-đồ-và-ngữ-cảnh) · [SV 2 — Xếp hạng](#82-sv-2--chủ-nhiệm-ghép-bộ-xếp-hạng-và-cá-nhân-hóa) · [SV 3 — Giao diện và đo lường](#83-sv-3--chủ-nhiệm-giao-diện-tích-hợp-và-đo-lường). Sau đó cả nhóm đọc [ranh giới phối hợp](#84-ranh-giới-phối-hợp-việc-dễ-chồng-chéo-do-ai-làm), [mốc bàn giao](#85-ghép-việc-của-3-người-sẽ-ra-phiên-bản-nào) và [tiêu chí hoàn thành cá nhân](#88-tiêu-chí-hoàn-thành-cá-nhân-và-câu-hỏi-bảo-vệ).
+
+| Thành viên | Sản phẩm chuyên môn chính | Không phải phần em tự làm thay |
+|---|---|---|
+| SV 1 | Dữ liệu đúng, lọc hợp lệ, điểm ngữ cảnh giải thích được | Công thức S1/S2/S3, giao diện, tính thời gian |
+| SV 2 | Bộ phối và thứ tự xếp hạng có thể tính tay/test | Form nhập đồ, lưu log, tự thu thập toàn bộ nghiên cứu |
+| SV 3 | Luồng sử dụng, tích hợp, log và phân tích phiên đáng tin | Nhận dạng ảnh, viết lại điểm ngữ cảnh hoặc công thức xếp hạng |
+
+### 8.1. SV 1 — Chủ nhiệm dữ liệu, tủ đồ và ngữ cảnh
 
 **Nhánh:** `feat/wardrobe-context`  
-**Phụ trách:** `core/schema.py`, dữ liệu mẫu, `modules/context_filter/`; `modules/vision_extractor/` chỉ khi mở rộng được duyệt.
+**File/module sở hữu:** `core/schema.py`, `modules/wardrobe_store.py`, `modules/context_filter/`, dữ liệu mẫu và bảng cấu hình ngữ cảnh.
 
-**Câu hỏi em chịu trách nhiệm:** “Những món nào thực sự dùng được, và phù hợp ngữ cảnh đến đâu?”
+**Câu hỏi phải trả lời:** “Dữ liệu có đúng không, món nào dùng được và từng bộ hợp hoàn cảnh đến đâu?”
 
-**Để có v1.0:**
+#### SV 1: Học tối thiểu trước khi làm
 
-1. Soạn Item/Context mẫu, cùng cả nhóm thống nhất schema.
-2. Tạo 30–50 món mẫu có quyền sử dụng; cho nhập/sửa nhãn thủ công.
-3. Viết hàm đọc tủ, cập nhật `available`, lọc đúng người sở hữu và đồ sẵn sàng.
-4. Viết bảng ngữ cảnh nhập tay và bộ lọc nhiệt độ baseline, trả lý do loại.
-5. Gửi SV 2 danh sách món hợp lệ; gửi SV 3 cấu trúc biểu mẫu nhập/sửa.
+`dict`, JSON, hàm kiểm tra/đọc/ghi → phân biệt `null`/`unknown`/0 → đơn vị nhiệt độ/xác suất → bảng tra và trung bình → datetime có múi giờ. Không học CLIP, API thời tiết hoặc tách nền để bắt đầu phần này.
 
-**Để có v2.0:**
+#### SV 1: Đầu vào nhận và đầu ra gửi
 
-1. Tách ràng buộc cứng khỏi điểm phù hợp mềm.
-2. Viết `WeatherFit` và `OccasionFit`, có ví dụ tính tay.
-3. Giữ dữ liệu thiếu là `unknown`, không tự coi là phù hợp hoàn toàn.
-4. Chỉ khi phần bắt buộc đã xong mới thử gợi ý màu từ ảnh nền đơn giản hoặc nối một API thời tiết; không làm cả hai bằng mọi giá.
+- Nhận thông tin/ảnh từng món do người dùng cung cấp và đã đồng ý sử dụng; không tự suy độ dày hoặc hợp mưa từ màu ảnh.
+- Nhận đề xuất trường điểm từ SV 2, trường phiên/sự kiện từ SV 3; cập nhật schema sau khi cả nhóm thống nhất.
+- Gửi SV 2 `valid_items`, `items_by_id`, hàm `context_fit`, dữ liệu mặc đã xác nhận và mẫu có thể tính tay.
+- Gửi SV 3 hàm đọc/lưu/cập nhật tủ, danh sách giá trị hợp lệ, thông báo lỗi cụ thể, hàm xác nhận đã mặc. **SV 3 làm form; SV 1 làm xử lý dữ liệu sau form.**
 
-**Để có v3.0 và thực nghiệm:**
+#### SV 1: Nhiệm vụ tạo v1 — tuần 2–5
 
-1. Lưu lịch sử đã mặc tách khỏi lịch sử đã chọn; thêm thao tác xác nhận đã mặc với SV 3.
-2. Tạo snapshot tủ/ngữ cảnh đã ẩn danh để các phiên bản dùng cùng đầu vào.
-3. Kiểm tra quyền sử dụng ảnh, nhãn và sự nhất quán dữ liệu.
-4. Cùng SV 3 kiểm tra các phiên bị loại hoặc thiếu dữ liệu; không sửa nhãn sau khi xem kết quả để ưu ái một phiên bản.
+| Mã việc | Em tự làm | Bàn giao và cách kiểm tra |
+|---|---|---|
+| D1 | Chốt Item/Context; sau đó tích hợp Outfit/Event do hai bạn đề xuất | Từ điển trường: tên, kiểu, bắt buộc/thiếu, đơn vị; 5 món + 1 Context mẫu cùng schema |
+| D2 | Đọc/lưu tủ JSON; thêm/sửa món; cập nhật `available`; giữ mã không đổi | Thêm món, mở lại vẫn còn; sửa món không sinh bản trùng; sai loại/trùng mã báo lỗi |
+| D3 | Lọc đúng chủ và đồ sẵn sàng, không sửa danh sách đầu vào | Một món của người khác và một món đang giặt đều bị loại, có `reason_code`; đổi thời tiết không đổi kết quả lọc |
+| D4 | Cùng hai bạn mở rộng bộ mẫu lên tổng 30–50 món, gán nhãn và kiểm tra | Bộ phát triển có quyền sử dụng; đủ loại và ca thiếu dữ liệu; không yêu cầu một người tự nhập toàn bộ |
 
-**Phải bàn giao:** Schema, dữ liệu mẫu, bảng quy tắc, module lọc/điểm ngữ cảnh, test và bảng lỗi dữ liệu. Nếu có nhận dạng màu, thêm bảng đúng/sai và ví dụ thất bại.
+**Cửa nghiệm thu v1:** SV 2 gọi được hàm lọc không cần UI; SV 3 lưu/sửa tủ bằng hàm đã giao. Không lọt đồ sai chủ/không sẵn sàng. Thiếu giày là dữ liệu cần giải thích; không phải SV 1 phải tự sinh giày để cứu pipeline.
 
-**Nghiệm thu:** Không lọt đồ của người khác/đang giặt; thiếu giày trả không có bộ; đầu vào thiếu nhiệt độ được ghi nhận rõ. Giải thích được một món bị loại vì ràng buộc hay chỉ vì heuristic.
+#### SV 1: Nhiệm vụ tạo v2 — tuần 6–7
 
-**Tự học:** `dict`, JSON → hàm lọc → đơn vị thời tiết → hard/soft constraints → xử lý ảnh hoặc HTTP/API nếu còn thời gian.
+| Mã việc | Em tự làm | Bàn giao và cách kiểm tra |
+|---|---|---|
+| D5 | Viết bảng nhiệt độ–giữ ấm, sự kiện–trang trọng; quy ước hợp mưa theo mục 7.2 | Bảng cấu hình có mã, nguồn/giả định, ví dụ tính tay; cả nhóm biết đây là heuristic |
+| D6 | Viết `context_fit` trả WeatherFit, OccasionFit và thành phần/lý do | Kết quả trong 0–1; ví dụ mục 7.2 trả WeatherFit = 0.71 và OccasionFit = 1 |
+| D7 | Xử lý `unknown`, nhiệt độ/mưa thiếu; kiểm tra ranh giới và đơn vị | Test 20°C, 28°C, mưa 0/1/null, giá trị ngoài 0–1 bị từ chối ở đầu vào; không lọc bớt ứng viên |
 
-### 8.2. SV 2 — Ghép bộ, xếp hạng và cá nhân hóa
+**Cửa nghiệm thu v2:** SV 2 gọi được điểm ngữ cảnh, khớp tính tay; SV 3 hiển thị được dữ liệu thiếu đúng nghĩa. Không nối API để thay cho phần điểm chưa hoàn thành.
+
+#### SV 1: Nhiệm vụ tạo v3 và chuẩn bị thực nghiệm — tuần 8–9
+
+| Mã việc | Em tự làm | Bàn giao và cách kiểm tra |
+|---|---|---|
+| D8 | Hàm `confirm_worn` kiểm tra chủ tủ/thời điểm rồi lưu `last_worn_at` | Chỉ chọn bộ không cập nhật mặc; xác nhận đã mặc mới cập nhật; không cho mốc mặc tương lai so với mốc đang kiểm tra |
+| D9 | Tạo snapshot tủ/ngữ cảnh/mốc tham chiếu; phối hợp nhận snapshot lựa chọn từ SV 3 | Gói dữ liệu có mã và mô tả nguồn; chạy lại cho cùng đầu vào; thao tác demo không sửa snapshot nghiên cứu |
+| D10 | Kiểm tra dữ liệu trước nghiên cứu chính | Bảng lỗi: thiếu loại, nhãn thiếu, mã trùng, lịch sử mặc không hợp lệ; xử lý trước khi khóa dữ liệu |
+
+**Tuần 10–12:** Cùng tổ chức phiên; chủ trì kiểm tra dữ liệu thiếu, quyền sử dụng và bản bàn giao đã xử lý riêng tư. Viết phần dữ liệu, cách cho điểm ngữ cảnh và giới hạn; không tự đổi nhãn sau khi thấy v2/v3 thua.
+
+**Gói bàn giao cá nhân:** Schema đã duyệt + hàm lưu/lọc/điểm ngữ cảnh/lịch sử mặc + dữ liệu mẫu + test của các việc D1–D10 + bảng lỗi dữ liệu + phần báo cáo tương ứng. **Không chịu trách nhiệm viết giao diện, S3 hoặc script tính thời gian.**
+
+### 8.2. SV 2 — Chủ nhiệm ghép bộ, xếp hạng và cá nhân hóa
 
 **Nhánh:** `feat/outfit-ranking`  
-**Phụ trách:** `modules/compatibility_scorer/`, `modules/user_preference/`, `evaluate_simulation.py`.
+**File/module sở hữu:** `modules/compatibility_scorer/`, `modules/user_preference/`, bảng màu/phong cách, trọng số v1/v2/v3 và `evaluate_simulation.py`.
 
-**Câu hỏi em chịu trách nhiệm:** “Trong các bộ dùng được, nên đưa bộ nào lên trước và vì sao?”
+**Câu hỏi phải trả lời:** “Vì sao bộ A được đưa trước bộ B, và thay đổi đó đến từ thành phần nào?”
 
-**Để có v1.0:**
+#### SV 2: Học tối thiểu trước khi làm
 
-1. Nhận danh sách món hợp lệ từ SV 1.
-2. Sinh tổ hợp áo–quần–giày; loại trùng và tính điểm quy tắc màu/phong cách.
-3. Xếp hạng có quy tắc phụ cố định khi bằng điểm.
-4. Trả tối đa 3 bộ và lý do thật cho SV 3; hỗ trợ loại các bộ đã hiển thị khi bấm đổi.
-5. Viết test tủ nhỏ có thể kiểm tra toàn bộ bằng tay.
+Vòng lặp lồng nhau → tổ hợp áo–quần–giày → hàm tính điểm → `sorted` và xử lý bằng điểm → số đếm bằng dictionary → test so sánh số thực. Chưa cần embedding, deep learning hoặc RL.
 
-**Để có v2.0:**
+#### SV 2: Đầu vào nhận và đầu ra gửi
 
-1. Nhận `WeatherFit`, `OccasionFit` từ SV 1.
-2. Kết hợp thành `S2`, chuẩn hóa thang điểm và tách cấu hình trọng số.
-3. Chạy v1/v2 trên cùng dữ liệu, giải thích trường hợp thứ tự thay đổi.
-4. Đo độ trễ và số ứng viên; không gọi đây là thời gian quyết định của người dùng.
+- Nhận món hợp lệ và hàm ngữ cảnh từ SV 1; nhận lịch sử chọn đã loại trùng từ SV 3; không đọc file log thô trong hàm chấm điểm.
+- Gửi SV 3 các hàm sinh/chấm/xếp hạng **toàn bộ ứng viên** cùng `score_parts` và lý do có cơ sở.
+- SV 3 dùng những hàm này để lấy tối đa 3 bộ chưa xem. Hai người cùng test chính sách Top-3, nhưng **SV 3 sở hữu trạng thái phiên và danh sách đã xem**.
+- Hàm thuật toán không gọi UI, không ghi tủ đồ/log và không tự sửa `available` hoặc `last_worn_at`.
 
-**Để có v3.0 và thực nghiệm:**
+#### SV 2: Nhiệm vụ tạo v1 — tuần 2–5
 
-1. Nhận lịch sử lựa chọn từ log của SV 3 và lịch sử mặc từ dữ liệu của SV 1.
-2. Viết điểm sở thích bằng số đếm và phạt lặp; xử lý người mới theo công thức ở mục 7.
-3. Có cách tắt riêng sở thích/phạt lặp phục vụ ablation, không thay cả pipeline.
-4. Đóng băng cấu hình trước nghiên cứu chính; kiểm tra không dùng dữ liệu tương lai.
-5. Cùng SV 3 phân tích kết quả, kể cả khi v3 không hơn v2.
+| Mã việc | Em tự làm | Bàn giao và cách kiểm tra |
+|---|---|---|
+| R1 | Ghép mọi tổ hợp đúng loại; tạo `outfit_id` ổn định | 2 áo × 2 quần × 1 giày = 4 bộ; thiếu giày = 0; không trùng bộ |
+| R2 | Viết bảng màu, bảng tương thích trang trọng; mỗi điểm outfit là trung bình ba cặp áo–quần, áo–giày, quần–giày | Bảng đối xứng, có trường hợp `unknown = 0.5`; tính tay ít nhất 3 bộ rồi đối chiếu code |
+| R3 | Tính S1 = 0.6 màu + 0.4 phong cách; sắp điểm giảm, mã tăng khi bằng điểm | Ví dụ 0.8/0.7 cho S1 = 0.76; đổi thời tiết, sự kiện hoặc lịch sử không đổi S1 |
+| R4 | Bàn giao hàm và test cùng SV 3 chính sách lấy Top-3 chưa xem | Có 1/2 bộ trả đúng số; 4 bộ trả nhóm 3 rồi nhóm 1; không lặp mã trong một nhóm |
 
-**Phải bàn giao:** Ba thuật toán chạy lại được, cấu hình, điểm thành phần, test, kết quả hiệu năng và ví dụ xếp hạng đúng/sai mong đợi.
+**Cửa nghiệm thu v1:** Giải thích được thứ hạng từng bộ trên tủ nhỏ, không chỉ trình diễn “máy đã gợi ý”. Bảng phong cách là tương thích giữa món; không lén dùng sự kiện trong baseline.
 
-**Nghiệm thu:** Tự tính điểm một bộ bằng tay và khớp code; không tạo bộ không có thật; lịch sử rỗng không lỗi; tắt từng thành phần có tác động kiểm tra được.
+#### SV 2: Nhiệm vụ tạo v2 — tuần 6–7
 
-**Tự học:** Vòng lặp → tích Descartes → sắp xếp → chuẩn hóa điểm → thống kê đếm → ablation. Chưa học bandit trước khi các bước này ổn định.
+| Mã việc | Em tự làm | Bàn giao và cách kiểm tra |
+|---|---|---|
+| R5 | Gọi `context_fit` của SV 1; kết hợp S2 theo mục 7.2 | S1 = 0.76, WeatherFit = 0.71, OccasionFit = 1 cho S2 = 0.817; điểm thành phần lưu đủ |
+| R6 | So sánh trên cùng tập ứng viên, cùng S1; tìm ví dụ có/không đổi thứ hạng | Bảng mã bộ, S1, WeatherFit, OccasionFit, S2; giải thích tác động của ngữ cảnh |
+| R7 | Đo độ trễ và số ứng viên trên dữ liệu phát triển | Script, cấu hình máy, quy mô tủ và kết quả chạy lại; không gọi ms engine là ms người dùng quyết định |
 
-### 8.3. SV 3 — Giao diện, tích hợp và đo trải nghiệm
+**Cửa nghiệm thu v2:** Tập mã bộ trước xếp hạng của v1 và v2 giống nhau; khác biệt chỉ là cách ưu tiên. Không thêm ngưỡng loại điểm thấp hoặc thay bảng S1 để làm v2 đẹp hơn.
+
+#### SV 2: Nhiệm vụ tạo v3 — tuần 8–9
+
+| Mã việc | Em tự làm | Bàn giao và cách kiểm tra |
+|---|---|---|
+| R8 | Tính PreferenceScore từ sáu khóa thuộc tính theo mục 7.4 | Ví dụ số đếm tính tay; hai user không dùng lịch sử lẫn nhau; đổi/hiển thị không tăng số đếm; lịch sử trộn phase chỉ đếm phase được duyệt |
+| R9 | Tính phạt từng món và trung bình ba món bằng mốc tham chiếu cố định | Chưa mặc = 0; sau 1 ngày = 2/3 ở món đó; sau 3 ngày = 0; đồ vừa mặc vẫn là ứng viên nếu sẵn sàng |
+| R10 | Re-rank tất cả bộ có S2; xử lý cold-start và cấu hình ablation | Lịch sử rỗng hoàn toàn cho thứ tự v2; có mặc nhưng chưa chọn vẫn bị phạt; bộ ngoài Top-3 v2 có thể lên Top-3 v3 |
+| R11 | Khóa trọng số và kiểm tra rò rỉ dữ liệu trước pilot cuối | Mọi sự kiện lịch sử có trước cutoff; cùng snapshot/mốc/config cho cùng kết quả |
+
+**Tuần 10–12:** Cùng tổ chức phiên; phân tích khi nào thứ tự thay đổi, vì sao v3 có thể kém hơn; chạy ablation thuật toán trên snapshot cố định. Viết phần phương pháp, công thức, ví dụ và giới hạn. Ablation với người dùng chỉ bổ sung nếu được duyệt và đủ nguồn lực.
+
+**Gói bàn giao cá nhân:** Bộ sinh ứng viên + bộ chấm/xếp hạng v1/v2/v3 + cấu hình + test R1–R11 + script độ trễ + bảng giải thích thứ hạng + phần báo cáo tương ứng. **Không chịu trách nhiệm viết form, timer, lưu lịch sử hoặc tự thu thập toàn bộ nghiên cứu.**
+
+### 8.3. SV 3 — Chủ nhiệm giao diện, tích hợp và đo lường
 
 **Nhánh:** `feat/ui-evaluation`  
-**Phụ trách:** `app_ui/`, `core/pipeline_manager.py`, log sự kiện và `evaluate_sessions.py`.
+**File/module sở hữu:** `app_ui/`, `core/pipeline_manager.py`, `modules/event_log.py`, `evaluate_sessions.py`, cấu hình lịch thử và bản tổng hợp giao thức.
 
-**Câu hỏi em chịu trách nhiệm:** “Người dùng có chọn được nhanh và phù hợp hơn không, và số đo có đáng tin không?”
+**Câu hỏi phải trả lời:** “Người dùng đã làm gì, phiên kết thúc ra sao, và các con số có tái tạo được từ log không?”
 
-**Để có v1.0:**
+#### SV 3: Học tối thiểu trước khi làm
 
-1. Dựng Streamlit nhập/sửa tủ theo schema chung, không tự tạo schema khác.
-2. Hiển thị tối đa 3 bộ với nút chọn, đổi, kết thúc không chọn.
-3. Tích hợp hàm lọc của SV 1 và hàm xếp hạng của SV 2.
-4. Lưu `session_started` ngay lúc bắt đầu; đổi bộ không reset timer.
-5. Kiểm tra bấm chốt lặp, tủ trống, tải lại trang và log chưa có sự kiện kết thúc.
+Streamlit form/button → Session State và rerun → trạng thái phiên → JSONL/CSV → đồng hồ đơn điệu → trung vị, tỷ lệ và chênh lệch theo người. Không học frontend nhiều framework cùng lúc.
 
-**Để có v2.0:**
+#### SV 3: Đầu vào nhận và đầu ra gửi
 
-1. Cho chạy v1/v2 với cùng giao diện, ngữ cảnh và tủ đồ.
-2. Lưu mã phiên bản, cấu hình, snapshot và danh sách gợi ý thực tế.
-3. Viết script tính thời gian, số lần đổi, tỷ lệ hoàn thành từ dữ liệu thử có thể tính tay.
-4. Không cho giao diện v2 ít thao tác hơn rồi quy cải thiện đó cho xếp hạng.
+- Nhận hàm lưu tủ/lọc/điểm ngữ cảnh từ SV 1; hàm ghép/chấm/xếp hạng từ SV 2. Nếu chưa bàn giao, dùng fixture đúng hợp đồng để phát triển UI, ghi rõ là dữ liệu thử.
+- Gửi SV 1 đề xuất schema Event/Session và lỗi dữ liệu cần hiển thị; không tự đổi tên trường ở UI.
+- Gửi SV 2 lịch sử lựa chọn hợp lệ trước cutoff, kèm thuộc tính lúc chọn; không biến các gợi ý đã hiển thị thành lựa chọn.
+- Gửi cả nhóm log, script và bảng kết quả; **hai bạn còn lại phải cùng kiểm tra, không chỉ nhận biểu đồ cuối**.
 
-**Để có v3.0 và thực nghiệm:**
+#### SV 3: Nhiệm vụ tạo v1 — tuần 2–5
 
-1. Tích hợp re-ranking của SV 2, hiển thị lý do có cơ sở.
-2. Thêm đánh giá phù hợp 1–5 và xác nhận đã mặc, không gộp hai hành vi này.
-3. Chủ trì kiểm tra log pilot và luân phiên thứ tự v1/v2/v3.
-4. Cả ba cùng tổ chức phiên người dùng; SV 3 không phải tự tuyển và quan sát toàn bộ.
-5. Tạo bảng/biểu đồ theo người từ log thật và ghi nhận phiên bỏ dở, timeout, lỗi.
+| Mã việc | Em tự làm | Bàn giao và cách kiểm tra |
+|---|---|---|
+| U1 | Một UI Streamlit nhập/sửa tủ, nhập ngữ cảnh; gọi hàm lưu của SV 1 | Nhập dữ liệu hợp lệ lưu được; sai dữ liệu báo đúng; không chép logic lưu tủ vào form |
+| U2 | Pipeline gọi lọc → ghép → chấm → bỏ bộ đã xem → tối đa 3 | Test tích hợp với tủ 4 bộ: nhóm 3 rồi nhóm 1; 0 bộ báo lý do, không dựng bộ giả |
+| U3 | Trạng thái bắt đầu → xem/đổi → chọn hoặc kết thúc; khóa chốt lặp | Chọn lần đầu kết thúc đồng hồ; đổi không reset; đổi sau khi hết bộ bị vô hiệu hóa |
+| U4 | Lưu log ngay từng sự kiện, đo thời gian bằng cùng đồng hồ | Test mốc giả 10 giây/28 giây ra 18.000 ms; đúng một kết quả chọn dù bấm lặp; mở lại đọc được log |
+| U5 | Hai câu hỏi sau phiên: phù hợp và hài lòng; chưa có nút xác nhận đã mặc ở v1 | Câu trả lời do người dùng nhập; có thể bỏ qua, lưu null; khảo sát không cộng vào thời gian quyết định |
 
-**Phải bàn giao:** Ứng dụng tích hợp, schema log, test luồng, script phân tích, giao thức thực nghiệm và bảng kết quả có thể chạy lại.
+**Cửa nghiệm thu v1:** Một người ngoài nhóm dùng được luồng cơ bản; các phiên chọn, bỏ dở, lỗi và mất kết nối không bị xóa dấu. Hai câu hỏi đánh giá phải có từ v1, không chờ v3 mới bổ sung rồi so sánh các phiên đo khác nhau.
 
-**Nghiệm thu:** Người ngoài nhóm tự làm được một phiên theo hướng dẫn; timer/log đúng; các phiên không hoàn thành không biến mất khỏi báo cáo.
+#### SV 3: Nhiệm vụ tạo v2 — tuần 6–7
 
-**Tự học:** Streamlit → Session State → sự kiện → đo khoảng thời gian → CSV/JSONL → trung vị và so sánh theo cặp.
+| Mã việc | Em tự làm | Bàn giao và cách kiểm tra |
+|---|---|---|
+| U6 | Chọn phiên bản bằng cấu hình người điều hành trước khi bắt đầu; giữ UI thống nhất | Trong phiên không đổi version/ngữ cảnh; cùng ảnh, số thẻ, nút, câu hỏi; giao diện nghiên cứu không gắn nhãn “bản thông minh hơn” |
+| U7 | Lưu metadata phiên vào `session_started` ngay khi bắt đầu; lưu mã cấu hình, snapshot, thứ tự thử, tình huống và nhóm bộ đã trả | Truy một dòng tổng kết về đúng chuỗi sự kiện/ứng viên; đóng tab hoặc reload trước khi chốt vẫn đọc được version/phase/snapshot từ `session_started`; không chỉ lưu tổng thời gian |
+| U8 | Viết script tổng hợp và kiểm tra bằng fixture có đáp án tính tay | 4 phiên gồm 2 chọn, 1 bỏ dở, 1 lỗi có completion = 2/4; không biến phiên không chọn thành 0 ms |
 
-### 8.4. Ghép việc của 3 người sẽ ra phiên bản nào?
+**Cửa nghiệm thu v2:** Cùng dữ liệu chạy được v1/v2 bằng một pipeline; kết quả từ log khớp tính tay. Không thêm thao tác tiện lợi chỉ riêng v2.
+
+#### SV 3: Nhiệm vụ tạo v3 và pilot — tuần 8–9
+
+| Mã việc | Em tự làm | Bàn giao và cách kiểm tra |
+|---|---|---|
+| U9 | Kết nối v2-score → v3-rerank → Top-3; đọc lịch sử trước cutoff | Phiên thử mới vẫn ghi log nhưng không làm đổi snapshot đang dùng cho nghiên cứu |
+| U10 | Nối nút xác nhận đã mặc với hàm SV 1, không dùng nút chọn để thay thế | Chốt thử không đổi `last_worn_at`; xác nhận mặc mới gọi lưu; nghiên cứu không buộc người tham gia mặc thật từng bộ |
+| U11 | Soạn hướng dẫn thao tác, lịch luân phiên và checklist quan sát; chủ trì kiểm log pilot | 2–3 người thử trước; kiểm đồng hồ, câu hỏi, tủ thiếu, reload; chốt giao thức với giảng viên |
+
+**Tuần 10–12:** Cùng hai bạn tổ chức phiên; chạy script, dựng bảng ghép cặp theo người, đối soát số phiên và dữ liệu thiếu; viết phần tích hợp/phép đo/thực nghiệm. Không để SV 3 một mình tuyển người, làm người quan sát, phân tích và viết toàn bộ báo cáo.
+
+**Gói bàn giao cá nhân:** UI + pipeline + event logger/history reader + test U1–U11 + giao thức/lịch thử + script phân tích + bảng từ log thật + phần báo cáo tương ứng. **Không tự viết lại WeatherFit, S1/S2/S3 hoặc điều chỉnh điểm để làm đẹp kết quả.**
+
+### 8.4. Ranh giới phối hợp: Việc dễ chồng chéo do ai làm?
+
+| Điểm giao nhau | Người làm chính | Người phối hợp / ranh giới |
+|---|---|---|
+| Thêm/sửa một món | SV 1 lưu/kiểm tra dữ liệu | SV 3 dựng form và hiện lỗi; không có hai cách lưu riêng |
+| Hợp đồng dùng chung | SV 1 cập nhật `schema.py` | SV 2 duyệt Outfit/điểm, SV 3 duyệt Event/Session; cả nhóm chấp nhận trước khi đổi |
+| Điểm ngữ cảnh | SV 1 tính WeatherFit/OccasionFit | SV 2 chỉ gọi và ghép S2, không tự tạo bảng khác |
+| S1/S2/S3 và thứ hạng | SV 2 | SV 3 chỉ điều phối; không có công thức trong UI |
+| Danh sách đã xem / Top-3 | SV 3 giữ trạng thái và cắt nhóm | SV 2 bàn giao đủ ứng viên đã chấm; cùng test không lặp |
+| Lịch sử đã chọn | SV 3 ghi/đọc/loại trùng | SV 2 dùng để đếm sở thích; SV 1 phối hợp schema/snapshot |
+| Lịch sử đã mặc | SV 1 kiểm tra và lưu | SV 3 lấy xác nhận riêng; SV 2 chỉ dùng mốc để tính phạt |
+| Khóa dữ liệu và cấu hình | SV 1 dữ liệu, SV 2 thuật toán, SV 3 lịch/giao thức | Chốt cùng một mốc trước nghiên cứu; không ai tự thay giữa đợt |
+| Thực nghiệm người dùng | Cả ba theo lịch được chia | SV 3 điều phối, không có nghĩa làm một mình |
+| Kết luận đề tài | Cả ba, giảng viên góp ý | Không một người hoặc agent tự diễn giải thay khi chưa đối chiếu log |
+
+**Quy tắc nhận việc:** Khi lỗi thuộc module của bạn khác, gửi đầu vào nhỏ, kết quả mong đợi/thực tế và test tái hiện. Người sở hữu sửa hoặc đồng ý cho hỗ trợ; không “chữa cháy” bằng bản sao hàm trong module mình.
+
+### 8.5. Ghép việc của 3 người sẽ ra phiên bản nào?
 
 | Mốc | SV 1 bàn giao | SV 2 bàn giao | SV 3 bàn giao | Phiên bản cả nhóm nhận được |
 |---|---|---|---|---|
-| Tuần 1–2 | Dữ liệu và schema thử | Ghép bộ, sắp xếp thử | Form và log thử | Bài tập nền, chưa phải sản phẩm hoàn chỉnh |
-| Tuần 3–5 | Nhập tay, trạng thái đồ, lọc baseline | Điểm màu/phong cách, Top-3 | Giao diện và đo phiên đầu-cuối | **v1.0: bản quy tắc chạy được và đo được** |
-| Tuần 6–7 | Điểm ngữ cảnh mềm | Kết hợp ngữ cảnh vào thứ hạng | Cùng UI, log có mã cấu hình | **v2.0: gợi ý có xét ngữ cảnh; chưa cá nhân hóa** |
-| Tuần 8–9 | Lịch sử mặc và snapshot | Điểm sở thích + phạt lặp | Tích hợp và pilot | **v3.0: cá nhân hóa heuristic sẵn sàng kiểm chứng** |
-| Tuần 10–12 | Kiểm tra dữ liệu, cùng thu thập | Phân tích thuật toán/ablation | Tổng hợp phiên và trình bày | **Bản nghiên cứu: v1/v2/v3 + dữ liệu thật + kết luận có giới hạn** |
+| Tuần 1–2 | D1 và dữ liệu 5 món | R1 thử + điểm tay | Schema log đề xuất + form/log thử | Hợp đồng và bài tập chung, chưa là sản phẩm |
+| Tuần 3–5 | D2–D4: lưu tủ/lọc hợp lệ | R1–R4: tổ hợp/S1/thứ hạng | U1–U5: UI/Top-3/timer/log/khảo sát | **v1.0: bản quy tắc chạy đầu-cuối và đo được** |
+| Tuần 6–7 | D5–D7: điểm ngữ cảnh mềm | R5–R7: S2/so sánh/độ trễ | U6–U8: cùng UI/log/đối soát | **v2.0: thêm ngữ cảnh, chưa cá nhân hóa** |
+| Tuần 8–9 | D8–D10: mặc/snapshot/kiểm dữ liệu | R8–R11: sở thích/phạt lặp/khóa cấu hình | U9–U11: tích hợp v3/pilot/giao thức | **v3.0: cá nhân hóa heuristic sẵn sàng kiểm chứng** |
+| Tuần 10–12 | Kiểm dữ liệu/quyền riêng tư | Phân tích thứ hạng/ablation | Tổng hợp phiên/bảng ghép cặp | **Bản nghiên cứu: code + dữ liệu được phép bàn giao + phân tích trung thực** |
 
-**Không nhầm:** v3 chạy được không đồng nghĩa v3 tốt hơn. Nếu số liệu không cho thấy lợi ích, sản phẩm nghiên cứu vẫn phải báo cáo kết quả đó.
+**Bàn giao không chỉ là gửi code:** Mỗi lần gửi cần tên hàm, đầu vào/đầu ra, một ví dụ chạy được, test và lỗi còn biết. Bạn nhận phải chạy lại trước khi đánh dấu xong.
 
-**Luồng bàn giao:** SV 1 → danh sách món/điểm ngữ cảnh → SV 2 → danh sách bộ đã xếp hạng → SV 3 → phản hồi/log → SV 2 dùng cho các phiên tương lai. Snapshot lịch sử trong thí nghiệm chính vẫn giữ cố định theo giao thức.
+**Khi chưa có module của bạn:** Dùng fixture 5 món theo schema để làm độc lập, không ngồi chờ đến tuần ghép. Fixture chỉ phục vụ phát triển; trước nghiệm thu phải thay bằng hàm thật và kiểm thử đầu-cuối.
 
-### 8.5. Mỗi người bắt đầu ngay bằng việc gì?
+**Không nhầm:** v3 chạy được không đồng nghĩa v3 tốt hơn. Các mốc nghiệm thu xác nhận tính đúng/khả năng đo, không buộc số liệu phải cho thấy cải tiến.
 
-- **SV 1:** Viết 5 Item mẫu và một Context; viết test loại đúng món đang giặt.
-- **SV 2:** Dùng chính 5 Item đó để ghép 4 bộ trước lọc và 2 bộ sau lọc; tính tay thứ tự.
-- **SV 3:** Tạo một màn hình hiển thị các bộ mẫu, nút bắt đầu/chọn/đổi; lưu một phiên thử.
-- **Cả nhóm:** Mỗi người vẫn tự hoàn thành bài tập nền ở mục 6 trước; đây là đầu việc sau khi đã nắm phần chung.
+### 8.6. Mỗi người bắt đầu ngay bằng việc gì?
 
-### 8.6. Trách nhiệm chung và vai trò nhóm trưởng
+Sau khi tự hoàn thành bài tập chung ở mục 6:
 
-- Cả 3 người cùng phỏng vấn để kiểm tra pain point, gán/kiểm tra nhãn và thu thập thực nghiệm.
-- SV 1 viết phần dữ liệu/ngữ cảnh; SV 2 viết phương pháp/xếp hạng; SV 3 viết tích hợp/đo lường; cả nhóm cùng viết kết luận.
-- Mỗi người đọc ít nhất một tài liệu liên quan và trình bày lại.
-- Nhóm trưởng do nhóm chọn; chức danh này không tạo thêm một thành viên hoặc buộc một người làm thay các phần khác.
-- Kiểm tra chéo: SV 1 đọc test của SV 2, SV 2 kiểm tra log của SV 3, SV 3 kiểm tra dữ liệu của SV 1.
-- Nếu chậm tiến độ, bỏ xử lý ảnh nâng cao và API trước; không bỏ logging, đối chứng hoặc kiểm thử để giữ tính năng trình diễn.
+- **SV 1:** Nộp 5 Item + 1 Context, từ điển trường và test lọc một quần đang giặt. Chưa viết API thời tiết.
+- **SV 2:** Nhận chính dữ liệu đó, liệt kê 4 bộ trước lọc và 2 bộ sau lọc, tính tay màu/phong cách, viết test R1/R3. Chưa cá nhân hóa.
+- **SV 3:** Tạo form/ngữ cảnh + màn hình bộ mẫu, lưu một phiên bắt đầu–đổi–chọn; đề xuất schema log gửi SV 1. Chưa làm dashboard đẹp.
+- **Cả nhóm:** Chạy lại bài của nhau, ghi điểm hợp đồng chưa thống nhất và chọn một nhóm trưởng. Tên thật điền vào bảng phân công nội bộ, không bắt buộc công khai thông tin sinh viên trên trang đọc.
+
+### 8.7. Trách nhiệm chung và vai trò nhóm trưởng
+
+- Phỏng vấn khám phá: chia khoảng 5–8 người cho cả nhóm, cùng dùng năm câu ở mục 0.2; phân tích cả người không gặp pain point.
+- Dữ liệu mẫu: cả ba chụp/nhập phần được chia; SV 1 kiểm schema, hai bạn kiểm chéo nhãn. Đây là công việc chung, không phải SV 1 nhập đồ cho toàn bộ người tham gia một mình.
+- Mỗi người đọc ít nhất một nguồn: SV 1 đọc bài về ngữ cảnh, SV 2 về compatibility/xếp hạng, SV 3 về thời gian chọn/UI; cùng trao đổi các giới hạn trong mục 0.7.
+- Thực nghiệm: chia số buổi/người tham gia tương đối đều, dùng cùng kịch bản, không gợi ý đáp án hoặc nói v3 tốt hơn. Tách rõ người vận hành và người quan sát khi có đủ người.
+- SV 1 viết dữ liệu/ngữ cảnh; SV 2 viết phương pháp/xếp hạng; SV 3 viết hệ thống/phép đo. Cả ba cùng viết nghiên cứu liên quan, đọc kết quả và chốt kết luận.
+- Kiểm tra chéo: SV 1 tính lại điểm của SV 2; SV 2 đối soát log/biểu đồ của SV 3; SV 3 thử đầu vào thiếu/sai của SV 1.
+- Nhóm trưởng giữ lịch, nhắc bàn giao và tổng hợp vướng mắc; không tự nhận hết việc khó hoặc làm hộ phần một thành viên chưa hiểu.
+- Nếu chậm, giữ lõi quy tắc–ngữ cảnh–heuristic–logging; không mở thêm AI/API. Giảm trang trí hoặc nghiên cứu mở rộng sau khi trao đổi giảng viên, không bỏ đối chứng hay bịa dữ liệu.
+
+### 8.8. Tiêu chí hoàn thành cá nhân và câu hỏi bảo vệ
+
+Một đầu việc chỉ được đánh dấu xong khi: **có đầu ra → có test/ví dụ → bạn nhận chạy được → tác giả giải thích được → ghi phần chưa làm**. “Đã hỏi agent” hoặc “đã viết 80%” không phải bằng chứng hoàn thành.
+
+| Thành viên | Demo cá nhân phải làm được | Câu hỏi phải tự trả lời |
+|---|---|---|
+| SV 1 | Đổi trạng thái một món; chứng minh lọc đúng; tính tay WeatherFit/OccasionFit; mở lại dữ liệu mặc | Vì sao `null` không phải 0? Tại sao v1 không lọc theo thời tiết? Vì sao đã chọn chưa phải đã mặc? |
+| SV 2 | Tính S1/S2/S3 cho một bộ; giải thích A lên/B xuống; chạy cold-start và phạt mềm | Vì sao phải re-rank trước Top-3? Vì sao đồ vừa mặc không bị loại? Ablation cho biết và chưa cho biết gì? |
+| SV 3 | Chạy chọn/đổi/bỏ dở/reload; đối soát log; tính lại một bảng từ fixture | Timer có reset khi rerun không? Phiên lỗi nằm ở mẫu số nào? Máy lấy điểm hài lòng từ đâu? |
+
+Cuối kỳ, mỗi người nộp danh sách đầu việc mình sở hữu, bằng chứng kiểm tra, một lỗi đã tự tìm/sửa và phần báo cáo mình viết. Không chấm đóng góp chỉ bằng số dòng code hoặc số commit.
 
 ---
 
 ## 9. Dữ liệu: Nhỏ, sạch, có quyền sử dụng
 
-### 9.1. Bắt đầu bằng ba loại dữ liệu
+### 9.1. Hai bộ dữ liệu chính và một bộ mở rộng tùy chọn
 
 **Bộ A — Dữ liệu học và kiểm thử:**
 
@@ -952,7 +1094,9 @@ Chưa trả lời được thì chưa nên viết LinUCB hay Thompson Sampling b
 - Có đủ áo, quần, giày và một số trường hợp khó.
 - Dùng để phát triển quy tắc, sửa lỗi và thử trọng số.
 
-**Bộ B — Dữ liệu kiểm tra xử lý ảnh:**
+**Bộ B — Dữ liệu kiểm tra xử lý ảnh, chỉ khi mở rộng được duyệt:**
+
+Không thu bộ này trong phạm vi bắt buộc v1/v2/v3. Các yêu cầu sau chỉ áp dụng nếu nhóm thực sự làm nhận dạng ảnh ở nhánh mở rộng.
 
 - Giữ riêng những món không dùng để chỉnh bộ nhận dạng hoặc ngưỡng màu.
 - Người kiểm tra xác nhận nhãn trước khi xem dự đoán.
@@ -986,6 +1130,8 @@ Không cần tải mọi dataset ngay đầu kỳ. Dữ liệu phải phục v�
 - Thống nhất thời hạn giữ dữ liệu, nơi lưu và ai được truy cập.
 - Cho phép người tham gia dừng và yêu cầu xử lý dữ liệu theo nội dung đã đồng ý.
 - Không tải ảnh riêng tư, dữ liệu người tham gia hoặc khóa API lên AI agent/dịch vụ bên ngoài khi chưa được phép.
+- Mã `P01` chỉ là mã giả nếu nhóm vẫn giữ bảng liên hệ; lưu bảng đó riêng và hạn chế truy cập. Không gọi đây là ẩn danh hoàn toàn.
+- Bản công khai mặc định dùng dữ liệu mẫu nhân tạo, schema và script. Chỉ công khai dữ liệu nghiên cứu khi có đồng ý đúng phạm vi và đã rà nguy cơ nhận dạng từ ảnh, timestamp hoặc chi tiết kết hợp; nếu không, bàn giao có kiểm soát cho giảng viên và công bố bảng tổng hợp phù hợp.
 
 ---
 
@@ -996,9 +1142,10 @@ Không cần tải mọi dataset ngay đầu kỳ. Dữ liệu phải phục v�
 | Chỉ số | Cách hiểu | Vai trò |
 |---|---|---|
 | `decision_time_ms` | Từ khi bấm bắt đầu phiên, sau khi ngữ cảnh đã được xác nhận, đến khi chốt một bộ | Chỉ số chính của nghiên cứu giao diện |
-| `refresh_count` | Số lần yêu cầu xem nhóm bộ khác trong phiên | Chỉ số hỗ trợ về công sức lựa chọn |
-| `completion_rate` | Số phiên chốt được bộ / số phiên thử theo giao thức | Tránh kết luận “nhanh” do bỏ qua người không chọn được |
-| `satisfaction` | Người dùng đánh giá mức phù hợp sau phiên, thang 1–5 | Kiểm tra chất lượng lựa chọn |
+| `refresh_count` | Số sự kiện yêu cầu nhóm gợi ý khác được ứng dụng chấp nhận trong phiên, kể cả yêu cầu dẫn tới lỗi | Chỉ số phụ chính; không phải số lần thay đồ ngoài đời |
+| `completion_rate` | Số phiên chốt được bộ / tổng phiên đã bắt đầu trong nghiên cứu chính | Tránh kết luận “nhanh” do bỏ qua người không chọn được |
+| `suitability` | Người dùng đánh giá bộ đã chốt phù hợp nhu cầu/ngữ cảnh, 1–5 | Chất lượng của lựa chọn; chỉ có nếu chọn bộ và trả lời |
+| `satisfaction` | Người dùng đánh giá hài lòng với quá trình chọn trong phiên, 1–5 | Trải nghiệm; có thể hỏi cả khi chủ động kết thúc không chọn |
 | `engine_latency_ms` | Thời gian chương trình lọc, ghép và xếp hạng | Chỉ số kỹ thuật, không thay thế thời gian quyết định |
 | `invalid_recommendation_count` | Số gợi ý vi phạm ràng buộc cứng | Bắt buộc bằng 0 trong các kiểm thử đã xác định |
 | Thời gian thêm món | Thời gian nhập ảnh và xác nhận thuộc tính | Đánh giá riêng công sức số hóa tủ đồ |
@@ -1015,9 +1162,23 @@ Câu hỏi mức phù hợp dùng thống nhất sau khi chốt: **“Bộ vừa
 - 4: Phù hợp.
 - 5: Rất phù hợp.
 
-Phiên không chọn được không có điểm đánh giá bộ đã chọn; ghi thiếu, không tự gán 1 hoặc 0. Có thể hỏi riêng lý do không chọn. Nếu muốn báo tỷ lệ bộ được đánh giá phù hợp, chốt trước ngưỡng, ví dụ điểm từ 4 trở lên, và luôn ghi rõ mẫu số là các phiên đã chọn có đánh giá.
+Lưu câu trả lời này vào `suitability`. Phiên không chọn được không có điểm đánh giá bộ đã chọn; ghi `null`, không tự gán 1 hoặc 0. Có thể hỏi riêng lý do không chọn. Nếu muốn báo tỷ lệ bộ được đánh giá phù hợp, chốt trước ngưỡng, ví dụ điểm từ 4 trở lên, và luôn ghi rõ mẫu số là các phiên đã chọn có đánh giá.
 
-Nghiên cứu thăm dò nên báo song song phân bố mức phù hợp và tỷ lệ hoàn thành. Chưa có tiêu chí cùng thiết kế phù hợp thì không kết luận đã chứng minh “chất lượng không giảm”; không tìm thấy khác biệt rõ cũng chưa chứng minh hai phiên bản tương đương.
+Câu hỏi hài lòng dùng riêng: **“Bạn hài lòng với quá trình chọn trang phục trong phiên này ở mức nào?”** Lưu vào `satisfaction`:
+
+- 1: Rất không hài lòng.
+- 2: Không hài lòng.
+- 3: Bình thường.
+- 4: Hài lòng.
+- 5: Rất hài lòng.
+
+Hỏi sau khi dừng đồng hồ, kể cả khi người dùng chủ động kết thúc không chọn nếu họ còn ở đó. Cho phép bỏ qua; không chọn sẵn 3 hoặc ép trả lời. Phiên lỗi/đóng tab không có câu trả lời giữ `null`. Khi tổng hợp, ghi số câu trả lời và trạng thái phiên; không trộn nhóm trả lời khác nhau rồi quy toàn bộ khác biệt cho thuật toán.
+
+**Không gọi tất cả dữ liệu là “đo tự động khách quan”:** Thời gian và thao tác được tự động ghi theo định nghĩa; hai thang điểm là tự báo cáo chủ quan, được hệ thống lưu lại. Không suy hài lòng từ bấm chọn hoặc ít lần đổi.
+
+`refresh_count` đếm yêu cầu đổi, không đếm lần render lại hoặc từng thẻ trong nhóm. Ví dụ bắt đầu → nhóm 3 → đổi → nhóm 3 khác → chọn có `refresh_count = 1`, không phải 3 hay 6. Khóa nút trong khi xử lý để một yêu cầu không bị ghi hai lần; nếu nút đã vô hiệu hóa vì hết bộ, không phát sinh yêu cầu mới. Những lần đổi chủ động khác nhau vẫn phải được đếm đủ.
+
+Nghiên cứu thăm dò nên báo song song mức phù hợp, hài lòng và tỷ lệ hoàn thành. Chưa có tiêu chí cùng thiết kế phù hợp thì không kết luận đã chứng minh “chất lượng không giảm”; không tìm thấy khác biệt rõ cũng chưa chứng minh hai phiên bản tương đương.
 
 ### 10.2. Đồng hồ bắt đầu và kết thúc ở đâu?
 
@@ -1028,7 +1189,9 @@ Quy trình một phiên:
 3. Hệ thống tạo, hiển thị các bộ.
 4. Người dùng chọn ngay hoặc bấm **Đổi bộ khác**.
 5. Bấm **Chọn bộ này** → ghi kết quả và kết thúc đồng hồ.
-6. Hỏi mức phù hợp 1–5; thời gian trả lời khảo sát không cộng vào thời gian chọn.
+6. Hỏi riêng mức phù hợp và hài lòng 1–5; thời gian trả lời khảo sát không cộng vào thời gian chọn. Nút xác nhận đã mặc là thao tác riêng, không dùng để kết thúc timer.
+
+Trong UI, ghi rõ **“Xác nhận ngữ cảnh và bắt đầu chọn”** cho nút bắt đầu. Như vậy lời mô tả “từ lúc xác nhận ngữ cảnh” và mốc `session_started` là cùng một thao tác, không có khoảng chờ bị tính khác giữa các phiên bản.
 
 Nguyên tắc kỹ thuật:
 
@@ -1054,7 +1217,11 @@ outfit_selected
 session_abandoned
 session_timeout
 session_error
+feedback_submitted
+wear_confirmed
 ```
+
+`outfit_selected` là kết thúc thành công của đồng hồ; `feedback_submitted` lưu hai câu trả lời sau đó, không tính như phiên mới. `wear_confirmed` chỉ ghi nhận người dùng thực sự xác nhận đã mặc và liên kết với cập nhật tủ của SV 1; không tự phát sinh sau mỗi `outfit_selected`.
 
 Tên `recommendations_served` chỉ khẳng định ứng dụng đã tạo/trả nhóm gợi ý, không khẳng định đã quan sát được thời điểm trình duyệt vẽ xong.
 
@@ -1069,17 +1236,31 @@ Một bản tóm tắt phiên minh họa:
   "context_id": "context_demo_01",
   "wardrobe_snapshot_id": "wardrobe_demo_01",
   "history_snapshot_id": "history_demo_01",
+  "phase": "development",
+  "scenario_id": "presentation_demo_01",
+  "trial_index": 1,
+  "order_id": "v1-v2-v3",
+  "reference_time": "2026-10-30T07:00:00+07:00",
   "decision_time_ms": 18000,
   "refresh_count": 1,
   "selected_outfit_id": "item_001|item_007|item_012",
   "status": "selected",
-  "satisfaction": 4
+  "suitability": 4,
+  "satisfaction": 3
 }
 ```
 
 **Dữ liệu trên hoàn toàn minh họa; không đưa các giá trị này vào bảng kết quả thực nghiệm.**
 
 Log sự kiện chi tiết cần thêm mã/thứ tự sự kiện, nhóm outfit đã trả về, điểm tương ứng và mốc thời gian. Chỉ lưu một dòng tổng kết là chưa đủ để kiểm tra hệ thống có đếm lần đổi đúng hay không.
+
+**Hợp đồng Event do SV 3 đề xuất, SV 1 cập nhật vào schema:** `event_id`, `session_id`, `participant_id`, `event_type`, `event_index`, `occurred_at`, `elapsed_ms`, `payload`. `elapsed_ms` là thời gian kể từ mốc bắt đầu theo cùng đồng hồ khi còn phiên; không nối đồng hồ đã mất sau reload. Payload gợi ý lưu danh sách mã bộ theo đúng thứ tự, score_parts và `remaining_count`; payload chọn lưu mã bộ và thuộc tính lúc chọn/snapshot tham chiếu; payload đánh giá lưu hai câu trả lời, cho phép null. Không ghi thông tin nhận dạng trực tiếp.
+
+**Metadata phiên phải bền vững ngay từ đầu:** `session_started.payload` lưu `version`, `config_id`, `phase`, `scenario_id`, `trial_index`, `order_id`, các mã snapshot và `reference_time` ngay khi bấm bắt đầu. Bản tóm tắt cuối phiên chỉ lặp lại các giá trị đó, không phải nơi duy nhất chứa chúng; phiên bị đóng tab hoặc mất kết nối giữa chừng vẫn phải xếp đúng version/phase khi tính completion.
+
+`phase` phân biệt `development`, `practice`, `history_collection`, `pilot`, `main` để dữ liệu test không lẫn nghiên cứu. `trial_index`, `order_id`, `scenario_id` dùng kiểm tra hiệu ứng thứ tự/tình huống. Mỗi phiên main có đúng một bản tóm tắt, nhưng mọi sự kiện thô vẫn giữ lại để đối soát.
+
+**Fixture kiểm tra script, không phải kết quả:** Bốn phiên đã bắt đầu: A chọn sau 18.000 ms, đổi 1 lần; B chọn sau 30.000 ms, đổi 0 lần; C bỏ dở, đổi 2 lần; D lỗi, đổi 0 lần. Completion = 2/4 = 50%; trung vị thời gian của hai phiên chọn = 24.000 ms; số lần đổi trên tất cả phiên là [1, 0, 2, 0]. C/D có `decision_time_ms = null`, không phải 0. Tự tạo fixture này và viết test để script không âm thầm bỏ hai phiên thất bại.
 
 ### 10.4. Phiên không chốt được bộ thì sao?
 
@@ -1112,7 +1293,7 @@ Chỉ dùng khi nhóm có cách lấy nhãn độc lập, chẳng hạn người
 ### 11.1. Tách ba câu hỏi thành ba phép đánh giá
 
 1. **Chức năng có đúng không?** Dùng unit test và kiểm thử luồng.
-2. **Số hóa có hữu ích không?** Đo lỗi nhận dạng và thời gian thêm/sửa món.
+2. **Chi phí số hóa là bao nhiêu?** Đo thời gian nhập/sửa thủ công nếu bàn về lợi ích tổng thể. Chỉ đo lỗi nhận dạng ở nhánh mở rộng xử lý ảnh đã được duyệt; không phải yêu cầu làm thêm AI.
 3. **Xếp hạng có giúp chọn nhanh không?** Dùng nghiên cứu người dùng với giao diện và dữ liệu đầu vào được kiểm soát.
 
 Không trộn ba phép đánh giá rồi kết luận chỉ từ một biểu đồ tổng hợp.
@@ -1138,16 +1319,16 @@ Giữ giống nhau:
 - Thiết bị và điều kiện kết nối nếu có thể.
 - Snapshot thời tiết và ngữ cảnh tương đương; không để thời tiết thật thay đổi giữa các lượt so sánh trong phòng thử.
 - Trạng thái sẵn sàng của đồ trong một khối so sánh.
-- Mọi lời giải thích gợi ý có độ dài/cách trình bày tương đương.
+- Trong nghiên cứu chính, thẻ chỉ hiện cùng mẫu ảnh/thuộc tính áo–quần–giày, không hiện lời khen hoặc điểm tổng khác nhau theo version. Điểm thành phần/lý do vẫn lưu trong log để phân tích; nếu bật lời giải thích riêng thì đó là một yếu tố UI cần đánh giá tách biệt.
 
 Thay đổi có chủ đích:
 
-- Cách lọc thời tiết cơ bản so với cho điểm mềm, nếu đó là khác biệt đã định nghĩa giữa v1.0 và v2.0.
-- Cách tính điểm và cá nhân hóa giữa các phiên bản.
+- v2 so với v1: thêm điểm mềm WeatherFit/OccasionFit vào S1, không thay bộ lọc hoặc tập ứng viên ban đầu.
+- v3 so với v2: thêm gói sở thích + phạt lặp, không thay dữ liệu nguồn, giao diện hoặc cách đo.
 
 Không để v1.0 chậm vì giao diện khó dùng, còn v3.0 có ít nút hơn rồi quy toàn bộ cải thiện cho thuật toán.
 
-**Đặc biệt:** Trong thử nghiệm thời gian chọn, cả ba phiên bản dùng cùng metadata đã xác nhận. Khác biệt tự động nhập ảnh của v2.0 được đánh giá riêng; nếu không, nhóm không biết thời gian thay đổi do xếp hạng hay do dữ liệu đầu vào khác nhau.
+**Đặc biệt:** Trong thử nghiệm thời gian chọn, cả ba phiên bản dùng cùng metadata đã xác nhận. Nếu triển khai mở rộng tự động nhập ảnh, đánh giá tính năng đó riêng, không gán nó cho v2.0 hoặc thay dữ liệu đầu vào giữa các phiên bản; nếu không, nhóm không biết tác động đến từ xếp hạng hay dữ liệu.
 
 ### 11.4. Tránh hiệu ứng “làm sau nên quen hơn”
 
@@ -1214,16 +1395,20 @@ Nếu v3.0 tốt hơn, hỏi tiếp: tốt hơn nhờ thành phần nào?
 
 Giữ nguyên các phần khác, cùng dữ liệu và cách phân bổ lượt; không đồng thời đổi giao diện hoặc điều chỉnh lại toàn bộ trọng số.
 
-Nếu chưa đủ điều kiện làm ablation với người dùng, có thể kiểm tra tác động lên thứ tự gợi ý bằng dữ liệu cố định, nhưng phải gọi đúng là phân tích thuật toán, không phải bằng chứng giảm thời gian người dùng.
+Ở snapshot có lịch sử hợp lệ, v3 không sở thích dùng `0.75 × S2 - 0.20 × RotationPenalty`; v3 không phạt dùng `0.75 × S2 + 0.25 × PreferenceScore`. Chỉ đặt thành phần cần tắt bằng 0, không đổi trọng số còn lại hoặc chuyển sang nhánh cold-start, vì đó là can thiệp khác. Trường hợp không có lịch sử thật cần báo riêng; không tạo lịch sử giả để làm ablation người dùng.
+
+**Phần bắt buộc của SV 2:** Hỗ trợ cấu hình tắt từng thành phần và test tác động lên thứ hạng trên dữ liệu cố định. **Phần mở rộng của cả nhóm:** Đo thời gian người dùng dưới các cấu hình ablation. Nếu chưa làm phần mở rộng thì chỉ kết luận về thứ hạng, không gán mức giảm thời gian cho riêng sở thích hoặc riêng phạt lặp.
 
 ### 11.8. Cách tổng hợp kết quả ở mức nhập môn
 
 Với mỗi người:
 
-1. Tính trung vị thời gian của các phiên hoàn thành ở từng phiên bản.
-2. Tính chênh lệch giữa các phiên bản cho chính người đó.
-3. Tổng hợp chênh lệch trên các người tham gia.
-4. Báo cáo song song số phiên hoàn thành, timeout, lỗi và mức phù hợp.
+1. Với mỗi người, ghép các phiên hoàn thành theo `scenario_id`: chỉ những tình huống hoàn thành ở cả hai phiên bản đang so sánh mới được dùng để so thời gian; tình huống hoàn thành ở một phía vẫn nằm trong tỷ lệ hoàn thành và bảng mô tả riêng.
+2. Tính trung vị thời gian trên các tình huống ghép cặp được ở từng phiên bản, rồi tính chênh lệch cho chính người đó.
+3. Tổng hợp chênh lệch trên các người tham gia; nếu số tình huống ghép cặp được quá ít hoặc lệch độ khó, chỉ mô tả thời gian có điều kiện, không suy thành cải thiện tốc độ.
+4. Báo cáo song song số phiên hoàn thành, bỏ dở, timeout, lỗi, thiếu kết thúc, điểm phù hợp và hài lòng.
+5. Tổng hợp `refresh_count` trên **tất cả phiên main đã bắt đầu** theo người/version, kèm bảng tách theo trạng thái; số lần đổi thấp vì lỗi sớm không phải thành công. Có thể bổ sung bảng chỉ phiên hoàn thành nhưng phải ghi rõ mẫu số.
+6. Với hai thang điểm, báo phân bố 1–5 và số câu trả lời/thiếu riêng từng thang; không coi null là 0. Không cộng hoặc lấy trung bình chung hai câu hỏi thành một chỉ số “chất lượng” không định nghĩa trước.
 
 Trung vị là giá trị giữa sau khi sắp xếp, thường ít bị chi phối bởi một phiên quá dài hơn trung bình.
 
@@ -1239,11 +1424,11 @@ Không coi 90 phiên của 10 người là 90 người độc lập. Nếu muố
 
 Bảng kết quả chưa đo nên để đúng như sau:
 
-| Phiên bản | Số người | Phiên hoàn thành / tổng phiên | Thời gian | Số lần đổi | Mức phù hợp |
-|---|---|---|---|---|---|
-| v1.0 | Chưa đo | Chưa đo | Chưa đo | Chưa đo | Chưa đo |
-| v2.0 | Chưa đo | Chưa đo | Chưa đo | Chưa đo | Chưa đo |
-| v3.0 | Chưa đo | Chưa đo | Chưa đo | Chưa đo | Chưa đo |
+| Phiên bản | Số người | Hoàn thành / đã bắt đầu | Thời gian chốt (ms) | Số yêu cầu đổi | Phù hợp 1–5 | Hài lòng 1–5 |
+|---|---|---|---|---|---|---|
+| v1.0 | Chưa đo | Chưa đo | Chưa đo | Chưa đo | Chưa đo | Chưa đo |
+| v2.0 | Chưa đo | Chưa đo | Chưa đo | Chưa đo | Chưa đo | Chưa đo |
+| v3.0 | Chưa đo | Chưa đo | Chưa đo | Chưa đo | Chưa đo | Chưa đo |
 
 Trước khi điền, chốt cách tổng hợp từng cột và đơn vị. Ưu tiên biểu đồ ghép cặp theo từng người hơn chỉ vẽ ba cột trung bình làm mất khác biệt cá nhân.
 
@@ -1253,20 +1438,22 @@ Trước khi điền, chốt cách tổng hợp từng cột và đơn vị. Ưu
 
 Đây là kế hoạch tham khảo, cần điều chỉnh theo lịch học và thời gian được giao. Không bỏ bước kiểm thử để giữ đủ mọi tính năng.
 
-| Tuần | Việc chính | Bằng chứng phải nộp |
-|---|---|---|
-| 1 | Hiểu bài toán; kiểm tra pain point bằng phỏng vấn nhỏ; ôn Python | Ghi chép ẩn danh về vấn đề thật, mỗi người chạy được bài đọc/lọc JSON |
-| 2 | Bài ghép bộ, chấm điểm, test; thống nhất schema và Git | Dữ liệu chung, hợp đồng module, test bài cơ bản |
-| 3 | Trạng thái đồ; ngữ cảnh nhập tay; quy tắc cơ bản | Test lọc hợp lệ và lý do loại |
-| 4 | Ghép bộ, điểm v1.0, Top-3 và xử lý thiếu đồ | Chạy được pipeline không cần giao diện |
-| 5 | Giao diện tối giản và logging | **Mốc A: v1.0 chạy đầu-cuối, timer không reset** |
-| 6 | SV 1 xây điểm ngữ cảnh; SV 2 tích hợp; SV 3 kiểm tra log so sánh | Ví dụ điểm tính tay; ảnh/API chỉ thử khi còn thời gian |
-| 7 | Điểm ngữ cảnh v2.0; so sánh kỹ thuật | **Mốc B: cùng đầu vào chạy được v1/v2, cấu hình tách rõ** |
-| 8 | Số đếm sở thích, phạt lặp và re-ranking v3.0 | Test lịch sử rỗng, lịch sử cố định, không dùng dữ liệu tương lai |
-| 9 | Pilot, kiểm tra đồng hồ, chốt giao thức và tham số | **Mốc C: log đúng, hướng dẫn thực nghiệm và cấu hình được chốt** |
-| 10 | Thu thập nghiên cứu chính | Log người tham gia thật, ghi nhận các lỗi/gián đoạn |
-| 11 | Tổng hợp theo người; ablation nếu đủ điều kiện | Bảng/biểu đồ có nguồn dữ liệu và script tái tạo |
-| 12 | Phân tích thất bại, viết báo cáo, tập bảo vệ | **Mốc D: kết quả tái lập được, kết luận đúng phạm vi** |
+Mã D/R/U trỏ tới nhiệm vụ chi tiết của SV 1/SV 2/SV 3 ở mục 8. Đây là kế hoạch tương đối, không phải ngày cố định hoặc thông báo nhóm đã hoàn thành.
+
+| Tuần | SV 1 phải giao | SV 2 phải giao | SV 3 phải giao | Mốc kiểm tra chung |
+|---|---|---|---|---|
+| 1 | Cùng phỏng vấn, bài JSON/lọc | Cùng phỏng vấn, bài JSON/lọc | Cùng phỏng vấn, bài JSON/lọc | 5–8 trao đổi khám phá nếu được đồng ý; không tạo kết luận định lượng giả |
+| 2 | D1: schema và 5 món | R1 thử, điểm tay | Event/Session đề xuất, UI fixture | Cả ba tự giải thích bài nền, duyệt hợp đồng |
+| 3 | D2–D3: lưu/lọc | R1–R2: ghép/bảng quy tắc | U1 và khung U2–U4 | Module chạy độc lập; không đợi đủ cả app mới test |
+| 4 | D4: dữ liệu phát triển cùng nhóm | R3–R4: S1/thứ hạng | U2–U4: pipeline/phiên/log | Tủ 4 bộ cho nhóm 3 rồi 1; thiếu giày cho 0 |
+| 5 | Sửa lỗi lưu/lọc, duyệt schema đo | Sửa lỗi điểm/bằng điểm | U5, hoàn tất U1–U4 | **Mốc A: v1 đo được, có hai câu hỏi đánh giá** |
+| 6 | D5–D6: bảng/điểm ngữ cảnh | R5: kết hợp S2 | U6–U7: so sánh/log đầy đủ | Tính tay và code cùng S2 = 0.817 ở ví dụ |
+| 7 | D7: dữ liệu thiếu/ranh giới | R6–R7: đối chiếu ứng viên/độ trễ | U8: script và fixture đối soát | **Mốc B: v1/v2 cùng ứng viên và UI** |
+| 8 | D8–D9: mặc/snapshot | R8–R10: sở thích/phạt/re-rank | U9–U10: tích hợp/lịch sử | Cold-start đúng; cả nhóm chuẩn bị lịch sử thật sau khi được đồng ý |
+| 9 | D10: rà dữ liệu | R11: khóa tham số | U11: pilot và giao thức | **Mốc C: pilot đạt, lịch sử/config/giao thức đã khóa** |
+| 10 | Cùng thu phiên; kiểm dữ liệu | Cùng thu phiên; kiểm thứ hạng | Cùng thu phiên; đối soát log | Người tham gia thật, lưu cả gián đoạn và lỗi |
+| 11 | Rà dữ liệu thiếu và bản bàn giao | Phân tích xếp hạng/ablation kỹ thuật | Chạy bảng/biểu đồ theo người | Ba người kiểm một bảng bằng tay; không lấy fixture làm kết quả |
+| 12 | Báo cáo dữ liệu/giới hạn | Báo cáo phương pháp/giới hạn | Báo cáo hệ thống/phép đo | **Mốc D: tái lập, bảo vệ cá nhân, kết luận chung đúng phạm vi** |
 
 Sau mốc C, không âm thầm thay thuật toán trong khi thu thập. Nếu phát hiện lỗi buộc phải sửa, ghi phiên bản mới và trao đổi cách xử lý các phiên đã thu với giảng viên.
 
@@ -1392,23 +1579,28 @@ Sau khi sửa:
 
 ```text
 Tôi phụ trách feat/wardrobe-context trong nhóm 3 người.
-Tôi cần thống nhất Item/Context rồi lọc đồ theo user_id, available
-và ngữ cảnh nhập tay. Hãy giúp tôi phân biệt ràng buộc cứng với
-ưu tiên mềm trên 6 ví dụ. Không coi mọi sở thích cá nhân như
-'không đi giày trắng khi mưa' là quy tắc cho mọi người.
-Cho tôi bài tập viết hàm và test; chưa nối API hoặc dùng deep learning.
-Đầu ra cần được SV 2 dùng ghép bộ và SV 3 dùng dựng biểu mẫu.
+Đầu việc hiện tại: [D1–D10, chọn đúng một việc trong mục 8.1].
+Tôi chỉ sở hữu schema đã được nhóm duyệt, lưu tủ, lọc hợp lệ,
+điểm ngữ cảnh và lưu xác nhận đã mặc; không viết UI hay S1/S2/S3.
+Hãy giúp tôi phân biệt lọc theo user_id/available với chấm điểm mềm.
+v1 không lọc thời tiết/sự kiện; v2/v3 giữ cùng bộ lọc đó.
+Không coi 'không đi giày trắng khi mưa' là quy tắc cho mọi người.
+Cho tôi một bài tập và test với đầu vào/đầu ra để SV 2/SV 3 dùng.
+Chưa nối API, nhận dạng ảnh hoặc viết thay toàn bộ module.
 ```
 
 **SV 2 — Xếp hạng và cá nhân hóa:**
 
 ```text
 Tôi phụ trách feat/outfit-ranking, nhận dữ liệu hợp lệ từ SV 1.
-Tôi có 2 áo, 2 quần, 1 đôi giày. Hãy hướng dẫn tôi tự liệt kê các bộ,
-tự tính điểm bằng bảng quy tắc và sắp xếp Top-3 để gửi cho SV 3.
-Giải thích bằng điểm, thiếu giày, bộ trùng và đồ đang giặt.
-Sau khi tôi làm đúng baseline mới hướng dẫn điểm ngữ cảnh,
-số đếm sở thích và phạt lặp. Không nhảy vào embedding hoặc RL.
+Đầu việc hiện tại: [R1–R11, chọn đúng một việc trong mục 8.2].
+Tôi sở hữu sinh ứng viên và S1/S2/S3; gọi context_fit của SV 1,
+không tự viết lại bảng ngữ cảnh, UI, timer hoặc nơi ghi lịch sử.
+Hướng dẫn tôi tính tay bằng dữ liệu nhỏ trước khi code.
+v3 phải re-rank mọi ứng viên trước Top-3; phạt lặp không loại món.
+SV 3 giữ danh sách đã xem và cắt nhóm, tôi bàn giao đủ bộ đã chấm.
+Đề xuất test khớp ví dụ và giải thích cold-start, bằng điểm.
+Chưa viết cả hệ thống, không nhảy vào embedding hoặc RL.
 ```
 
 **SV 3 — Giao diện và đo lường:**
@@ -1416,10 +1608,15 @@ số đếm sở thích và phạt lặp. Không nhảy vào embedding hoặc RL
 ```text
 Tôi phụ trách feat/ui-evaluation, dùng Streamlit và tích hợp
 hàm lọc của SV 1 cùng hàm xếp hạng của SV 2.
-Tôi đo thời gian từ nút Bắt đầu đến nút Chọn bộ.
+Đầu việc hiện tại: [U1–U11, chọn đúng một việc trong mục 8.3].
+Tôi chỉ làm UI, pipeline, log/history reader và phân tích phiên;
+không chép lại hàm lưu tủ hoặc công thức điểm của hai bạn.
+Đo từ nút Xác nhận ngữ cảnh và bắt đầu chọn đến nút Chọn bộ.
 Người dùng có thể bấm Đổi nhiều lần và Streamlit sẽ rerun.
-Hãy hướng dẫn thiết kế trạng thái và lưu sự kiện để timer không reset,
-không đếm chọn lặp và không làm mất dấu phiên tải lại/đóng tab.
+Hãy hướng dẫn state/test để timer không reset, không đếm chọn lặp,
+không mất dấu phiên tải lại/đóng tab và không lặp bộ đã xem.
+Suitability và satisfaction là hai câu hỏi người dùng nhập riêng;
+chọn không có nghĩa đã mặc. Không tự sinh câu trả lời còn thiếu.
 Phân biệt mốc server nhận sự kiện với lúc trình duyệt hiển thị thật.
 Chưa viết toàn ứng dụng; trước hết mô tả state và test cần có.
 ```
@@ -1581,16 +1778,21 @@ Nếu không có mô hình học máy, viết đúng là “hệ thống gợi �
 - [ ] Một bộ có đúng cấu trúc trong phạm vi đã chọn.
 - [ ] Không lặp bộ trong cùng nhóm Top-3.
 - [ ] Xử lý được ít hơn 3 bộ, không có bộ và hết lựa chọn mới.
-- [ ] Có đường sửa thuộc tính ảnh bị nhận sai.
-- [ ] API lỗi/thiếu dữ liệu được thông báo đúng.
-- [ ] v1, v2, v3 chạy lại được với cấu hình rõ ràng.
+- [ ] Có đường nhập/sửa thuộc tính thủ công; dữ liệu thiếu được ghi nhận đúng.
+- [ ] v1 không dùng ngữ cảnh/lịch sử để lọc hoặc chấm điểm; v1/v2/v3 cùng tập ứng viên ban đầu.
+- [ ] v3 re-rank toàn bộ ứng viên trước Top-3, phạt lặp không loại món hợp lệ.
+- [ ] Chọn bộ và xác nhận đã mặc là hai thao tác tách biệt.
+- [ ] v1, v2, v3 chạy lại được với cấu hình rõ ràng; không cần API hoặc mô hình ảnh.
 
 ### C. Đo lường
 
 - [ ] Định nghĩa rõ mốc bắt đầu/kết thúc thời gian.
 - [ ] Đổi bộ không reset timer.
 - [ ] Bấm chọn lặp không tạo nhiều kết quả.
-- [ ] Giữ lại phiên bỏ dở, timeout, lỗi.
+- [ ] `session_started` lưu metadata phiên ngay khi bắt đầu; phiên mất kết nối vẫn xếp đúng version/phase khi tổng hợp.
+- [ ] Giữ lại phiên bỏ dở, timeout, lỗi và thiếu kết thúc; completion dùng toàn bộ phiên main đã bắt đầu.
+- [ ] Phù hợp (`suitability`) và hài lòng (`satisfaction`) có hai câu hỏi, hai trường riêng; thiếu giữ null.
+- [ ] Số lần đổi là số yêu cầu hợp lệ trong UI, không phải số lần mặc thử hoặc số lần render.
 - [ ] Phân biệt thời gian engine với thời gian chọn trên giao diện.
 - [ ] Không tính Hit Rate@3 bằng một “đáp án” được tạo từ chính Top-3 đã hiển thị.
 
@@ -1599,7 +1801,8 @@ Nếu không có mô hình học máy, viết đúng là “hệ thống gợi �
 - [ ] Người tham gia đã đồng ý; dữ liệu phân tích đã được ẩn danh.
 - [ ] Có pilot và giao thức nghiên cứu chính được chốt.
 - [ ] Có kiểm soát thứ tự thử và điều kiện đầu vào.
-- [ ] Lịch sử v3 có trước phiên kiểm tra; không rò rỉ dữ liệu tương lai.
+- [ ] Lịch sử v3 có trước phiên kiểm tra, chỉ gồm phase được duyệt; không rò rỉ dữ liệu tương lai.
+- [ ] So sánh thời gian ghép cặp theo tình huống hoàn thành ở cả hai phiên bản; không so trung vị trên hai tập tình huống khác nhau.
 - [ ] Không dùng mô phỏng như bằng chứng giảm thời gian người thật.
 - [ ] Bảng kết quả được tạo từ log thật bằng script.
 - [ ] Kết luận đi kèm tỷ lệ hoàn thành và mức phù hợp.
